@@ -36,6 +36,9 @@ class CreateElecXeto
         // elec and elec type specs
         PointKind.vals.each |v| { createElecAndElecTypeSpecs(v) }
 
+        // setpoint type specs
+        createSetpointTypes()
+
         // primary quantity specs
         PointKind.vals.each |v| { createPrimaryQuantitySpecs(v) }
 
@@ -70,6 +73,22 @@ class CreateElecXeto
         createAcSpecs(PointKind.sensor, PrimaryQuantity.pf,
                       [,], acPowerAggregateLocs)
     }
+
+
+    Void createSetpointTypes() {
+
+        out := this.file.out(true)
+        out.printLine(makeSeparator)
+        out.printLine("// Setpoint types for electricity")
+        out.printLine(makeSeparator)
+        out.printLine
+
+        out.printLine("// Setpoint for maximum electric primary quantity")
+        out.printLine("ElecMaxSp : ElecSp { max }")
+
+        out.close
+    }
+
 
 
     Void createTempSpecs() {
@@ -169,6 +188,42 @@ class CreateElecXeto
         return unitQuantity
     }
 
+    // TODO: combine applyMax() and applyMaxDis()
+    Str applyMax(PointKind pointKind, PrimaryQuantity primaryQuantity)
+    {
+        applyMax := ""
+
+        if (pointKind == PointKind.sp) {
+            if (primaryQuantity == PrimaryQuantity.current ||
+                primaryQuantity == PrimaryQuantity.power ||
+                primaryQuantity == PrimaryQuantity.demand ||
+                primaryQuantity == PrimaryQuantity.energy
+                ) {
+                    applyMax = "Max"
+                }
+            }
+
+        return applyMax
+    }
+
+
+    Str applyMaxDis(PointKind pointKind, PrimaryQuantity primaryQuantity)
+    {
+        applyMax := ""
+
+        if (pointKind == PointKind.sp) {
+            if (primaryQuantity == PrimaryQuantity.current ||
+                primaryQuantity == PrimaryQuantity.power ||
+                primaryQuantity == PrimaryQuantity.demand ||
+                primaryQuantity == PrimaryQuantity.energy
+                ) {
+                    applyMax = "maximum "
+                }
+            }
+
+        return applyMax
+    }
+
 
     Void createPrimaryQuantitySpecs(PointKind pointKind) {
 
@@ -185,6 +240,11 @@ class CreateElecXeto
 
         // create each spec
         PrimaryQuantity.vals.each |v| {
+
+            // only on current, power, and demand setpoints apply "max"
+            applyMax := applyMax(pointKind, v)
+            applyMaxDis := applyMaxDis(pointKind, v)
+
             primaryQuantityDis := findPrimaryQuantityDis(v)
             unitQuantity := findUnitQuantity(v)
             baseUnit := findBaseUnit(v)
@@ -193,12 +253,12 @@ class CreateElecXeto
             if (v.name == "freq") { specType = "& ElecAc" + pointKind.name.capitalize
                                     + " " }
 
-            out.printLine("// ${pointKindDis} for electric " + primaryQuantityDis)
+            out.printLine("// ${pointKindDis} for " + applyMaxDis
+                            + "electric " + primaryQuantityDis)
 
-
-            x1 := "Elec" + v.name.capitalize
+            x1 := "Elec" + v.name.capitalize + applyMax
                             + pointKind.name.capitalize + " : "
-                            + "Elec" + pointKind.name.capitalize + " "
+                            + "Elec" + applyMax + pointKind.name.capitalize + " "
                             + specType + "{"
 
             if (v == PrimaryQuantity.pf) {
@@ -241,10 +301,16 @@ class CreateElecXeto
                 // would be nice to continue instead
             }
             else {
-                out.printLine("// ${pointKindDis} for DC electric "
+
+                // only on current, power, and demand setpoints apply "max"
+                applyMax := applyMax(pointKind, v)
+                applyMaxDis := applyMaxDis(pointKind, v)
+
+                out.printLine("// ${pointKindDis} for " + applyMaxDis + "DC electric "
                             + findPrimaryQuantityDis(v))
-                out.printLine("ElecDc" + v.name.capitalize + pointKind.name.capitalize
-                                + " : Elec" + v.name.capitalize
+                out.printLine("ElecDc" + v.name.capitalize + applyMax
+                                + pointKind.name.capitalize
+                                + " : Elec" + v.name.capitalize + applyMax
                                 + pointKind.name.capitalize
                                 + " & ElecDc" + pointKind.name.capitalize)
                 out.printLine
@@ -313,13 +379,21 @@ class CreateElecXeto
         out.printLine(makeSeparator)
         out.printLine
 
+        // only on current, power, and demand setpoints apply "max"
+        applyMax := applyMax(pointKind, primaryQuantity)
+        applyMaxDis := applyMaxDis(pointKind, primaryQuantity)
+
         // create each spec
         subtypes.each |v| {
-            out.printLine("// ${pointKindDis} for AC ${findSubtypeDis(v)} "
+
+            out.printLine("// ${pointKindDis} for ${applyMaxDis}AC "
+                          + findSubtypeDis(v) + " "
                           + primaryQuantityDis)
             out.printLine("Elec" + v.toStr.capitalize + primaryQuantity.name.capitalize
+                          + applyMax
                           + pointKind.name.capitalize + " : "
                           + "Elec" + primaryQuantity.name.capitalize
+                          + applyMax
                           + pointKind.name.capitalize + " & ElecAc"
                           + pointKind.name.capitalize
                           + " <abstract> { ${v} }")
@@ -346,18 +420,24 @@ class CreateElecXeto
         if (locKind.name.contains("phase")) { locTypeDis = "phase" }
         else if (locKind.name.contains("line")) { locTypeDis = "line" }
 
+        // only on current, power, and demand setpoints apply "max"
+        applyMax := applyMax(pointKind, primaryQuantity)
+        applyMaxDis := applyMaxDis(pointKind, primaryQuantity)
+
         // create a spec based on line or line to line location enum
         out.printLine(makeSeparator)
         out.printLine("// ${pointKindDis}s for the ${locTypeDis} location of AC " +
                                 "electric ${primaryQuantityDis} (abstract)")
         out.printLine(makeSeparator)
         out.printLine
-        out.printLine("// ${pointKindDis} for ${locTypeDis} AC " +
-                      "electric ${primaryQuantityDis}")
+        out.printLine("// ${pointKindDis} for " + locTypeDis + " "
+                    + applyMaxDis + "AC electric ${primaryQuantityDis}")
         out.printLine("Elec${locTypeDis.capitalize}"
                     + primaryQuantity.name.capitalize
+                    + applyMax
                     + "${pointKind.name.capitalize} : Elec"
                     + primaryQuantity.name.capitalize
+                    + applyMax
                     + pointKind.name.capitalize
                     + " & ElecAc" + pointKind.name.capitalize + " "
                     + "<abstract> "
@@ -439,6 +519,10 @@ class CreateElecXeto
     {
         out := this.file.out(true)
 
+        // only on current, power, and demand setpoints apply "max"
+        applyMax := applyMax(pointKind, primaryQuantity)
+        applyMaxDis := applyMaxDis(pointKind, primaryQuantity)
+
         // add line to file for docs
         docLine := getAcLocDocs(pointKind, primaryQuantity, subtype, loc)
         out.printLine(docLine)
@@ -446,6 +530,7 @@ class CreateElecXeto
         // add line to file defining Class name and subclasses
         baseSubtypeClassName := "Elec" + subtype.capitalize
                                     + primaryQuantity.name.capitalize
+                                    + applyMax
                                     + pointKind.name.capitalize
 
         newSpecName := "Elec" + loc.replace("-","").capitalize
@@ -455,6 +540,7 @@ class CreateElecXeto
         x1 := newSpecName + " : "
         if (locKind != LocKind.aggregate) {
             baseLocClassName := "Elec" + locKind.name.capitalize
+                                + applyMax
                                 + pointKind.name.capitalize
             // handle the case where there is no subtype
             z1 := ""
@@ -517,7 +603,13 @@ class CreateElecXeto
             z = " "
         }
 
+        // acIndex := 0
+
         acIndex := specDocLine.index("AC ")
+        if (specDocLine.contains("maximum")) {
+            acIndex = specDocLine.index("maximum ")
+        }
+
         newDocLine := specDocLine[0..(acIndex-1)] + direction + z
                         + specDocLine[acIndex..-1]
 
@@ -541,9 +633,12 @@ class CreateElecXeto
                              .replace("L3", "line 3")
                              .replace("N", "neutral")
 
+        // only on current, power, and demand setpoints apply "max"
+        applyMaxDis := applyMaxDis(pointKind, primaryQuantity)
+
         // define the spec docs
         doc := "// " + findPointKindDis(pointKind) + " for "
-                    + locDisplayName + " AC electric "
+                    + locDisplayName + " " + applyMaxDis + "AC electric "
 
         // power factor specs do not have subtypes
         if (primaryQuantity == PrimaryQuantity.pf) {

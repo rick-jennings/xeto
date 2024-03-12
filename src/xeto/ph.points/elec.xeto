@@ -55,6 +55,12 @@ ElecAcSp : ElecSp <abstract> { ac }
 ElecDcSp : ElecSp <abstract> { dc }
 
 //////////////////////////////////////////////////////////////////////////
+// Setpoint types for electricity
+//////////////////////////////////////////////////////////////////////////
+
+// Setpoint for maximum electric primary quantity
+ElecMaxSp : ElecSp { max }
+//////////////////////////////////////////////////////////////////////////
 // Sensors for primary quantities (all specs, except freq, are abstract)
 //////////////////////////////////////////////////////////////////////////
 
@@ -107,26 +113,26 @@ ElecVoltSp : ElecSp <abstract> {
   unit: Unit<quantity:"electricPotential"> "V"
 }
 
-// Setpoint for electric current
-ElecCurrentSp : ElecSp <abstract> {
+// Setpoint for maximum electric current
+ElecCurrentMaxSp : ElecMaxSp <abstract> {
   current
   unit: Unit<quantity:"electricCurrent"> "A"
 }
 
-// Setpoint for electric power
-ElecPowerSp : ElecSp <abstract> {
+// Setpoint for maximum electric power
+ElecPowerMaxSp : ElecMaxSp <abstract> {
   power
   unit: Unit<quantity:"power"> "kW"
 }
 
-// Setpoint for electric energy
-ElecEnergySp : ElecSp <abstract> {
+// Setpoint for maximum electric energy
+ElecEnergyMaxSp : ElecMaxSp <abstract> {
   energy
   unit: Unit<quantity:"energy"> "kWh"
 }
 
-// Setpoint for electric demand
-ElecDemandSp : ElecSp <abstract> {
+// Setpoint for maximum electric demand
+ElecDemandMaxSp : ElecMaxSp <abstract> {
   demand
   unit: Unit<quantity:"power"> "kW"
 }
@@ -160,14 +166,14 @@ ElecDcEnergySensor : ElecEnergySensor & ElecDcSensor
 // Setpoints for DC electricity type (leaves)
 //////////////////////////////////////////////////////////////////////////
 
-// Setpoint for DC electric current
-ElecDcCurrentSp : ElecCurrentSp & ElecDcSp
+// Setpoint for maximum DC electric current
+ElecDcCurrentMaxSp : ElecCurrentMaxSp & ElecDcSp
 
 // Setpoint for DC electric voltage
 ElecDcVoltSp : ElecVoltSp & ElecDcSp
 
-// Setpoint for DC electric power
-ElecDcPowerSp : ElecPowerSp & ElecDcSp
+// Setpoint for maximum DC electric power
+ElecDcPowerMaxSp : ElecPowerMaxSp & ElecDcSp
 
 //////////////////////////////////////////////////////////////////////////
 // Sensors for AC power subtypes (abstract)
@@ -532,288 +538,288 @@ ElecNetTotalApparentPowerSensor : ElecTotalApparentPowerSensor { net }
 // Setpoints for AC power subtypes (abstract)
 //////////////////////////////////////////////////////////////////////////
 
-// Setpoint for AC active power
-ElecActivePowerSp : ElecPowerSp & ElecAcSp <abstract> { active }
+// Setpoint for maximum AC active power
+ElecActivePowerMaxSp : ElecPowerMaxSp & ElecAcSp <abstract> { active }
 
-// Setpoint for AC reactive power
-ElecReactivePowerSp : ElecPowerSp & ElecAcSp <abstract> { reactive }
+// Setpoint for maximum AC reactive power
+ElecReactivePowerMaxSp : ElecPowerMaxSp & ElecAcSp <abstract> { reactive }
 
-// Setpoint for AC apparent power
-ElecApparentPowerSp : ElecPowerSp & ElecAcSp <abstract> { apparent }
+// Setpoint for maximum AC apparent power
+ElecApparentPowerMaxSp : ElecPowerMaxSp & ElecAcSp <abstract> { apparent }
 
 //////////////////////////////////////////////////////////////////////////
 // Setpoints for the phase location of AC electric power (abstract)
 //////////////////////////////////////////////////////////////////////////
 
-// Setpoint for phase AC electric power
-ElecPhasePowerSp : ElecPowerSp & ElecAcSp <abstract> { phasePower: ElecLine }
+// Setpoint for phase maximum AC electric power
+ElecPhasePowerMaxSp : ElecPowerMaxSp & ElecAcSp <abstract> { phasePower: ElecLine }
 
-// Setpoint for line 1 AC electric active power
-ElecL1ActivePowerSp : ElecActivePowerSp & ElecPhasePowerSp <abstract> { phasePower: "L1" }
+// Setpoint for line 1 maximum AC electric active power
+ElecL1ActivePowerMaxSp : ElecActivePowerMaxSp & ElecPhasePowerMaxSp <abstract> { phasePower: "L1" }
 
-// Setpoint for line 2 AC electric active power
-ElecL2ActivePowerSp : ElecActivePowerSp & ElecPhasePowerSp <abstract> { phasePower: "L2" }
+// Setpoint for line 2 maximum AC electric active power
+ElecL2ActivePowerMaxSp : ElecActivePowerMaxSp & ElecPhasePowerMaxSp <abstract> { phasePower: "L2" }
 
-// Setpoint for line 3 AC electric active power
-ElecL3ActivePowerSp : ElecActivePowerSp & ElecPhasePowerSp <abstract> { phasePower: "L3" }
+// Setpoint for line 3 maximum AC electric active power
+ElecL3ActivePowerMaxSp : ElecActivePowerMaxSp & ElecPhasePowerMaxSp <abstract> { phasePower: "L3" }
 
-// Setpoint for line 1 AC electric reactive power
-ElecL1ReactivePowerSp : ElecReactivePowerSp & ElecPhasePowerSp <abstract> { phasePower: "L1" }
+// Setpoint for line 1 maximum AC electric reactive power
+ElecL1ReactivePowerMaxSp : ElecReactivePowerMaxSp & ElecPhasePowerMaxSp <abstract> { phasePower: "L1" }
 
-// Setpoint for line 2 AC electric reactive power
-ElecL2ReactivePowerSp : ElecReactivePowerSp & ElecPhasePowerSp <abstract> { phasePower: "L2" }
+// Setpoint for line 2 maximum AC electric reactive power
+ElecL2ReactivePowerMaxSp : ElecReactivePowerMaxSp & ElecPhasePowerMaxSp <abstract> { phasePower: "L2" }
 
-// Setpoint for line 3 AC electric reactive power
-ElecL3ReactivePowerSp : ElecReactivePowerSp & ElecPhasePowerSp <abstract> { phasePower: "L3" }
+// Setpoint for line 3 maximum AC electric reactive power
+ElecL3ReactivePowerMaxSp : ElecReactivePowerMaxSp & ElecPhasePowerMaxSp <abstract> { phasePower: "L3" }
 
-// Setpoint for line 1 AC electric apparent power
-ElecL1ApparentPowerSp : ElecApparentPowerSp & ElecPhasePowerSp <abstract> { phasePower: "L1" }
+// Setpoint for line 1 maximum AC electric apparent power
+ElecL1ApparentPowerMaxSp : ElecApparentPowerMaxSp & ElecPhasePowerMaxSp <abstract> { phasePower: "L1" }
 
-// Setpoint for line 2 AC electric apparent power
-ElecL2ApparentPowerSp : ElecApparentPowerSp & ElecPhasePowerSp <abstract> { phasePower: "L2" }
+// Setpoint for line 2 maximum AC electric apparent power
+ElecL2ApparentPowerMaxSp : ElecApparentPowerMaxSp & ElecPhasePowerMaxSp <abstract> { phasePower: "L2" }
 
-// Setpoint for line 3 AC electric apparent power
-ElecL3ApparentPowerSp : ElecApparentPowerSp & ElecPhasePowerSp <abstract> { phasePower: "L3" }
+// Setpoint for line 3 maximum AC electric apparent power
+ElecL3ApparentPowerMaxSp : ElecApparentPowerMaxSp & ElecPhasePowerMaxSp <abstract> { phasePower: "L3" }
 
 //////////////////////////////////////////////////////////////////////////
 // Setpoints for the line location of AC electric power (abstract)
 //////////////////////////////////////////////////////////////////////////
 
-// Setpoint for line AC electric power
-ElecLinePowerSp : ElecPowerSp & ElecAcSp <abstract> { linePower: ElecLineToLine }
+// Setpoint for line maximum AC electric power
+ElecLinePowerMaxSp : ElecPowerMaxSp & ElecAcSp <abstract> { linePower: ElecLineToLine }
 
-// Setpoint for line 1 to line 2 AC electric active power
-ElecL1L2ActivePowerSp : ElecActivePowerSp & ElecLinePowerSp <abstract> { linePower: "L1-L2" }
+// Setpoint for line 1 to line 2 maximum AC electric active power
+ElecL1L2ActivePowerMaxSp : ElecActivePowerMaxSp & ElecLinePowerMaxSp <abstract> { linePower: "L1-L2" }
 
-// Setpoint for line 2 to line 3 AC electric active power
-ElecL2L3ActivePowerSp : ElecActivePowerSp & ElecLinePowerSp <abstract> { linePower: "L2-L3" }
+// Setpoint for line 2 to line 3 maximum AC electric active power
+ElecL2L3ActivePowerMaxSp : ElecActivePowerMaxSp & ElecLinePowerMaxSp <abstract> { linePower: "L2-L3" }
 
-// Setpoint for line 3 to line 1 AC electric active power
-ElecL3L1ActivePowerSp : ElecActivePowerSp & ElecLinePowerSp <abstract> { linePower: "L3-L1" }
+// Setpoint for line 3 to line 1 maximum AC electric active power
+ElecL3L1ActivePowerMaxSp : ElecActivePowerMaxSp & ElecLinePowerMaxSp <abstract> { linePower: "L3-L1" }
 
-// Setpoint for line 1 to line 2 AC electric reactive power
-ElecL1L2ReactivePowerSp : ElecReactivePowerSp & ElecLinePowerSp <abstract> { linePower: "L1-L2" }
+// Setpoint for line 1 to line 2 maximum AC electric reactive power
+ElecL1L2ReactivePowerMaxSp : ElecReactivePowerMaxSp & ElecLinePowerMaxSp <abstract> { linePower: "L1-L2" }
 
-// Setpoint for line 2 to line 3 AC electric reactive power
-ElecL2L3ReactivePowerSp : ElecReactivePowerSp & ElecLinePowerSp <abstract> { linePower: "L2-L3" }
+// Setpoint for line 2 to line 3 maximum AC electric reactive power
+ElecL2L3ReactivePowerMaxSp : ElecReactivePowerMaxSp & ElecLinePowerMaxSp <abstract> { linePower: "L2-L3" }
 
-// Setpoint for line 3 to line 1 AC electric reactive power
-ElecL3L1ReactivePowerSp : ElecReactivePowerSp & ElecLinePowerSp <abstract> { linePower: "L3-L1" }
+// Setpoint for line 3 to line 1 maximum AC electric reactive power
+ElecL3L1ReactivePowerMaxSp : ElecReactivePowerMaxSp & ElecLinePowerMaxSp <abstract> { linePower: "L3-L1" }
 
-// Setpoint for line 1 to line 2 AC electric apparent power
-ElecL1L2ApparentPowerSp : ElecApparentPowerSp & ElecLinePowerSp <abstract> { linePower: "L1-L2" }
+// Setpoint for line 1 to line 2 maximum AC electric apparent power
+ElecL1L2ApparentPowerMaxSp : ElecApparentPowerMaxSp & ElecLinePowerMaxSp <abstract> { linePower: "L1-L2" }
 
-// Setpoint for line 2 to line 3 AC electric apparent power
-ElecL2L3ApparentPowerSp : ElecApparentPowerSp & ElecLinePowerSp <abstract> { linePower: "L2-L3" }
+// Setpoint for line 2 to line 3 maximum AC electric apparent power
+ElecL2L3ApparentPowerMaxSp : ElecApparentPowerMaxSp & ElecLinePowerMaxSp <abstract> { linePower: "L2-L3" }
 
-// Setpoint for line 3 to line 1 AC electric apparent power
-ElecL3L1ApparentPowerSp : ElecApparentPowerSp & ElecLinePowerSp <abstract> { linePower: "L3-L1" }
+// Setpoint for line 3 to line 1 maximum AC electric apparent power
+ElecL3L1ApparentPowerMaxSp : ElecApparentPowerMaxSp & ElecLinePowerMaxSp <abstract> { linePower: "L3-L1" }
 
 //////////////////////////////////////////////////////////////////////////
 // Setpoints for the aggregate location of AC electric power (abstract)
 //////////////////////////////////////////////////////////////////////////
 
-// Setpoint for total AC electric active power
-ElecTotalActivePowerSp : ElecActivePowerSp <abstract> { total }
+// Setpoint for total maximum AC electric active power
+ElecTotalActivePowerMaxSp : ElecActivePowerMaxSp <abstract> { total }
 
-// Setpoint for total AC electric reactive power
-ElecTotalReactivePowerSp : ElecReactivePowerSp <abstract> { total }
+// Setpoint for total maximum AC electric reactive power
+ElecTotalReactivePowerMaxSp : ElecReactivePowerMaxSp <abstract> { total }
 
-// Setpoint for total AC electric apparent power
-ElecTotalApparentPowerSp : ElecApparentPowerSp <abstract> { total }
+// Setpoint for total maximum AC electric apparent power
+ElecTotalApparentPowerMaxSp : ElecApparentPowerMaxSp <abstract> { total }
 
 //////////////////////////////////////////////////////////////////////////
 // Setpoints for the direction of AC electric power (leaves)
 //////////////////////////////////////////////////////////////////////////
 
-// Setpoint for line 1 import of AC electric active power
-ElecImportL1ActivePowerSp : ElecL1ActivePowerSp { import }
+// Setpoint for line 1 import of maximum AC electric active power
+ElecImportL1ActivePowerMaxSp : ElecL1ActivePowerMaxSp { import }
 
-// Setpoint for line 1 export of AC electric active power
-ElecExportL1ActivePowerSp : ElecL1ActivePowerSp { export }
+// Setpoint for line 1 export of maximum AC electric active power
+ElecExportL1ActivePowerMaxSp : ElecL1ActivePowerMaxSp { export }
 
-// Setpoint for line 1 net of AC electric active power
-ElecNetL1ActivePowerSp : ElecL1ActivePowerSp { net }
+// Setpoint for line 1 net of maximum AC electric active power
+ElecNetL1ActivePowerMaxSp : ElecL1ActivePowerMaxSp { net }
 
-// Setpoint for line 2 import of AC electric active power
-ElecImportL2ActivePowerSp : ElecL2ActivePowerSp { import }
+// Setpoint for line 2 import of maximum AC electric active power
+ElecImportL2ActivePowerMaxSp : ElecL2ActivePowerMaxSp { import }
 
-// Setpoint for line 2 export of AC electric active power
-ElecExportL2ActivePowerSp : ElecL2ActivePowerSp { export }
+// Setpoint for line 2 export of maximum AC electric active power
+ElecExportL2ActivePowerMaxSp : ElecL2ActivePowerMaxSp { export }
 
-// Setpoint for line 2 net of AC electric active power
-ElecNetL2ActivePowerSp : ElecL2ActivePowerSp { net }
+// Setpoint for line 2 net of maximum AC electric active power
+ElecNetL2ActivePowerMaxSp : ElecL2ActivePowerMaxSp { net }
 
-// Setpoint for line 3 import of AC electric active power
-ElecImportL3ActivePowerSp : ElecL3ActivePowerSp { import }
+// Setpoint for line 3 import of maximum AC electric active power
+ElecImportL3ActivePowerMaxSp : ElecL3ActivePowerMaxSp { import }
 
-// Setpoint for line 3 export of AC electric active power
-ElecExportL3ActivePowerSp : ElecL3ActivePowerSp { export }
+// Setpoint for line 3 export of maximum AC electric active power
+ElecExportL3ActivePowerMaxSp : ElecL3ActivePowerMaxSp { export }
 
-// Setpoint for line 3 net of AC electric active power
-ElecNetL3ActivePowerSp : ElecL3ActivePowerSp { net }
+// Setpoint for line 3 net of maximum AC electric active power
+ElecNetL3ActivePowerMaxSp : ElecL3ActivePowerMaxSp { net }
 
-// Setpoint for line 1 import of AC electric reactive power
-ElecImportL1ReactivePowerSp : ElecL1ReactivePowerSp { import }
+// Setpoint for line 1 import of maximum AC electric reactive power
+ElecImportL1ReactivePowerMaxSp : ElecL1ReactivePowerMaxSp { import }
 
-// Setpoint for line 1 export of AC electric reactive power
-ElecExportL1ReactivePowerSp : ElecL1ReactivePowerSp { export }
+// Setpoint for line 1 export of maximum AC electric reactive power
+ElecExportL1ReactivePowerMaxSp : ElecL1ReactivePowerMaxSp { export }
 
-// Setpoint for line 1 net of AC electric reactive power
-ElecNetL1ReactivePowerSp : ElecL1ReactivePowerSp { net }
+// Setpoint for line 1 net of maximum AC electric reactive power
+ElecNetL1ReactivePowerMaxSp : ElecL1ReactivePowerMaxSp { net }
 
-// Setpoint for line 2 import of AC electric reactive power
-ElecImportL2ReactivePowerSp : ElecL2ReactivePowerSp { import }
+// Setpoint for line 2 import of maximum AC electric reactive power
+ElecImportL2ReactivePowerMaxSp : ElecL2ReactivePowerMaxSp { import }
 
-// Setpoint for line 2 export of AC electric reactive power
-ElecExportL2ReactivePowerSp : ElecL2ReactivePowerSp { export }
+// Setpoint for line 2 export of maximum AC electric reactive power
+ElecExportL2ReactivePowerMaxSp : ElecL2ReactivePowerMaxSp { export }
 
-// Setpoint for line 2 net of AC electric reactive power
-ElecNetL2ReactivePowerSp : ElecL2ReactivePowerSp { net }
+// Setpoint for line 2 net of maximum AC electric reactive power
+ElecNetL2ReactivePowerMaxSp : ElecL2ReactivePowerMaxSp { net }
 
-// Setpoint for line 3 import of AC electric reactive power
-ElecImportL3ReactivePowerSp : ElecL3ReactivePowerSp { import }
+// Setpoint for line 3 import of maximum AC electric reactive power
+ElecImportL3ReactivePowerMaxSp : ElecL3ReactivePowerMaxSp { import }
 
-// Setpoint for line 3 export of AC electric reactive power
-ElecExportL3ReactivePowerSp : ElecL3ReactivePowerSp { export }
+// Setpoint for line 3 export of maximum AC electric reactive power
+ElecExportL3ReactivePowerMaxSp : ElecL3ReactivePowerMaxSp { export }
 
-// Setpoint for line 3 net of AC electric reactive power
-ElecNetL3ReactivePowerSp : ElecL3ReactivePowerSp { net }
+// Setpoint for line 3 net of maximum AC electric reactive power
+ElecNetL3ReactivePowerMaxSp : ElecL3ReactivePowerMaxSp { net }
 
-// Setpoint for line 1 import of AC electric apparent power
-ElecImportL1ApparentPowerSp : ElecL1ApparentPowerSp { import }
+// Setpoint for line 1 import of maximum AC electric apparent power
+ElecImportL1ApparentPowerMaxSp : ElecL1ApparentPowerMaxSp { import }
 
-// Setpoint for line 1 export of AC electric apparent power
-ElecExportL1ApparentPowerSp : ElecL1ApparentPowerSp { export }
+// Setpoint for line 1 export of maximum AC electric apparent power
+ElecExportL1ApparentPowerMaxSp : ElecL1ApparentPowerMaxSp { export }
 
-// Setpoint for line 1 net of AC electric apparent power
-ElecNetL1ApparentPowerSp : ElecL1ApparentPowerSp { net }
+// Setpoint for line 1 net of maximum AC electric apparent power
+ElecNetL1ApparentPowerMaxSp : ElecL1ApparentPowerMaxSp { net }
 
-// Setpoint for line 2 import of AC electric apparent power
-ElecImportL2ApparentPowerSp : ElecL2ApparentPowerSp { import }
+// Setpoint for line 2 import of maximum AC electric apparent power
+ElecImportL2ApparentPowerMaxSp : ElecL2ApparentPowerMaxSp { import }
 
-// Setpoint for line 2 export of AC electric apparent power
-ElecExportL2ApparentPowerSp : ElecL2ApparentPowerSp { export }
+// Setpoint for line 2 export of maximum AC electric apparent power
+ElecExportL2ApparentPowerMaxSp : ElecL2ApparentPowerMaxSp { export }
 
-// Setpoint for line 2 net of AC electric apparent power
-ElecNetL2ApparentPowerSp : ElecL2ApparentPowerSp { net }
+// Setpoint for line 2 net of maximum AC electric apparent power
+ElecNetL2ApparentPowerMaxSp : ElecL2ApparentPowerMaxSp { net }
 
-// Setpoint for line 3 import of AC electric apparent power
-ElecImportL3ApparentPowerSp : ElecL3ApparentPowerSp { import }
+// Setpoint for line 3 import of maximum AC electric apparent power
+ElecImportL3ApparentPowerMaxSp : ElecL3ApparentPowerMaxSp { import }
 
-// Setpoint for line 3 export of AC electric apparent power
-ElecExportL3ApparentPowerSp : ElecL3ApparentPowerSp { export }
+// Setpoint for line 3 export of maximum AC electric apparent power
+ElecExportL3ApparentPowerMaxSp : ElecL3ApparentPowerMaxSp { export }
 
-// Setpoint for line 3 net of AC electric apparent power
-ElecNetL3ApparentPowerSp : ElecL3ApparentPowerSp { net }
+// Setpoint for line 3 net of maximum AC electric apparent power
+ElecNetL3ApparentPowerMaxSp : ElecL3ApparentPowerMaxSp { net }
 
-// Setpoint for line 1 to line 2 import of AC electric active power
-ElecImportL1L2ActivePowerSp : ElecL1L2ActivePowerSp { import }
+// Setpoint for line 1 to line 2 import of maximum AC electric active power
+ElecImportL1L2ActivePowerMaxSp : ElecL1L2ActivePowerMaxSp { import }
 
-// Setpoint for line 1 to line 2 export of AC electric active power
-ElecExportL1L2ActivePowerSp : ElecL1L2ActivePowerSp { export }
+// Setpoint for line 1 to line 2 export of maximum AC electric active power
+ElecExportL1L2ActivePowerMaxSp : ElecL1L2ActivePowerMaxSp { export }
 
-// Setpoint for line 1 to line 2 net of AC electric active power
-ElecNetL1L2ActivePowerSp : ElecL1L2ActivePowerSp { net }
+// Setpoint for line 1 to line 2 net of maximum AC electric active power
+ElecNetL1L2ActivePowerMaxSp : ElecL1L2ActivePowerMaxSp { net }
 
-// Setpoint for line 2 to line 3 import of AC electric active power
-ElecImportL2L3ActivePowerSp : ElecL2L3ActivePowerSp { import }
+// Setpoint for line 2 to line 3 import of maximum AC electric active power
+ElecImportL2L3ActivePowerMaxSp : ElecL2L3ActivePowerMaxSp { import }
 
-// Setpoint for line 2 to line 3 export of AC electric active power
-ElecExportL2L3ActivePowerSp : ElecL2L3ActivePowerSp { export }
+// Setpoint for line 2 to line 3 export of maximum AC electric active power
+ElecExportL2L3ActivePowerMaxSp : ElecL2L3ActivePowerMaxSp { export }
 
-// Setpoint for line 2 to line 3 net of AC electric active power
-ElecNetL2L3ActivePowerSp : ElecL2L3ActivePowerSp { net }
+// Setpoint for line 2 to line 3 net of maximum AC electric active power
+ElecNetL2L3ActivePowerMaxSp : ElecL2L3ActivePowerMaxSp { net }
 
-// Setpoint for line 3 to line 1 import of AC electric active power
-ElecImportL3L1ActivePowerSp : ElecL3L1ActivePowerSp { import }
+// Setpoint for line 3 to line 1 import of maximum AC electric active power
+ElecImportL3L1ActivePowerMaxSp : ElecL3L1ActivePowerMaxSp { import }
 
-// Setpoint for line 3 to line 1 export of AC electric active power
-ElecExportL3L1ActivePowerSp : ElecL3L1ActivePowerSp { export }
+// Setpoint for line 3 to line 1 export of maximum AC electric active power
+ElecExportL3L1ActivePowerMaxSp : ElecL3L1ActivePowerMaxSp { export }
 
-// Setpoint for line 3 to line 1 net of AC electric active power
-ElecNetL3L1ActivePowerSp : ElecL3L1ActivePowerSp { net }
+// Setpoint for line 3 to line 1 net of maximum AC electric active power
+ElecNetL3L1ActivePowerMaxSp : ElecL3L1ActivePowerMaxSp { net }
 
-// Setpoint for line 1 to line 2 import of AC electric reactive power
-ElecImportL1L2ReactivePowerSp : ElecL1L2ReactivePowerSp { import }
+// Setpoint for line 1 to line 2 import of maximum AC electric reactive power
+ElecImportL1L2ReactivePowerMaxSp : ElecL1L2ReactivePowerMaxSp { import }
 
-// Setpoint for line 1 to line 2 export of AC electric reactive power
-ElecExportL1L2ReactivePowerSp : ElecL1L2ReactivePowerSp { export }
+// Setpoint for line 1 to line 2 export of maximum AC electric reactive power
+ElecExportL1L2ReactivePowerMaxSp : ElecL1L2ReactivePowerMaxSp { export }
 
-// Setpoint for line 1 to line 2 net of AC electric reactive power
-ElecNetL1L2ReactivePowerSp : ElecL1L2ReactivePowerSp { net }
+// Setpoint for line 1 to line 2 net of maximum AC electric reactive power
+ElecNetL1L2ReactivePowerMaxSp : ElecL1L2ReactivePowerMaxSp { net }
 
-// Setpoint for line 2 to line 3 import of AC electric reactive power
-ElecImportL2L3ReactivePowerSp : ElecL2L3ReactivePowerSp { import }
+// Setpoint for line 2 to line 3 import of maximum AC electric reactive power
+ElecImportL2L3ReactivePowerMaxSp : ElecL2L3ReactivePowerMaxSp { import }
 
-// Setpoint for line 2 to line 3 export of AC electric reactive power
-ElecExportL2L3ReactivePowerSp : ElecL2L3ReactivePowerSp { export }
+// Setpoint for line 2 to line 3 export of maximum AC electric reactive power
+ElecExportL2L3ReactivePowerMaxSp : ElecL2L3ReactivePowerMaxSp { export }
 
-// Setpoint for line 2 to line 3 net of AC electric reactive power
-ElecNetL2L3ReactivePowerSp : ElecL2L3ReactivePowerSp { net }
+// Setpoint for line 2 to line 3 net of maximum AC electric reactive power
+ElecNetL2L3ReactivePowerMaxSp : ElecL2L3ReactivePowerMaxSp { net }
 
-// Setpoint for line 3 to line 1 import of AC electric reactive power
-ElecImportL3L1ReactivePowerSp : ElecL3L1ReactivePowerSp { import }
+// Setpoint for line 3 to line 1 import of maximum AC electric reactive power
+ElecImportL3L1ReactivePowerMaxSp : ElecL3L1ReactivePowerMaxSp { import }
 
-// Setpoint for line 3 to line 1 export of AC electric reactive power
-ElecExportL3L1ReactivePowerSp : ElecL3L1ReactivePowerSp { export }
+// Setpoint for line 3 to line 1 export of maximum AC electric reactive power
+ElecExportL3L1ReactivePowerMaxSp : ElecL3L1ReactivePowerMaxSp { export }
 
-// Setpoint for line 3 to line 1 net of AC electric reactive power
-ElecNetL3L1ReactivePowerSp : ElecL3L1ReactivePowerSp { net }
+// Setpoint for line 3 to line 1 net of maximum AC electric reactive power
+ElecNetL3L1ReactivePowerMaxSp : ElecL3L1ReactivePowerMaxSp { net }
 
-// Setpoint for line 1 to line 2 import of AC electric apparent power
-ElecImportL1L2ApparentPowerSp : ElecL1L2ApparentPowerSp { import }
+// Setpoint for line 1 to line 2 import of maximum AC electric apparent power
+ElecImportL1L2ApparentPowerMaxSp : ElecL1L2ApparentPowerMaxSp { import }
 
-// Setpoint for line 1 to line 2 export of AC electric apparent power
-ElecExportL1L2ApparentPowerSp : ElecL1L2ApparentPowerSp { export }
+// Setpoint for line 1 to line 2 export of maximum AC electric apparent power
+ElecExportL1L2ApparentPowerMaxSp : ElecL1L2ApparentPowerMaxSp { export }
 
-// Setpoint for line 1 to line 2 net of AC electric apparent power
-ElecNetL1L2ApparentPowerSp : ElecL1L2ApparentPowerSp { net }
+// Setpoint for line 1 to line 2 net of maximum AC electric apparent power
+ElecNetL1L2ApparentPowerMaxSp : ElecL1L2ApparentPowerMaxSp { net }
 
-// Setpoint for line 2 to line 3 import of AC electric apparent power
-ElecImportL2L3ApparentPowerSp : ElecL2L3ApparentPowerSp { import }
+// Setpoint for line 2 to line 3 import of maximum AC electric apparent power
+ElecImportL2L3ApparentPowerMaxSp : ElecL2L3ApparentPowerMaxSp { import }
 
-// Setpoint for line 2 to line 3 export of AC electric apparent power
-ElecExportL2L3ApparentPowerSp : ElecL2L3ApparentPowerSp { export }
+// Setpoint for line 2 to line 3 export of maximum AC electric apparent power
+ElecExportL2L3ApparentPowerMaxSp : ElecL2L3ApparentPowerMaxSp { export }
 
-// Setpoint for line 2 to line 3 net of AC electric apparent power
-ElecNetL2L3ApparentPowerSp : ElecL2L3ApparentPowerSp { net }
+// Setpoint for line 2 to line 3 net of maximum AC electric apparent power
+ElecNetL2L3ApparentPowerMaxSp : ElecL2L3ApparentPowerMaxSp { net }
 
-// Setpoint for line 3 to line 1 import of AC electric apparent power
-ElecImportL3L1ApparentPowerSp : ElecL3L1ApparentPowerSp { import }
+// Setpoint for line 3 to line 1 import of maximum AC electric apparent power
+ElecImportL3L1ApparentPowerMaxSp : ElecL3L1ApparentPowerMaxSp { import }
 
-// Setpoint for line 3 to line 1 export of AC electric apparent power
-ElecExportL3L1ApparentPowerSp : ElecL3L1ApparentPowerSp { export }
+// Setpoint for line 3 to line 1 export of maximum AC electric apparent power
+ElecExportL3L1ApparentPowerMaxSp : ElecL3L1ApparentPowerMaxSp { export }
 
-// Setpoint for line 3 to line 1 net of AC electric apparent power
-ElecNetL3L1ApparentPowerSp : ElecL3L1ApparentPowerSp { net }
+// Setpoint for line 3 to line 1 net of maximum AC electric apparent power
+ElecNetL3L1ApparentPowerMaxSp : ElecL3L1ApparentPowerMaxSp { net }
 
-// Setpoint for total import of AC electric active power
-ElecImportTotalActivePowerSp : ElecTotalActivePowerSp { import }
+// Setpoint for total import of maximum AC electric active power
+ElecImportTotalActivePowerMaxSp : ElecTotalActivePowerMaxSp { import }
 
-// Setpoint for total export of AC electric active power
-ElecExportTotalActivePowerSp : ElecTotalActivePowerSp { export }
+// Setpoint for total export of maximum AC electric active power
+ElecExportTotalActivePowerMaxSp : ElecTotalActivePowerMaxSp { export }
 
-// Setpoint for total net of AC electric active power
-ElecNetTotalActivePowerSp : ElecTotalActivePowerSp { net }
+// Setpoint for total net of maximum AC electric active power
+ElecNetTotalActivePowerMaxSp : ElecTotalActivePowerMaxSp { net }
 
-// Setpoint for total import of AC electric reactive power
-ElecImportTotalReactivePowerSp : ElecTotalReactivePowerSp { import }
+// Setpoint for total import of maximum AC electric reactive power
+ElecImportTotalReactivePowerMaxSp : ElecTotalReactivePowerMaxSp { import }
 
-// Setpoint for total export of AC electric reactive power
-ElecExportTotalReactivePowerSp : ElecTotalReactivePowerSp { export }
+// Setpoint for total export of maximum AC electric reactive power
+ElecExportTotalReactivePowerMaxSp : ElecTotalReactivePowerMaxSp { export }
 
-// Setpoint for total net of AC electric reactive power
-ElecNetTotalReactivePowerSp : ElecTotalReactivePowerSp { net }
+// Setpoint for total net of maximum AC electric reactive power
+ElecNetTotalReactivePowerMaxSp : ElecTotalReactivePowerMaxSp { net }
 
-// Setpoint for total import of AC electric apparent power
-ElecImportTotalApparentPowerSp : ElecTotalApparentPowerSp { import }
+// Setpoint for total import of maximum AC electric apparent power
+ElecImportTotalApparentPowerMaxSp : ElecTotalApparentPowerMaxSp { import }
 
-// Setpoint for total export of AC electric apparent power
-ElecExportTotalApparentPowerSp : ElecTotalApparentPowerSp { export }
+// Setpoint for total export of maximum AC electric apparent power
+ElecExportTotalApparentPowerMaxSp : ElecTotalApparentPowerMaxSp { export }
 
-// Setpoint for total net of AC electric apparent power
-ElecNetTotalApparentPowerSp : ElecTotalApparentPowerSp { net }
+// Setpoint for total net of maximum AC electric apparent power
+ElecNetTotalApparentPowerMaxSp : ElecTotalApparentPowerMaxSp { net }
 
 //////////////////////////////////////////////////////////////////////////
 // Sensors for AC energy subtypes (abstract)
@@ -1272,40 +1278,40 @@ ElecPhaseAvgImbalanceCurrentSensor : ElecImbalanceCurrentSensor { phaseAvg }
 // Setpoints for AC current subtypes (abstract)
 //////////////////////////////////////////////////////////////////////////
 
-// Setpoint for AC magnitude current
-ElecMagnitudeCurrentSp : ElecCurrentSp & ElecAcSp <abstract> { magnitude }
+// Setpoint for maximum AC magnitude current
+ElecMagnitudeCurrentMaxSp : ElecCurrentMaxSp & ElecAcSp <abstract> { magnitude }
 
 //////////////////////////////////////////////////////////////////////////
 // Setpoints for the phase location of AC electric current (abstract)
 //////////////////////////////////////////////////////////////////////////
 
-// Setpoint for phase AC electric current
-ElecPhaseCurrentSp : ElecCurrentSp & ElecAcSp <abstract> { phaseCurrent: ElecLineToLine }
+// Setpoint for phase maximum AC electric current
+ElecPhaseCurrentMaxSp : ElecCurrentMaxSp & ElecAcSp <abstract> { phaseCurrent: ElecLineToLine }
 
-// Setpoint for line 1 to line 2 AC electric magnitude current
-ElecL1L2MagnitudeCurrentSp : ElecMagnitudeCurrentSp & ElecPhaseCurrentSp { phaseCurrent: "L1-L2" }
+// Setpoint for line 1 to line 2 maximum AC electric magnitude current
+ElecL1L2MagnitudeCurrentMaxSp : ElecMagnitudeCurrentMaxSp & ElecPhaseCurrentMaxSp { phaseCurrent: "L1-L2" }
 
-// Setpoint for line 2 to line 3 AC electric magnitude current
-ElecL2L3MagnitudeCurrentSp : ElecMagnitudeCurrentSp & ElecPhaseCurrentSp { phaseCurrent: "L2-L3" }
+// Setpoint for line 2 to line 3 maximum AC electric magnitude current
+ElecL2L3MagnitudeCurrentMaxSp : ElecMagnitudeCurrentMaxSp & ElecPhaseCurrentMaxSp { phaseCurrent: "L2-L3" }
 
-// Setpoint for line 3 to line 1 AC electric magnitude current
-ElecL3L1MagnitudeCurrentSp : ElecMagnitudeCurrentSp & ElecPhaseCurrentSp { phaseCurrent: "L3-L1" }
+// Setpoint for line 3 to line 1 maximum AC electric magnitude current
+ElecL3L1MagnitudeCurrentMaxSp : ElecMagnitudeCurrentMaxSp & ElecPhaseCurrentMaxSp { phaseCurrent: "L3-L1" }
 
 //////////////////////////////////////////////////////////////////////////
 // Setpoints for the line location of AC electric current (abstract)
 //////////////////////////////////////////////////////////////////////////
 
-// Setpoint for line AC electric current
-ElecLineCurrentSp : ElecCurrentSp & ElecAcSp <abstract> { lineCurrent: ElecLine }
+// Setpoint for line maximum AC electric current
+ElecLineCurrentMaxSp : ElecCurrentMaxSp & ElecAcSp <abstract> { lineCurrent: ElecLine }
 
-// Setpoint for line 1 AC electric magnitude current
-ElecL1MagnitudeCurrentSp : ElecMagnitudeCurrentSp & ElecLineCurrentSp { lineCurrent: "L1" }
+// Setpoint for line 1 maximum AC electric magnitude current
+ElecL1MagnitudeCurrentMaxSp : ElecMagnitudeCurrentMaxSp & ElecLineCurrentMaxSp { lineCurrent: "L1" }
 
-// Setpoint for line 2 AC electric magnitude current
-ElecL2MagnitudeCurrentSp : ElecMagnitudeCurrentSp & ElecLineCurrentSp { lineCurrent: "L2" }
+// Setpoint for line 2 maximum AC electric magnitude current
+ElecL2MagnitudeCurrentMaxSp : ElecMagnitudeCurrentMaxSp & ElecLineCurrentMaxSp { lineCurrent: "L2" }
 
-// Setpoint for line 3 AC electric magnitude current
-ElecL3MagnitudeCurrentSp : ElecMagnitudeCurrentSp & ElecLineCurrentSp { lineCurrent: "L3" }
+// Setpoint for line 3 maximum AC electric magnitude current
+ElecL3MagnitudeCurrentMaxSp : ElecMagnitudeCurrentMaxSp & ElecLineCurrentMaxSp { lineCurrent: "L3" }
 
 //////////////////////////////////////////////////////////////////////////
 // Sensors for AC voltage subtypes (abstract)
@@ -1623,4 +1629,3 @@ ElecExportTotalPfSensor : ElecTotalPfSensor { export }
 
 // Sensor for total net AC electric power factor
 ElecNetTotalPfSensor : ElecTotalPfSensor { net }
-
