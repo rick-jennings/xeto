@@ -1,0 +1,2004 @@
+//////////////////////////////////////////////////////////////////////////
+// Point kind specs
+//////////////////////////////////////////////////////////////////////////
+
+// Setpoint for electricity
+ElecSp : NumberPoint & Sp <abstract> { elec }
+
+// Effective setpoint for electricity
+ElecEffectiveSp : ElecSp <abstract> { effective }
+
+// Max setpoint for electricity
+ElecMaxSp : ElecSp <abstract> { max }
+
+// Min setpoint for electricity
+ElecMinSp : ElecSp <abstract> { min }
+
+//////////////////////////////////////////////////////////////////////////
+// Type of electricity specs
+//////////////////////////////////////////////////////////////////////////
+
+// Effective setpoint for AC electricity
+ElecAcEffectiveSp : ElecEffectiveSp <abstract> { ac }
+
+// Effective setpoint for DC electricity
+ElecDcEffectiveSp : ElecEffectiveSp <abstract> { dc }
+
+// Max setpoint for AC electricity
+ElecAcMaxSp : ElecMaxSp <abstract> { ac }
+
+// Max setpoint for DC electricity
+ElecDcMaxSp : ElecMaxSp <abstract> { dc }
+
+// Min setpoint for AC electricity
+ElecAcMinSp : ElecMinSp <abstract> { ac }
+
+// Min setpoint for DC electricity
+ElecDcMinSp : ElecMinSp <abstract> { dc }
+
+//////////////////////////////////////////////////////////////////////////
+// Primary quantity specs
+//////////////////////////////////////////////////////////////////////////
+
+// Effective setpoint for electric voltage
+ElecVoltEffectiveSp : ElecEffectiveSp <abstract> {
+  volt
+  unit: Unit<quantity:"electricPotential"> "V"
+}
+
+// Effective setpoint for electric current
+ElecCurrentEffectiveSp : ElecEffectiveSp <abstract> {
+  current
+  unit: Unit<quantity:"electricCurrent"> "A"
+}
+
+// Effective setpoint for electric power
+ElecPowerEffectiveSp : ElecEffectiveSp <abstract> {
+  power
+  unit: Unit<quantity:"power"> "kW"
+}
+
+// Effective setpoint for electric power factor
+ElecPfEffectiveSp : ElecEffectiveSp <abstract> {
+  pf
+  unit: "%"
+}
+
+// Effective setpoint for electric demand
+ElecDemandEffectiveSp : ElecEffectiveSp <abstract> {
+  demand
+  unit: Unit<quantity:"power"> "kW"
+}
+
+// Effective setpoint for electric energy
+ElecEnergyEffectiveSp : ElecEffectiveSp <abstract> {
+  energy
+  unit: Unit<quantity:"energy"> "kWh"
+}
+
+// Effective setpoint for DC electric state of charge
+ElecDcStateOfChargeEffectiveSp : ElecDcEffectiveSp {
+  stateOfCharge
+  unit: "%"
+}
+
+// Effective setpoint for AC electric frequency
+ElecFreqEffectiveSp : ElecAcEffectiveSp {
+  freq
+  unit: Unit<quantity:"frequency"> "Hz"
+}
+
+// Max setpoint for electric voltage
+ElecVoltMaxSp : ElecMaxSp <abstract> {
+  volt
+  unit: Unit<quantity:"electricPotential"> "V"
+}
+
+// Max setpoint for electric current
+ElecCurrentMaxSp : ElecMaxSp <abstract> {
+  current
+  unit: Unit<quantity:"electricCurrent"> "A"
+}
+
+// Max setpoint for electric power
+ElecPowerMaxSp : ElecMaxSp <abstract> {
+  power
+  unit: Unit<quantity:"power"> "kW"
+}
+
+// Max setpoint for electric power factor
+ElecPfMaxSp : ElecMaxSp <abstract> {
+  pf
+  unit: "%"
+}
+
+// Max setpoint for electric demand
+ElecDemandMaxSp : ElecMaxSp <abstract> {
+  demand
+  unit: Unit<quantity:"power"> "kW"
+}
+
+// Max setpoint for electric energy
+ElecEnergyMaxSp : ElecMaxSp <abstract> {
+  energy
+  unit: Unit<quantity:"energy"> "kWh"
+}
+
+// Max setpoint for DC electric state of charge
+ElecDcStateOfChargeMaxSp : ElecDcMaxSp {
+  stateOfCharge
+  unit: "%"
+}
+
+// Max setpoint for AC electric frequency
+ElecFreqMaxSp : ElecAcMaxSp {
+  freq
+  unit: Unit<quantity:"frequency"> "Hz"
+}
+
+// Min setpoint for electric voltage
+ElecVoltMinSp : ElecMinSp <abstract> {
+  volt
+  unit: Unit<quantity:"electricPotential"> "V"
+}
+
+// Min setpoint for electric current
+ElecCurrentMinSp : ElecMinSp <abstract> {
+  current
+  unit: Unit<quantity:"electricCurrent"> "A"
+}
+
+// Min setpoint for electric power
+ElecPowerMinSp : ElecMinSp <abstract> {
+  power
+  unit: Unit<quantity:"power"> "kW"
+}
+
+// Min setpoint for electric power factor
+ElecPfMinSp : ElecMinSp <abstract> {
+  pf
+  unit: "%"
+}
+
+// Min setpoint for electric demand
+ElecDemandMinSp : ElecMinSp <abstract> {
+  demand
+  unit: Unit<quantity:"power"> "kW"
+}
+
+// Min setpoint for electric energy
+ElecEnergyMinSp : ElecMinSp <abstract> {
+  energy
+  unit: Unit<quantity:"energy"> "kWh"
+}
+
+// Min setpoint for DC electric state of charge
+ElecDcStateOfChargeMinSp : ElecDcMinSp {
+  stateOfCharge
+  unit: "%"
+}
+
+// Min setpoint for AC electric frequency
+ElecFreqMinSp : ElecAcMinSp {
+  freq
+  unit: Unit<quantity:"frequency"> "Hz"
+}
+
+//////////////////////////////////////////////////////////////////////////
+// Direction specs
+//////////////////////////////////////////////////////////////////////////
+
+// Sensor for AC electric current exported
+ElecExportCurrentSensor : ElecCurrentSensor & ElecAcSensor <abstract> { export }
+
+// Sensor for DC electric current exported
+ElecExportDcCurrentSensor : ElecCurrentSensor & ElecDcSensor { export }
+
+// Sensor for net AC electric current
+ElecNetCurrentSensor : ElecCurrentSensor & ElecAcSensor <abstract> { net }
+
+// Sensor for net DC electric current
+ElecNetDcCurrentSensor : ElecCurrentSensor & ElecDcSensor { net }
+
+// Effective setpoint for AC electric current imported
+ElecImportCurrentEffectiveSp : ElecCurrentEffectiveSp & ElecAcEffectiveSp <abstract> { import }
+
+// Effective setpoint for DC electric current imported
+ElecImportDcCurrentEffectiveSp : ElecCurrentEffectiveSp & ElecDcEffectiveSp { import }
+
+// Effective setpoint for AC electric current exported
+ElecExportCurrentEffectiveSp : ElecCurrentEffectiveSp & ElecAcEffectiveSp <abstract> { export }
+
+// Effective setpoint for DC electric current exported
+ElecExportDcCurrentEffectiveSp : ElecCurrentEffectiveSp & ElecDcEffectiveSp { export }
+
+// Effective setpoint for net AC electric current
+ElecNetCurrentEffectiveSp : ElecCurrentEffectiveSp & ElecAcEffectiveSp <abstract> { net }
+
+// Effective setpoint for net DC electric current
+ElecNetDcCurrentEffectiveSp : ElecCurrentEffectiveSp & ElecDcEffectiveSp { net }
+
+// Max setpoint for AC electric current imported
+ElecImportCurrentMaxSp : ElecCurrentMaxSp & ElecAcMaxSp <abstract> { import }
+
+// Max setpoint for DC electric current imported
+ElecImportDcCurrentMaxSp : ElecCurrentMaxSp & ElecDcMaxSp { import }
+
+// Max setpoint for AC electric current exported
+ElecExportCurrentMaxSp : ElecCurrentMaxSp & ElecAcMaxSp <abstract> { export }
+
+// Max setpoint for DC electric current exported
+ElecExportDcCurrentMaxSp : ElecCurrentMaxSp & ElecDcMaxSp { export }
+
+// Max setpoint for net AC electric current
+ElecNetCurrentMaxSp : ElecCurrentMaxSp & ElecAcMaxSp <abstract> { net }
+
+// Max setpoint for net DC electric current
+ElecNetDcCurrentMaxSp : ElecCurrentMaxSp & ElecDcMaxSp { net }
+
+// Min setpoint for AC electric current imported
+ElecImportCurrentMinSp : ElecCurrentMinSp & ElecAcMinSp <abstract> { import }
+
+// Min setpoint for DC electric current imported
+ElecImportDcCurrentMinSp : ElecCurrentMinSp & ElecDcMinSp { import }
+
+// Min setpoint for AC electric current exported
+ElecExportCurrentMinSp : ElecCurrentMinSp & ElecAcMinSp <abstract> { export }
+
+// Min setpoint for DC electric current exported
+ElecExportDcCurrentMinSp : ElecCurrentMinSp & ElecDcMinSp { export }
+
+// Min setpoint for net AC electric current
+ElecNetCurrentMinSp : ElecCurrentMinSp & ElecAcMinSp <abstract> { net }
+
+// Min setpoint for net DC electric current
+ElecNetDcCurrentMinSp : ElecCurrentMinSp & ElecDcMinSp { net }
+
+// Sensor for AC electric power exported
+ElecExportPowerSensor : ElecPowerSensor & ElecAcSensor <abstract> { export }
+
+// Sensor for DC electric power exported
+ElecExportDcPowerSensor : ElecPowerSensor & ElecDcSensor { export }
+
+// Sensor for net AC electric power
+ElecNetPowerSensor : ElecPowerSensor & ElecAcSensor <abstract> { net }
+
+// Sensor for net DC electric power
+ElecNetDcPowerSensor : ElecPowerSensor & ElecDcSensor { net }
+
+// Effective setpoint for AC electric power imported
+ElecImportPowerEffectiveSp : ElecPowerEffectiveSp & ElecAcEffectiveSp <abstract> { import }
+
+// Effective setpoint for DC electric power imported
+ElecImportDcPowerEffectiveSp : ElecPowerEffectiveSp & ElecDcEffectiveSp { import }
+
+// Effective setpoint for AC electric power exported
+ElecExportPowerEffectiveSp : ElecPowerEffectiveSp & ElecAcEffectiveSp <abstract> { export }
+
+// Effective setpoint for DC electric power exported
+ElecExportDcPowerEffectiveSp : ElecPowerEffectiveSp & ElecDcEffectiveSp { export }
+
+// Effective setpoint for net AC electric power
+ElecNetPowerEffectiveSp : ElecPowerEffectiveSp & ElecAcEffectiveSp <abstract> { net }
+
+// Effective setpoint for net DC electric power
+ElecNetDcPowerEffectiveSp : ElecPowerEffectiveSp & ElecDcEffectiveSp { net }
+
+// Max setpoint for AC electric power imported
+ElecImportPowerMaxSp : ElecPowerMaxSp & ElecAcMaxSp <abstract> { import }
+
+// Max setpoint for DC electric power imported
+ElecImportDcPowerMaxSp : ElecPowerMaxSp & ElecDcMaxSp { import }
+
+// Max setpoint for AC electric power exported
+ElecExportPowerMaxSp : ElecPowerMaxSp & ElecAcMaxSp <abstract> { export }
+
+// Max setpoint for DC electric power exported
+ElecExportDcPowerMaxSp : ElecPowerMaxSp & ElecDcMaxSp { export }
+
+// Max setpoint for net AC electric power
+ElecNetPowerMaxSp : ElecPowerMaxSp & ElecAcMaxSp <abstract> { net }
+
+// Max setpoint for net DC electric power
+ElecNetDcPowerMaxSp : ElecPowerMaxSp & ElecDcMaxSp { net }
+
+// Min setpoint for AC electric power imported
+ElecImportPowerMinSp : ElecPowerMinSp & ElecAcMinSp <abstract> { import }
+
+// Min setpoint for DC electric power imported
+ElecImportDcPowerMinSp : ElecPowerMinSp & ElecDcMinSp { import }
+
+// Min setpoint for AC electric power exported
+ElecExportPowerMinSp : ElecPowerMinSp & ElecAcMinSp <abstract> { export }
+
+// Min setpoint for DC electric power exported
+ElecExportDcPowerMinSp : ElecPowerMinSp & ElecDcMinSp { export }
+
+// Min setpoint for net AC electric power
+ElecNetPowerMinSp : ElecPowerMinSp & ElecAcMinSp <abstract> { net }
+
+// Min setpoint for net DC electric power
+ElecNetDcPowerMinSp : ElecPowerMinSp & ElecDcMinSp { net }
+
+// Sensor for power factor of exported AC electric power
+ElecExportPfSensor : ElecPfSensor & ElecAcSensor <abstract> { export }
+
+// Sensor for power factor of net AC electric power
+ElecNetPfSensor : ElecPfSensor & ElecAcSensor <abstract> { net }
+
+// Sensor for AC electric demand exported
+ElecExportDemandSensor : ElecDemandSensor & ElecAcSensor <abstract> { export }
+
+// Sensor for DC electric demand exported
+ElecExportDcDemandSensor : ElecDemandSensor & ElecDcSensor { export }
+
+// Sensor for net AC electric demand
+ElecNetDemandSensor : ElecDemandSensor & ElecAcSensor <abstract> { net }
+
+// Sensor for net DC electric demand
+ElecNetDcDemandSensor : ElecDemandSensor & ElecDcSensor { net }
+
+// Effective setpoint for AC electric demand imported
+ElecImportDemandEffectiveSp : ElecDemandEffectiveSp & ElecAcEffectiveSp <abstract> { import }
+
+// Effective setpoint for DC electric demand imported
+ElecImportDcDemandEffectiveSp : ElecDemandEffectiveSp & ElecDcEffectiveSp { import }
+
+// Effective setpoint for AC electric demand exported
+ElecExportDemandEffectiveSp : ElecDemandEffectiveSp & ElecAcEffectiveSp <abstract> { export }
+
+// Effective setpoint for DC electric demand exported
+ElecExportDcDemandEffectiveSp : ElecDemandEffectiveSp & ElecDcEffectiveSp { export }
+
+// Effective setpoint for net AC electric demand
+ElecNetDemandEffectiveSp : ElecDemandEffectiveSp & ElecAcEffectiveSp <abstract> { net }
+
+// Effective setpoint for net DC electric demand
+ElecNetDcDemandEffectiveSp : ElecDemandEffectiveSp & ElecDcEffectiveSp { net }
+
+// Max setpoint for AC electric demand imported
+ElecImportDemandMaxSp : ElecDemandMaxSp & ElecAcMaxSp <abstract> { import }
+
+// Max setpoint for DC electric demand imported
+ElecImportDcDemandMaxSp : ElecDemandMaxSp & ElecDcMaxSp { import }
+
+// Max setpoint for AC electric demand exported
+ElecExportDemandMaxSp : ElecDemandMaxSp & ElecAcMaxSp <abstract> { export }
+
+// Max setpoint for DC electric demand exported
+ElecExportDcDemandMaxSp : ElecDemandMaxSp & ElecDcMaxSp { export }
+
+// Max setpoint for net AC electric demand
+ElecNetDemandMaxSp : ElecDemandMaxSp & ElecAcMaxSp <abstract> { net }
+
+// Max setpoint for net DC electric demand
+ElecNetDcDemandMaxSp : ElecDemandMaxSp & ElecDcMaxSp { net }
+
+// Min setpoint for AC electric demand imported
+ElecImportDemandMinSp : ElecDemandMinSp & ElecAcMinSp <abstract> { import }
+
+// Min setpoint for DC electric demand imported
+ElecImportDcDemandMinSp : ElecDemandMinSp & ElecDcMinSp { import }
+
+// Min setpoint for AC electric demand exported
+ElecExportDemandMinSp : ElecDemandMinSp & ElecAcMinSp <abstract> { export }
+
+// Min setpoint for DC electric demand exported
+ElecExportDcDemandMinSp : ElecDemandMinSp & ElecDcMinSp { export }
+
+// Min setpoint for net AC electric demand
+ElecNetDemandMinSp : ElecDemandMinSp & ElecAcMinSp <abstract> { net }
+
+// Min setpoint for net DC electric demand
+ElecNetDcDemandMinSp : ElecDemandMinSp & ElecDcMinSp { net }
+
+// Sensor for AC electric energy exported
+ElecExportEnergySensor : ElecEnergySensor & ElecAcSensor <abstract> { export }
+
+// Sensor for DC electric energy exported
+ElecExportDcEnergySensor : ElecEnergySensor & ElecDcSensor { export }
+
+// Sensor for net AC electric energy
+ElecNetEnergySensor : ElecEnergySensor & ElecAcSensor <abstract> { net }
+
+// Sensor for net DC electric energy
+ElecNetDcEnergySensor : ElecEnergySensor & ElecDcSensor { net }
+
+//////////////////////////////////////////////////////////////////////////
+// AC subtype specs
+//////////////////////////////////////////////////////////////////////////
+
+// Sensor for magnitude of AC electric current exported
+ElecMagnitudeExportCurrentSensor : ElecExportCurrentSensor <abstract> { magnitude }
+
+// Sensor for angle of AC electric current exported
+ElecAngleExportCurrentSensor : ElecExportCurrentSensor <abstract> { angle }
+
+// Sensor for imbalance of AC electric current exported
+ElecImbalanceExportCurrentSensor : ElecExportCurrentSensor <abstract> { imbalance }
+
+// Sensor for total harmonic distortion of AC electric current exported
+ElecThdExportCurrentSensor : ElecExportCurrentSensor <abstract> { thd }
+
+// Sensor for magnitude of net AC electric current
+ElecMagnitudeNetCurrentSensor : ElecNetCurrentSensor <abstract> { magnitude }
+
+// Sensor for angle of net AC electric current
+ElecAngleNetCurrentSensor : ElecNetCurrentSensor <abstract> { angle }
+
+// Sensor for imbalance of net AC electric current
+ElecImbalanceNetCurrentSensor : ElecNetCurrentSensor <abstract> { imbalance }
+
+// Sensor for total harmonic distortion of net AC electric current
+ElecThdNetCurrentSensor : ElecNetCurrentSensor <abstract> { thd }
+
+// Effective setpoint for magnitude of AC electric current imported
+ElecMagnitudeImportCurrentEffectiveSp : ElecImportCurrentEffectiveSp <abstract> { magnitude }
+
+// Effective setpoint for magnitude of AC electric current exported
+ElecMagnitudeExportCurrentEffectiveSp : ElecExportCurrentEffectiveSp <abstract> { magnitude }
+
+// Effective setpoint for magnitude of net AC electric current
+ElecMagnitudeNetCurrentEffectiveSp : ElecNetCurrentEffectiveSp <abstract> { magnitude }
+
+// Max setpoint for magnitude of AC electric current imported
+ElecMagnitudeImportCurrentMaxSp : ElecImportCurrentMaxSp <abstract> { magnitude }
+
+// Max setpoint for magnitude of AC electric current exported
+ElecMagnitudeExportCurrentMaxSp : ElecExportCurrentMaxSp <abstract> { magnitude }
+
+// Max setpoint for magnitude of net AC electric current
+ElecMagnitudeNetCurrentMaxSp : ElecNetCurrentMaxSp <abstract> { magnitude }
+
+// Min setpoint for magnitude of AC electric current imported
+ElecMagnitudeImportCurrentMinSp : ElecImportCurrentMinSp <abstract> { magnitude }
+
+// Min setpoint for magnitude of AC electric current exported
+ElecMagnitudeExportCurrentMinSp : ElecExportCurrentMinSp <abstract> { magnitude }
+
+// Min setpoint for magnitude of net AC electric current
+ElecMagnitudeNetCurrentMinSp : ElecNetCurrentMinSp <abstract> { magnitude }
+
+// Sensor for active AC electric power exported
+ElecActiveExportPowerSensor : ElecExportPowerSensor <abstract> { active }
+
+// Sensor for reactive AC electric power exported
+ElecReactiveExportPowerSensor : ElecExportPowerSensor <abstract> { reactive }
+
+// Sensor for apparent AC electric power exported
+ElecApparentExportPowerSensor : ElecExportPowerSensor <abstract> { apparent }
+
+// Sensor for active net AC electric power
+ElecActiveNetPowerSensor : ElecNetPowerSensor <abstract> { active }
+
+// Sensor for reactive net AC electric power
+ElecReactiveNetPowerSensor : ElecNetPowerSensor <abstract> { reactive }
+
+// Sensor for apparent net AC electric power
+ElecApparentNetPowerSensor : ElecNetPowerSensor <abstract> { apparent }
+
+// Effective setpoint for active AC electric power imported
+ElecActiveImportPowerEffectiveSp : ElecImportPowerEffectiveSp <abstract> { active }
+
+// Effective setpoint for active AC electric power exported
+ElecActiveExportPowerEffectiveSp : ElecExportPowerEffectiveSp <abstract> { active }
+
+// Effective setpoint for active net AC electric power
+ElecActiveNetPowerEffectiveSp : ElecNetPowerEffectiveSp <abstract> { active }
+
+// Max setpoint for active AC electric power imported
+ElecActiveImportPowerMaxSp : ElecImportPowerMaxSp <abstract> { active }
+
+// Max setpoint for active AC electric power exported
+ElecActiveExportPowerMaxSp : ElecExportPowerMaxSp <abstract> { active }
+
+// Max setpoint for active net AC electric power
+ElecActiveNetPowerMaxSp : ElecNetPowerMaxSp <abstract> { active }
+
+// Min setpoint for active AC electric power imported
+ElecActiveImportPowerMinSp : ElecImportPowerMinSp <abstract> { active }
+
+// Min setpoint for active AC electric power exported
+ElecActiveExportPowerMinSp : ElecExportPowerMinSp <abstract> { active }
+
+// Min setpoint for active net AC electric power
+ElecActiveNetPowerMinSp : ElecNetPowerMinSp <abstract> { active }
+
+// Sensor for true power factor of exported AC electric power
+ElecPfTrueExportPfSensor : ElecExportPfSensor <abstract> { pfTrue }
+
+// Sensor for displacement power factor of exported AC electric power
+ElecPfDisplacementExportPfSensor : ElecExportPfSensor <abstract> { pfDisplacement }
+
+// Sensor for distortion power factor of exported AC electric power
+ElecPfDistortionExportPfSensor : ElecExportPfSensor <abstract> { pfDistortion }
+
+// Sensor for true power factor of net AC electric power
+ElecPfTrueNetPfSensor : ElecNetPfSensor <abstract> { pfTrue }
+
+// Sensor for displacement power factor of net AC electric power
+ElecPfDisplacementNetPfSensor : ElecNetPfSensor <abstract> { pfDisplacement }
+
+// Sensor for distortion power factor of net AC electric power
+ElecPfDistortionNetPfSensor : ElecNetPfSensor <abstract> { pfDistortion }
+
+// Sensor for active AC electric demand exported
+ElecActiveExportDemandSensor : ElecExportDemandSensor <abstract> { active }
+
+// Sensor for reactive AC electric demand exported
+ElecReactiveExportDemandSensor : ElecExportDemandSensor <abstract> { reactive }
+
+// Sensor for apparent AC electric demand exported
+ElecApparentExportDemandSensor : ElecExportDemandSensor <abstract> { apparent }
+
+// Sensor for active net AC electric demand
+ElecActiveNetDemandSensor : ElecNetDemandSensor <abstract> { active }
+
+// Sensor for reactive net AC electric demand
+ElecReactiveNetDemandSensor : ElecNetDemandSensor <abstract> { reactive }
+
+// Sensor for apparent net AC electric demand
+ElecApparentNetDemandSensor : ElecNetDemandSensor <abstract> { apparent }
+
+// Effective setpoint for active AC electric demand imported
+ElecActiveImportDemandEffectiveSp : ElecImportDemandEffectiveSp <abstract> { active }
+
+// Effective setpoint for active AC electric demand exported
+ElecActiveExportDemandEffectiveSp : ElecExportDemandEffectiveSp <abstract> { active }
+
+// Effective setpoint for active net AC electric demand
+ElecActiveNetDemandEffectiveSp : ElecNetDemandEffectiveSp <abstract> { active }
+
+// Max setpoint for active AC electric demand imported
+ElecActiveImportDemandMaxSp : ElecImportDemandMaxSp <abstract> { active }
+
+// Max setpoint for active AC electric demand exported
+ElecActiveExportDemandMaxSp : ElecExportDemandMaxSp <abstract> { active }
+
+// Max setpoint for active net AC electric demand
+ElecActiveNetDemandMaxSp : ElecNetDemandMaxSp <abstract> { active }
+
+// Min setpoint for active AC electric demand imported
+ElecActiveImportDemandMinSp : ElecImportDemandMinSp <abstract> { active }
+
+// Min setpoint for active AC electric demand exported
+ElecActiveExportDemandMinSp : ElecExportDemandMinSp <abstract> { active }
+
+// Min setpoint for active net AC electric demand
+ElecActiveNetDemandMinSp : ElecNetDemandMinSp <abstract> { active }
+
+// Sensor for active AC electric energy exported
+ElecActiveExportEnergySensor : ElecExportEnergySensor <abstract> { active }
+
+// Sensor for reactive AC electric energy exported
+ElecReactiveExportEnergySensor : ElecExportEnergySensor <abstract> { reactive }
+
+// Sensor for apparent AC electric energy exported
+ElecApparentExportEnergySensor : ElecExportEnergySensor <abstract> { apparent }
+
+// Sensor for active net AC electric energy
+ElecActiveNetEnergySensor : ElecNetEnergySensor <abstract> { active }
+
+// Sensor for reactive net AC electric energy
+ElecReactiveNetEnergySensor : ElecNetEnergySensor <abstract> { reactive }
+
+// Sensor for apparent net AC electric energy
+ElecApparentNetEnergySensor : ElecNetEnergySensor <abstract> { apparent }
+
+//////////////////////////////////////////////////////////////////////////
+// AC location specs
+//////////////////////////////////////////////////////////////////////////
+
+// Sensor for line magnitude of AC electric current exported
+ElecLineMagnitudeExportCurrentSensor : ElecMagnitudeExportCurrentSensor <abstract> { lineCurrent: LineCurrent }
+
+// Sensor for line 1 magnitude of AC electric current exported
+ElecL1MagnitudeExportCurrentSensor : ElecLineMagnitudeExportCurrentSensor { lineCurrent: "L1" }
+
+// Sensor for line 2 magnitude of AC electric current exported
+ElecL2MagnitudeExportCurrentSensor : ElecLineMagnitudeExportCurrentSensor { lineCurrent: "L2" }
+
+// Sensor for line 3 magnitude of AC electric current exported
+ElecL3MagnitudeExportCurrentSensor : ElecLineMagnitudeExportCurrentSensor { lineCurrent: "L3" }
+
+// Sensor for line average magnitude of AC electric current exported
+ElecLineAvgMagnitudeExportCurrentSensor : ElecMagnitudeExportCurrentSensor { lineAvg }
+
+// Sensor for phase magnitude of AC electric current exported
+ElecPhaseMagnitudeExportCurrentSensor : ElecMagnitudeExportCurrentSensor <abstract> { phaseCurrent: PhaseCurrent }
+
+// Sensor for line 1 to line 2 magnitude of AC electric current exported
+ElecL1L2MagnitudeExportCurrentSensor : ElecPhaseMagnitudeExportCurrentSensor { phaseCurrent: "L1-L2" }
+
+// Sensor for line 2 to line 3 magnitude of AC electric current exported
+ElecL2L3MagnitudeExportCurrentSensor : ElecPhaseMagnitudeExportCurrentSensor { phaseCurrent: "L2-L3" }
+
+// Sensor for line 3 to line 1 magnitude of AC electric current exported
+ElecL3L1MagnitudeExportCurrentSensor : ElecPhaseMagnitudeExportCurrentSensor { phaseCurrent: "L3-L1" }
+
+// Sensor for phase average magnitude of AC electric current exported
+ElecPhaseAvgMagnitudeExportCurrentSensor : ElecMagnitudeExportCurrentSensor { phaseAvg }
+
+// Sensor for neutral magnitude of AC electric current exported
+ElecNeutralMagnitudeExportCurrentSensor : ElecMagnitudeExportCurrentSensor { neutral }
+
+// Sensor for ground magnitude of AC electric current exported
+ElecGroundMagnitudeExportCurrentSensor : ElecMagnitudeExportCurrentSensor { ground }
+
+// Sensor for line angle of AC electric current exported
+ElecLineAngleExportCurrentSensor : ElecAngleExportCurrentSensor <abstract> { lineCurrent: LineCurrent }
+
+// Sensor for line 1 angle of AC electric current exported
+ElecL1AngleExportCurrentSensor : ElecLineAngleExportCurrentSensor { lineCurrent: "L1" }
+
+// Sensor for line 2 angle of AC electric current exported
+ElecL2AngleExportCurrentSensor : ElecLineAngleExportCurrentSensor { lineCurrent: "L2" }
+
+// Sensor for line 3 angle of AC electric current exported
+ElecL3AngleExportCurrentSensor : ElecLineAngleExportCurrentSensor { lineCurrent: "L3" }
+
+// Sensor for line average angle of AC electric current exported
+ElecLineAvgAngleExportCurrentSensor : ElecAngleExportCurrentSensor { lineAvg }
+
+// Sensor for phase angle of AC electric current exported
+ElecPhaseAngleExportCurrentSensor : ElecAngleExportCurrentSensor <abstract> { phaseCurrent: PhaseCurrent }
+
+// Sensor for line 1 to line 2 angle of AC electric current exported
+ElecL1L2AngleExportCurrentSensor : ElecPhaseAngleExportCurrentSensor { phaseCurrent: "L1-L2" }
+
+// Sensor for line 2 to line 3 angle of AC electric current exported
+ElecL2L3AngleExportCurrentSensor : ElecPhaseAngleExportCurrentSensor { phaseCurrent: "L2-L3" }
+
+// Sensor for line 3 to line 1 angle of AC electric current exported
+ElecL3L1AngleExportCurrentSensor : ElecPhaseAngleExportCurrentSensor { phaseCurrent: "L3-L1" }
+
+// Sensor for phase average angle of AC electric current exported
+ElecPhaseAvgAngleExportCurrentSensor : ElecAngleExportCurrentSensor { phaseAvg }
+
+// Sensor for neutral angle of AC electric current exported
+ElecNeutralAngleExportCurrentSensor : ElecAngleExportCurrentSensor { neutral }
+
+// Sensor for ground angle of AC electric current exported
+ElecGroundAngleExportCurrentSensor : ElecAngleExportCurrentSensor { ground }
+
+// Sensor for line imbalance of AC electric current exported
+ElecLineImbalanceExportCurrentSensor : ElecImbalanceExportCurrentSensor <abstract> { lineCurrent: LineCurrent }
+
+// Sensor for line 1 imbalance of AC electric current exported
+ElecL1ImbalanceExportCurrentSensor : ElecLineImbalanceExportCurrentSensor { lineCurrent: "L1" }
+
+// Sensor for line 2 imbalance of AC electric current exported
+ElecL2ImbalanceExportCurrentSensor : ElecLineImbalanceExportCurrentSensor { lineCurrent: "L2" }
+
+// Sensor for line 3 imbalance of AC electric current exported
+ElecL3ImbalanceExportCurrentSensor : ElecLineImbalanceExportCurrentSensor { lineCurrent: "L3" }
+
+// Sensor for line average imbalance of AC electric current exported
+ElecLineAvgImbalanceExportCurrentSensor : ElecImbalanceExportCurrentSensor { lineAvg }
+
+// Sensor for phase imbalance of AC electric current exported
+ElecPhaseImbalanceExportCurrentSensor : ElecImbalanceExportCurrentSensor <abstract> { phaseCurrent: PhaseCurrent }
+
+// Sensor for line 1 to line 2 imbalance of AC electric current exported
+ElecL1L2ImbalanceExportCurrentSensor : ElecPhaseImbalanceExportCurrentSensor { phaseCurrent: "L1-L2" }
+
+// Sensor for line 2 to line 3 imbalance of AC electric current exported
+ElecL2L3ImbalanceExportCurrentSensor : ElecPhaseImbalanceExportCurrentSensor { phaseCurrent: "L2-L3" }
+
+// Sensor for line 3 to line 1 imbalance of AC electric current exported
+ElecL3L1ImbalanceExportCurrentSensor : ElecPhaseImbalanceExportCurrentSensor { phaseCurrent: "L3-L1" }
+
+// Sensor for phase average imbalance of AC electric current exported
+ElecPhaseAvgImbalanceExportCurrentSensor : ElecImbalanceExportCurrentSensor { phaseAvg }
+
+// Sensor for neutral imbalance of AC electric current exported
+ElecNeutralImbalanceExportCurrentSensor : ElecImbalanceExportCurrentSensor { neutral }
+
+// Sensor for ground imbalance of AC electric current exported
+ElecGroundImbalanceExportCurrentSensor : ElecImbalanceExportCurrentSensor { ground }
+
+// Sensor for line total harmonic distortion of AC electric current exported
+ElecLineThdExportCurrentSensor : ElecThdExportCurrentSensor <abstract> { lineCurrent: LineCurrent }
+
+// Sensor for line 1 total harmonic distortion of AC electric current exported
+ElecL1ThdExportCurrentSensor : ElecLineThdExportCurrentSensor { lineCurrent: "L1" }
+
+// Sensor for line 2 total harmonic distortion of AC electric current exported
+ElecL2ThdExportCurrentSensor : ElecLineThdExportCurrentSensor { lineCurrent: "L2" }
+
+// Sensor for line 3 total harmonic distortion of AC electric current exported
+ElecL3ThdExportCurrentSensor : ElecLineThdExportCurrentSensor { lineCurrent: "L3" }
+
+// Sensor for line average total harmonic distortion of AC electric current exported
+ElecLineAvgThdExportCurrentSensor : ElecThdExportCurrentSensor { lineAvg }
+
+// Sensor for phase total harmonic distortion of AC electric current exported
+ElecPhaseThdExportCurrentSensor : ElecThdExportCurrentSensor <abstract> { phaseCurrent: PhaseCurrent }
+
+// Sensor for line 1 to line 2 total harmonic distortion of AC electric current exported
+ElecL1L2ThdExportCurrentSensor : ElecPhaseThdExportCurrentSensor { phaseCurrent: "L1-L2" }
+
+// Sensor for line 2 to line 3 total harmonic distortion of AC electric current exported
+ElecL2L3ThdExportCurrentSensor : ElecPhaseThdExportCurrentSensor { phaseCurrent: "L2-L3" }
+
+// Sensor for line 3 to line 1 total harmonic distortion of AC electric current exported
+ElecL3L1ThdExportCurrentSensor : ElecPhaseThdExportCurrentSensor { phaseCurrent: "L3-L1" }
+
+// Sensor for phase average total harmonic distortion of AC electric current exported
+ElecPhaseAvgThdExportCurrentSensor : ElecThdExportCurrentSensor { phaseAvg }
+
+// Sensor for neutral total harmonic distortion of AC electric current exported
+ElecNeutralThdExportCurrentSensor : ElecThdExportCurrentSensor { neutral }
+
+// Sensor for ground total harmonic distortion of AC electric current exported
+ElecGroundThdExportCurrentSensor : ElecThdExportCurrentSensor { ground }
+
+// Sensor for line magnitude of net AC electric current
+ElecLineMagnitudeNetCurrentSensor : ElecMagnitudeNetCurrentSensor <abstract> { lineCurrent: LineCurrent }
+
+// Sensor for line 1 magnitude of net AC electric current
+ElecL1MagnitudeNetCurrentSensor : ElecLineMagnitudeNetCurrentSensor { lineCurrent: "L1" }
+
+// Sensor for line 2 magnitude of net AC electric current
+ElecL2MagnitudeNetCurrentSensor : ElecLineMagnitudeNetCurrentSensor { lineCurrent: "L2" }
+
+// Sensor for line 3 magnitude of net AC electric current
+ElecL3MagnitudeNetCurrentSensor : ElecLineMagnitudeNetCurrentSensor { lineCurrent: "L3" }
+
+// Sensor for line average magnitude of net AC electric current
+ElecLineAvgMagnitudeNetCurrentSensor : ElecMagnitudeNetCurrentSensor { lineAvg }
+
+// Sensor for phase magnitude of net AC electric current
+ElecPhaseMagnitudeNetCurrentSensor : ElecMagnitudeNetCurrentSensor <abstract> { phaseCurrent: PhaseCurrent }
+
+// Sensor for line 1 to line 2 magnitude of net AC electric current
+ElecL1L2MagnitudeNetCurrentSensor : ElecPhaseMagnitudeNetCurrentSensor { phaseCurrent: "L1-L2" }
+
+// Sensor for line 2 to line 3 magnitude of net AC electric current
+ElecL2L3MagnitudeNetCurrentSensor : ElecPhaseMagnitudeNetCurrentSensor { phaseCurrent: "L2-L3" }
+
+// Sensor for line 3 to line 1 magnitude of net AC electric current
+ElecL3L1MagnitudeNetCurrentSensor : ElecPhaseMagnitudeNetCurrentSensor { phaseCurrent: "L3-L1" }
+
+// Sensor for phase average magnitude of net AC electric current
+ElecPhaseAvgMagnitudeNetCurrentSensor : ElecMagnitudeNetCurrentSensor { phaseAvg }
+
+// Sensor for neutral magnitude of net AC electric current
+ElecNeutralMagnitudeNetCurrentSensor : ElecMagnitudeNetCurrentSensor { neutral }
+
+// Sensor for ground magnitude of net AC electric current
+ElecGroundMagnitudeNetCurrentSensor : ElecMagnitudeNetCurrentSensor { ground }
+
+// Sensor for line angle of net AC electric current
+ElecLineAngleNetCurrentSensor : ElecAngleNetCurrentSensor <abstract> { lineCurrent: LineCurrent }
+
+// Sensor for line 1 angle of net AC electric current
+ElecL1AngleNetCurrentSensor : ElecLineAngleNetCurrentSensor { lineCurrent: "L1" }
+
+// Sensor for line 2 angle of net AC electric current
+ElecL2AngleNetCurrentSensor : ElecLineAngleNetCurrentSensor { lineCurrent: "L2" }
+
+// Sensor for line 3 angle of net AC electric current
+ElecL3AngleNetCurrentSensor : ElecLineAngleNetCurrentSensor { lineCurrent: "L3" }
+
+// Sensor for line average angle of net AC electric current
+ElecLineAvgAngleNetCurrentSensor : ElecAngleNetCurrentSensor { lineAvg }
+
+// Sensor for phase angle of net AC electric current
+ElecPhaseAngleNetCurrentSensor : ElecAngleNetCurrentSensor <abstract> { phaseCurrent: PhaseCurrent }
+
+// Sensor for line 1 to line 2 angle of net AC electric current
+ElecL1L2AngleNetCurrentSensor : ElecPhaseAngleNetCurrentSensor { phaseCurrent: "L1-L2" }
+
+// Sensor for line 2 to line 3 angle of net AC electric current
+ElecL2L3AngleNetCurrentSensor : ElecPhaseAngleNetCurrentSensor { phaseCurrent: "L2-L3" }
+
+// Sensor for line 3 to line 1 angle of net AC electric current
+ElecL3L1AngleNetCurrentSensor : ElecPhaseAngleNetCurrentSensor { phaseCurrent: "L3-L1" }
+
+// Sensor for phase average angle of net AC electric current
+ElecPhaseAvgAngleNetCurrentSensor : ElecAngleNetCurrentSensor { phaseAvg }
+
+// Sensor for neutral angle of net AC electric current
+ElecNeutralAngleNetCurrentSensor : ElecAngleNetCurrentSensor { neutral }
+
+// Sensor for ground angle of net AC electric current
+ElecGroundAngleNetCurrentSensor : ElecAngleNetCurrentSensor { ground }
+
+// Sensor for line imbalance of net AC electric current
+ElecLineImbalanceNetCurrentSensor : ElecImbalanceNetCurrentSensor <abstract> { lineCurrent: LineCurrent }
+
+// Sensor for line 1 imbalance of net AC electric current
+ElecL1ImbalanceNetCurrentSensor : ElecLineImbalanceNetCurrentSensor { lineCurrent: "L1" }
+
+// Sensor for line 2 imbalance of net AC electric current
+ElecL2ImbalanceNetCurrentSensor : ElecLineImbalanceNetCurrentSensor { lineCurrent: "L2" }
+
+// Sensor for line 3 imbalance of net AC electric current
+ElecL3ImbalanceNetCurrentSensor : ElecLineImbalanceNetCurrentSensor { lineCurrent: "L3" }
+
+// Sensor for line average imbalance of net AC electric current
+ElecLineAvgImbalanceNetCurrentSensor : ElecImbalanceNetCurrentSensor { lineAvg }
+
+// Sensor for phase imbalance of net AC electric current
+ElecPhaseImbalanceNetCurrentSensor : ElecImbalanceNetCurrentSensor <abstract> { phaseCurrent: PhaseCurrent }
+
+// Sensor for line 1 to line 2 imbalance of net AC electric current
+ElecL1L2ImbalanceNetCurrentSensor : ElecPhaseImbalanceNetCurrentSensor { phaseCurrent: "L1-L2" }
+
+// Sensor for line 2 to line 3 imbalance of net AC electric current
+ElecL2L3ImbalanceNetCurrentSensor : ElecPhaseImbalanceNetCurrentSensor { phaseCurrent: "L2-L3" }
+
+// Sensor for line 3 to line 1 imbalance of net AC electric current
+ElecL3L1ImbalanceNetCurrentSensor : ElecPhaseImbalanceNetCurrentSensor { phaseCurrent: "L3-L1" }
+
+// Sensor for phase average imbalance of net AC electric current
+ElecPhaseAvgImbalanceNetCurrentSensor : ElecImbalanceNetCurrentSensor { phaseAvg }
+
+// Sensor for neutral imbalance of net AC electric current
+ElecNeutralImbalanceNetCurrentSensor : ElecImbalanceNetCurrentSensor { neutral }
+
+// Sensor for ground imbalance of net AC electric current
+ElecGroundImbalanceNetCurrentSensor : ElecImbalanceNetCurrentSensor { ground }
+
+// Sensor for line total harmonic distortion of net AC electric current
+ElecLineThdNetCurrentSensor : ElecThdNetCurrentSensor <abstract> { lineCurrent: LineCurrent }
+
+// Sensor for line 1 total harmonic distortion of net AC electric current
+ElecL1ThdNetCurrentSensor : ElecLineThdNetCurrentSensor { lineCurrent: "L1" }
+
+// Sensor for line 2 total harmonic distortion of net AC electric current
+ElecL2ThdNetCurrentSensor : ElecLineThdNetCurrentSensor { lineCurrent: "L2" }
+
+// Sensor for line 3 total harmonic distortion of net AC electric current
+ElecL3ThdNetCurrentSensor : ElecLineThdNetCurrentSensor { lineCurrent: "L3" }
+
+// Sensor for line average total harmonic distortion of net AC electric current
+ElecLineAvgThdNetCurrentSensor : ElecThdNetCurrentSensor { lineAvg }
+
+// Sensor for phase total harmonic distortion of net AC electric current
+ElecPhaseThdNetCurrentSensor : ElecThdNetCurrentSensor <abstract> { phaseCurrent: PhaseCurrent }
+
+// Sensor for line 1 to line 2 total harmonic distortion of net AC electric current
+ElecL1L2ThdNetCurrentSensor : ElecPhaseThdNetCurrentSensor { phaseCurrent: "L1-L2" }
+
+// Sensor for line 2 to line 3 total harmonic distortion of net AC electric current
+ElecL2L3ThdNetCurrentSensor : ElecPhaseThdNetCurrentSensor { phaseCurrent: "L2-L3" }
+
+// Sensor for line 3 to line 1 total harmonic distortion of net AC electric current
+ElecL3L1ThdNetCurrentSensor : ElecPhaseThdNetCurrentSensor { phaseCurrent: "L3-L1" }
+
+// Sensor for phase average total harmonic distortion of net AC electric current
+ElecPhaseAvgThdNetCurrentSensor : ElecThdNetCurrentSensor { phaseAvg }
+
+// Sensor for neutral total harmonic distortion of net AC electric current
+ElecNeutralThdNetCurrentSensor : ElecThdNetCurrentSensor { neutral }
+
+// Sensor for ground total harmonic distortion of net AC electric current
+ElecGroundThdNetCurrentSensor : ElecThdNetCurrentSensor { ground }
+
+// Effective setpoint for line magnitude of AC electric current imported
+ElecLineMagnitudeImportCurrentEffectiveSp : ElecMagnitudeImportCurrentEffectiveSp <abstract> { lineCurrent: LineCurrent }
+
+// Effective setpoint for line 1 magnitude of AC electric current imported
+ElecL1MagnitudeImportCurrentEffectiveSp : ElecLineMagnitudeImportCurrentEffectiveSp { lineCurrent: "L1" }
+
+// Effective setpoint for line 2 magnitude of AC electric current imported
+ElecL2MagnitudeImportCurrentEffectiveSp : ElecLineMagnitudeImportCurrentEffectiveSp { lineCurrent: "L2" }
+
+// Effective setpoint for line 3 magnitude of AC electric current imported
+ElecL3MagnitudeImportCurrentEffectiveSp : ElecLineMagnitudeImportCurrentEffectiveSp { lineCurrent: "L3" }
+
+// Effective setpoint for phase magnitude of AC electric current imported
+ElecPhaseMagnitudeImportCurrentEffectiveSp : ElecMagnitudeImportCurrentEffectiveSp <abstract> { phaseCurrent: PhaseCurrent }
+
+// Effective setpoint for line 1 to line 2 magnitude of AC electric current imported
+ElecL1L2MagnitudeImportCurrentEffectiveSp : ElecPhaseMagnitudeImportCurrentEffectiveSp { phaseCurrent: "L1-L2" }
+
+// Effective setpoint for line 2 to line 3 magnitude of AC electric current imported
+ElecL2L3MagnitudeImportCurrentEffectiveSp : ElecPhaseMagnitudeImportCurrentEffectiveSp { phaseCurrent: "L2-L3" }
+
+// Effective setpoint for line 3 to line 1 magnitude of AC electric current imported
+ElecL3L1MagnitudeImportCurrentEffectiveSp : ElecPhaseMagnitudeImportCurrentEffectiveSp { phaseCurrent: "L3-L1" }
+
+// Effective setpoint for neutral magnitude of AC electric current imported
+ElecNeutralMagnitudeImportCurrentEffectiveSp : ElecMagnitudeImportCurrentEffectiveSp { neutral }
+
+// Effective setpoint for line magnitude of AC electric current exported
+ElecLineMagnitudeExportCurrentEffectiveSp : ElecMagnitudeExportCurrentEffectiveSp <abstract> { lineCurrent: LineCurrent }
+
+// Effective setpoint for line 1 magnitude of AC electric current exported
+ElecL1MagnitudeExportCurrentEffectiveSp : ElecLineMagnitudeExportCurrentEffectiveSp { lineCurrent: "L1" }
+
+// Effective setpoint for line 2 magnitude of AC electric current exported
+ElecL2MagnitudeExportCurrentEffectiveSp : ElecLineMagnitudeExportCurrentEffectiveSp { lineCurrent: "L2" }
+
+// Effective setpoint for line 3 magnitude of AC electric current exported
+ElecL3MagnitudeExportCurrentEffectiveSp : ElecLineMagnitudeExportCurrentEffectiveSp { lineCurrent: "L3" }
+
+// Effective setpoint for phase magnitude of AC electric current exported
+ElecPhaseMagnitudeExportCurrentEffectiveSp : ElecMagnitudeExportCurrentEffectiveSp <abstract> { phaseCurrent: PhaseCurrent }
+
+// Effective setpoint for line 1 to line 2 magnitude of AC electric current exported
+ElecL1L2MagnitudeExportCurrentEffectiveSp : ElecPhaseMagnitudeExportCurrentEffectiveSp { phaseCurrent: "L1-L2" }
+
+// Effective setpoint for line 2 to line 3 magnitude of AC electric current exported
+ElecL2L3MagnitudeExportCurrentEffectiveSp : ElecPhaseMagnitudeExportCurrentEffectiveSp { phaseCurrent: "L2-L3" }
+
+// Effective setpoint for line 3 to line 1 magnitude of AC electric current exported
+ElecL3L1MagnitudeExportCurrentEffectiveSp : ElecPhaseMagnitudeExportCurrentEffectiveSp { phaseCurrent: "L3-L1" }
+
+// Effective setpoint for neutral magnitude of AC electric current exported
+ElecNeutralMagnitudeExportCurrentEffectiveSp : ElecMagnitudeExportCurrentEffectiveSp { neutral }
+
+// Effective setpoint for line magnitude of net AC electric current
+ElecLineMagnitudeNetCurrentEffectiveSp : ElecMagnitudeNetCurrentEffectiveSp <abstract> { lineCurrent: LineCurrent }
+
+// Effective setpoint for line 1 magnitude of net AC electric current
+ElecL1MagnitudeNetCurrentEffectiveSp : ElecLineMagnitudeNetCurrentEffectiveSp { lineCurrent: "L1" }
+
+// Effective setpoint for line 2 magnitude of net AC electric current
+ElecL2MagnitudeNetCurrentEffectiveSp : ElecLineMagnitudeNetCurrentEffectiveSp { lineCurrent: "L2" }
+
+// Effective setpoint for line 3 magnitude of net AC electric current
+ElecL3MagnitudeNetCurrentEffectiveSp : ElecLineMagnitudeNetCurrentEffectiveSp { lineCurrent: "L3" }
+
+// Effective setpoint for phase magnitude of net AC electric current
+ElecPhaseMagnitudeNetCurrentEffectiveSp : ElecMagnitudeNetCurrentEffectiveSp <abstract> { phaseCurrent: PhaseCurrent }
+
+// Effective setpoint for line 1 to line 2 magnitude of net AC electric current
+ElecL1L2MagnitudeNetCurrentEffectiveSp : ElecPhaseMagnitudeNetCurrentEffectiveSp { phaseCurrent: "L1-L2" }
+
+// Effective setpoint for line 2 to line 3 magnitude of net AC electric current
+ElecL2L3MagnitudeNetCurrentEffectiveSp : ElecPhaseMagnitudeNetCurrentEffectiveSp { phaseCurrent: "L2-L3" }
+
+// Effective setpoint for line 3 to line 1 magnitude of net AC electric current
+ElecL3L1MagnitudeNetCurrentEffectiveSp : ElecPhaseMagnitudeNetCurrentEffectiveSp { phaseCurrent: "L3-L1" }
+
+// Effective setpoint for neutral magnitude of net AC electric current
+ElecNeutralMagnitudeNetCurrentEffectiveSp : ElecMagnitudeNetCurrentEffectiveSp { neutral }
+
+// Max setpoint for line magnitude of AC electric current imported
+ElecLineMagnitudeImportCurrentMaxSp : ElecMagnitudeImportCurrentMaxSp <abstract> { lineCurrent: LineCurrent }
+
+// Max setpoint for line 1 magnitude of AC electric current imported
+ElecL1MagnitudeImportCurrentMaxSp : ElecLineMagnitudeImportCurrentMaxSp { lineCurrent: "L1" }
+
+// Max setpoint for line 2 magnitude of AC electric current imported
+ElecL2MagnitudeImportCurrentMaxSp : ElecLineMagnitudeImportCurrentMaxSp { lineCurrent: "L2" }
+
+// Max setpoint for line 3 magnitude of AC electric current imported
+ElecL3MagnitudeImportCurrentMaxSp : ElecLineMagnitudeImportCurrentMaxSp { lineCurrent: "L3" }
+
+// Max setpoint for phase magnitude of AC electric current imported
+ElecPhaseMagnitudeImportCurrentMaxSp : ElecMagnitudeImportCurrentMaxSp <abstract> { phaseCurrent: PhaseCurrent }
+
+// Max setpoint for line 1 to line 2 magnitude of AC electric current imported
+ElecL1L2MagnitudeImportCurrentMaxSp : ElecPhaseMagnitudeImportCurrentMaxSp { phaseCurrent: "L1-L2" }
+
+// Max setpoint for line 2 to line 3 magnitude of AC electric current imported
+ElecL2L3MagnitudeImportCurrentMaxSp : ElecPhaseMagnitudeImportCurrentMaxSp { phaseCurrent: "L2-L3" }
+
+// Max setpoint for line 3 to line 1 magnitude of AC electric current imported
+ElecL3L1MagnitudeImportCurrentMaxSp : ElecPhaseMagnitudeImportCurrentMaxSp { phaseCurrent: "L3-L1" }
+
+// Max setpoint for neutral magnitude of AC electric current imported
+ElecNeutralMagnitudeImportCurrentMaxSp : ElecMagnitudeImportCurrentMaxSp { neutral }
+
+// Max setpoint for line magnitude of AC electric current exported
+ElecLineMagnitudeExportCurrentMaxSp : ElecMagnitudeExportCurrentMaxSp <abstract> { lineCurrent: LineCurrent }
+
+// Max setpoint for line 1 magnitude of AC electric current exported
+ElecL1MagnitudeExportCurrentMaxSp : ElecLineMagnitudeExportCurrentMaxSp { lineCurrent: "L1" }
+
+// Max setpoint for line 2 magnitude of AC electric current exported
+ElecL2MagnitudeExportCurrentMaxSp : ElecLineMagnitudeExportCurrentMaxSp { lineCurrent: "L2" }
+
+// Max setpoint for line 3 magnitude of AC electric current exported
+ElecL3MagnitudeExportCurrentMaxSp : ElecLineMagnitudeExportCurrentMaxSp { lineCurrent: "L3" }
+
+// Max setpoint for phase magnitude of AC electric current exported
+ElecPhaseMagnitudeExportCurrentMaxSp : ElecMagnitudeExportCurrentMaxSp <abstract> { phaseCurrent: PhaseCurrent }
+
+// Max setpoint for line 1 to line 2 magnitude of AC electric current exported
+ElecL1L2MagnitudeExportCurrentMaxSp : ElecPhaseMagnitudeExportCurrentMaxSp { phaseCurrent: "L1-L2" }
+
+// Max setpoint for line 2 to line 3 magnitude of AC electric current exported
+ElecL2L3MagnitudeExportCurrentMaxSp : ElecPhaseMagnitudeExportCurrentMaxSp { phaseCurrent: "L2-L3" }
+
+// Max setpoint for line 3 to line 1 magnitude of AC electric current exported
+ElecL3L1MagnitudeExportCurrentMaxSp : ElecPhaseMagnitudeExportCurrentMaxSp { phaseCurrent: "L3-L1" }
+
+// Max setpoint for neutral magnitude of AC electric current exported
+ElecNeutralMagnitudeExportCurrentMaxSp : ElecMagnitudeExportCurrentMaxSp { neutral }
+
+// Max setpoint for line magnitude of net AC electric current
+ElecLineMagnitudeNetCurrentMaxSp : ElecMagnitudeNetCurrentMaxSp <abstract> { lineCurrent: LineCurrent }
+
+// Max setpoint for line 1 magnitude of net AC electric current
+ElecL1MagnitudeNetCurrentMaxSp : ElecLineMagnitudeNetCurrentMaxSp { lineCurrent: "L1" }
+
+// Max setpoint for line 2 magnitude of net AC electric current
+ElecL2MagnitudeNetCurrentMaxSp : ElecLineMagnitudeNetCurrentMaxSp { lineCurrent: "L2" }
+
+// Max setpoint for line 3 magnitude of net AC electric current
+ElecL3MagnitudeNetCurrentMaxSp : ElecLineMagnitudeNetCurrentMaxSp { lineCurrent: "L3" }
+
+// Max setpoint for phase magnitude of net AC electric current
+ElecPhaseMagnitudeNetCurrentMaxSp : ElecMagnitudeNetCurrentMaxSp <abstract> { phaseCurrent: PhaseCurrent }
+
+// Max setpoint for line 1 to line 2 magnitude of net AC electric current
+ElecL1L2MagnitudeNetCurrentMaxSp : ElecPhaseMagnitudeNetCurrentMaxSp { phaseCurrent: "L1-L2" }
+
+// Max setpoint for line 2 to line 3 magnitude of net AC electric current
+ElecL2L3MagnitudeNetCurrentMaxSp : ElecPhaseMagnitudeNetCurrentMaxSp { phaseCurrent: "L2-L3" }
+
+// Max setpoint for line 3 to line 1 magnitude of net AC electric current
+ElecL3L1MagnitudeNetCurrentMaxSp : ElecPhaseMagnitudeNetCurrentMaxSp { phaseCurrent: "L3-L1" }
+
+// Max setpoint for neutral magnitude of net AC electric current
+ElecNeutralMagnitudeNetCurrentMaxSp : ElecMagnitudeNetCurrentMaxSp { neutral }
+
+// Min setpoint for line magnitude of AC electric current imported
+ElecLineMagnitudeImportCurrentMinSp : ElecMagnitudeImportCurrentMinSp <abstract> { lineCurrent: LineCurrent }
+
+// Min setpoint for line 1 magnitude of AC electric current imported
+ElecL1MagnitudeImportCurrentMinSp : ElecLineMagnitudeImportCurrentMinSp { lineCurrent: "L1" }
+
+// Min setpoint for line 2 magnitude of AC electric current imported
+ElecL2MagnitudeImportCurrentMinSp : ElecLineMagnitudeImportCurrentMinSp { lineCurrent: "L2" }
+
+// Min setpoint for line 3 magnitude of AC electric current imported
+ElecL3MagnitudeImportCurrentMinSp : ElecLineMagnitudeImportCurrentMinSp { lineCurrent: "L3" }
+
+// Min setpoint for phase magnitude of AC electric current imported
+ElecPhaseMagnitudeImportCurrentMinSp : ElecMagnitudeImportCurrentMinSp <abstract> { phaseCurrent: PhaseCurrent }
+
+// Min setpoint for line 1 to line 2 magnitude of AC electric current imported
+ElecL1L2MagnitudeImportCurrentMinSp : ElecPhaseMagnitudeImportCurrentMinSp { phaseCurrent: "L1-L2" }
+
+// Min setpoint for line 2 to line 3 magnitude of AC electric current imported
+ElecL2L3MagnitudeImportCurrentMinSp : ElecPhaseMagnitudeImportCurrentMinSp { phaseCurrent: "L2-L3" }
+
+// Min setpoint for line 3 to line 1 magnitude of AC electric current imported
+ElecL3L1MagnitudeImportCurrentMinSp : ElecPhaseMagnitudeImportCurrentMinSp { phaseCurrent: "L3-L1" }
+
+// Min setpoint for neutral magnitude of AC electric current imported
+ElecNeutralMagnitudeImportCurrentMinSp : ElecMagnitudeImportCurrentMinSp { neutral }
+
+// Min setpoint for line magnitude of AC electric current exported
+ElecLineMagnitudeExportCurrentMinSp : ElecMagnitudeExportCurrentMinSp <abstract> { lineCurrent: LineCurrent }
+
+// Min setpoint for line 1 magnitude of AC electric current exported
+ElecL1MagnitudeExportCurrentMinSp : ElecLineMagnitudeExportCurrentMinSp { lineCurrent: "L1" }
+
+// Min setpoint for line 2 magnitude of AC electric current exported
+ElecL2MagnitudeExportCurrentMinSp : ElecLineMagnitudeExportCurrentMinSp { lineCurrent: "L2" }
+
+// Min setpoint for line 3 magnitude of AC electric current exported
+ElecL3MagnitudeExportCurrentMinSp : ElecLineMagnitudeExportCurrentMinSp { lineCurrent: "L3" }
+
+// Min setpoint for phase magnitude of AC electric current exported
+ElecPhaseMagnitudeExportCurrentMinSp : ElecMagnitudeExportCurrentMinSp <abstract> { phaseCurrent: PhaseCurrent }
+
+// Min setpoint for line 1 to line 2 magnitude of AC electric current exported
+ElecL1L2MagnitudeExportCurrentMinSp : ElecPhaseMagnitudeExportCurrentMinSp { phaseCurrent: "L1-L2" }
+
+// Min setpoint for line 2 to line 3 magnitude of AC electric current exported
+ElecL2L3MagnitudeExportCurrentMinSp : ElecPhaseMagnitudeExportCurrentMinSp { phaseCurrent: "L2-L3" }
+
+// Min setpoint for line 3 to line 1 magnitude of AC electric current exported
+ElecL3L1MagnitudeExportCurrentMinSp : ElecPhaseMagnitudeExportCurrentMinSp { phaseCurrent: "L3-L1" }
+
+// Min setpoint for neutral magnitude of AC electric current exported
+ElecNeutralMagnitudeExportCurrentMinSp : ElecMagnitudeExportCurrentMinSp { neutral }
+
+// Min setpoint for line magnitude of net AC electric current
+ElecLineMagnitudeNetCurrentMinSp : ElecMagnitudeNetCurrentMinSp <abstract> { lineCurrent: LineCurrent }
+
+// Min setpoint for line 1 magnitude of net AC electric current
+ElecL1MagnitudeNetCurrentMinSp : ElecLineMagnitudeNetCurrentMinSp { lineCurrent: "L1" }
+
+// Min setpoint for line 2 magnitude of net AC electric current
+ElecL2MagnitudeNetCurrentMinSp : ElecLineMagnitudeNetCurrentMinSp { lineCurrent: "L2" }
+
+// Min setpoint for line 3 magnitude of net AC electric current
+ElecL3MagnitudeNetCurrentMinSp : ElecLineMagnitudeNetCurrentMinSp { lineCurrent: "L3" }
+
+// Min setpoint for phase magnitude of net AC electric current
+ElecPhaseMagnitudeNetCurrentMinSp : ElecMagnitudeNetCurrentMinSp <abstract> { phaseCurrent: PhaseCurrent }
+
+// Min setpoint for line 1 to line 2 magnitude of net AC electric current
+ElecL1L2MagnitudeNetCurrentMinSp : ElecPhaseMagnitudeNetCurrentMinSp { phaseCurrent: "L1-L2" }
+
+// Min setpoint for line 2 to line 3 magnitude of net AC electric current
+ElecL2L3MagnitudeNetCurrentMinSp : ElecPhaseMagnitudeNetCurrentMinSp { phaseCurrent: "L2-L3" }
+
+// Min setpoint for line 3 to line 1 magnitude of net AC electric current
+ElecL3L1MagnitudeNetCurrentMinSp : ElecPhaseMagnitudeNetCurrentMinSp { phaseCurrent: "L3-L1" }
+
+// Min setpoint for neutral magnitude of net AC electric current
+ElecNeutralMagnitudeNetCurrentMinSp : ElecMagnitudeNetCurrentMinSp { neutral }
+
+// Sensor for total active AC electric power exported
+ElecTotalActiveExportPowerSensor : ElecActiveExportPowerSensor { total }
+
+// Sensor for line active AC electric power exported
+ElecLineActiveExportPowerSensor : ElecActiveExportPowerSensor <abstract> { linePower: LinePower }
+
+// Sensor for line 1 to line 2 active AC electric power exported
+ElecL1L2ActiveExportPowerSensor : ElecLineActiveExportPowerSensor { linePower: "L1-L2" }
+
+// Sensor for line 2 to line 3 active AC electric power exported
+ElecL2L3ActiveExportPowerSensor : ElecLineActiveExportPowerSensor { linePower: "L2-L3" }
+
+// Sensor for line 3 to line 1 active AC electric power exported
+ElecL3L1ActiveExportPowerSensor : ElecLineActiveExportPowerSensor { linePower: "L3-L1" }
+
+// Sensor for line average active AC electric power exported
+ElecLineAvgActiveExportPowerSensor : ElecActiveExportPowerSensor { lineAvg }
+
+// Sensor for phase active AC electric power exported
+ElecPhaseActiveExportPowerSensor : ElecActiveExportPowerSensor <abstract> { phasePower: PhasePower }
+
+// Sensor for line 1 active AC electric power exported
+ElecL1ActiveExportPowerSensor : ElecPhaseActiveExportPowerSensor { phasePower: "L1" }
+
+// Sensor for line 2 active AC electric power exported
+ElecL2ActiveExportPowerSensor : ElecPhaseActiveExportPowerSensor { phasePower: "L2" }
+
+// Sensor for line 3 active AC electric power exported
+ElecL3ActiveExportPowerSensor : ElecPhaseActiveExportPowerSensor { phasePower: "L3" }
+
+// Sensor for phase average active AC electric power exported
+ElecPhaseAvgActiveExportPowerSensor : ElecActiveExportPowerSensor { phaseAvg }
+
+// Sensor for total reactive AC electric power exported
+ElecTotalReactiveExportPowerSensor : ElecReactiveExportPowerSensor { total }
+
+// Sensor for line reactive AC electric power exported
+ElecLineReactiveExportPowerSensor : ElecReactiveExportPowerSensor <abstract> { linePower: LinePower }
+
+// Sensor for line 1 to line 2 reactive AC electric power exported
+ElecL1L2ReactiveExportPowerSensor : ElecLineReactiveExportPowerSensor { linePower: "L1-L2" }
+
+// Sensor for line 2 to line 3 reactive AC electric power exported
+ElecL2L3ReactiveExportPowerSensor : ElecLineReactiveExportPowerSensor { linePower: "L2-L3" }
+
+// Sensor for line 3 to line 1 reactive AC electric power exported
+ElecL3L1ReactiveExportPowerSensor : ElecLineReactiveExportPowerSensor { linePower: "L3-L1" }
+
+// Sensor for line average reactive AC electric power exported
+ElecLineAvgReactiveExportPowerSensor : ElecReactiveExportPowerSensor { lineAvg }
+
+// Sensor for phase reactive AC electric power exported
+ElecPhaseReactiveExportPowerSensor : ElecReactiveExportPowerSensor <abstract> { phasePower: PhasePower }
+
+// Sensor for line 1 reactive AC electric power exported
+ElecL1ReactiveExportPowerSensor : ElecPhaseReactiveExportPowerSensor { phasePower: "L1" }
+
+// Sensor for line 2 reactive AC electric power exported
+ElecL2ReactiveExportPowerSensor : ElecPhaseReactiveExportPowerSensor { phasePower: "L2" }
+
+// Sensor for line 3 reactive AC electric power exported
+ElecL3ReactiveExportPowerSensor : ElecPhaseReactiveExportPowerSensor { phasePower: "L3" }
+
+// Sensor for phase average reactive AC electric power exported
+ElecPhaseAvgReactiveExportPowerSensor : ElecReactiveExportPowerSensor { phaseAvg }
+
+// Sensor for total apparent AC electric power exported
+ElecTotalApparentExportPowerSensor : ElecApparentExportPowerSensor { total }
+
+// Sensor for line apparent AC electric power exported
+ElecLineApparentExportPowerSensor : ElecApparentExportPowerSensor <abstract> { linePower: LinePower }
+
+// Sensor for line 1 to line 2 apparent AC electric power exported
+ElecL1L2ApparentExportPowerSensor : ElecLineApparentExportPowerSensor { linePower: "L1-L2" }
+
+// Sensor for line 2 to line 3 apparent AC electric power exported
+ElecL2L3ApparentExportPowerSensor : ElecLineApparentExportPowerSensor { linePower: "L2-L3" }
+
+// Sensor for line 3 to line 1 apparent AC electric power exported
+ElecL3L1ApparentExportPowerSensor : ElecLineApparentExportPowerSensor { linePower: "L3-L1" }
+
+// Sensor for line average apparent AC electric power exported
+ElecLineAvgApparentExportPowerSensor : ElecApparentExportPowerSensor { lineAvg }
+
+// Sensor for phase apparent AC electric power exported
+ElecPhaseApparentExportPowerSensor : ElecApparentExportPowerSensor <abstract> { phasePower: PhasePower }
+
+// Sensor for line 1 apparent AC electric power exported
+ElecL1ApparentExportPowerSensor : ElecPhaseApparentExportPowerSensor { phasePower: "L1" }
+
+// Sensor for line 2 apparent AC electric power exported
+ElecL2ApparentExportPowerSensor : ElecPhaseApparentExportPowerSensor { phasePower: "L2" }
+
+// Sensor for line 3 apparent AC electric power exported
+ElecL3ApparentExportPowerSensor : ElecPhaseApparentExportPowerSensor { phasePower: "L3" }
+
+// Sensor for phase average apparent AC electric power exported
+ElecPhaseAvgApparentExportPowerSensor : ElecApparentExportPowerSensor { phaseAvg }
+
+// Sensor for total active net AC electric power
+ElecTotalActiveNetPowerSensor : ElecActiveNetPowerSensor { total }
+
+// Sensor for line active net AC electric power
+ElecLineActiveNetPowerSensor : ElecActiveNetPowerSensor <abstract> { linePower: LinePower }
+
+// Sensor for line 1 to line 2 active net AC electric power
+ElecL1L2ActiveNetPowerSensor : ElecLineActiveNetPowerSensor { linePower: "L1-L2" }
+
+// Sensor for line 2 to line 3 active net AC electric power
+ElecL2L3ActiveNetPowerSensor : ElecLineActiveNetPowerSensor { linePower: "L2-L3" }
+
+// Sensor for line 3 to line 1 active net AC electric power
+ElecL3L1ActiveNetPowerSensor : ElecLineActiveNetPowerSensor { linePower: "L3-L1" }
+
+// Sensor for line average active net AC electric power
+ElecLineAvgActiveNetPowerSensor : ElecActiveNetPowerSensor { lineAvg }
+
+// Sensor for phase active net AC electric power
+ElecPhaseActiveNetPowerSensor : ElecActiveNetPowerSensor <abstract> { phasePower: PhasePower }
+
+// Sensor for line 1 active net AC electric power
+ElecL1ActiveNetPowerSensor : ElecPhaseActiveNetPowerSensor { phasePower: "L1" }
+
+// Sensor for line 2 active net AC electric power
+ElecL2ActiveNetPowerSensor : ElecPhaseActiveNetPowerSensor { phasePower: "L2" }
+
+// Sensor for line 3 active net AC electric power
+ElecL3ActiveNetPowerSensor : ElecPhaseActiveNetPowerSensor { phasePower: "L3" }
+
+// Sensor for phase average active net AC electric power
+ElecPhaseAvgActiveNetPowerSensor : ElecActiveNetPowerSensor { phaseAvg }
+
+// Sensor for total reactive net AC electric power
+ElecTotalReactiveNetPowerSensor : ElecReactiveNetPowerSensor { total }
+
+// Sensor for line reactive net AC electric power
+ElecLineReactiveNetPowerSensor : ElecReactiveNetPowerSensor <abstract> { linePower: LinePower }
+
+// Sensor for line 1 to line 2 reactive net AC electric power
+ElecL1L2ReactiveNetPowerSensor : ElecLineReactiveNetPowerSensor { linePower: "L1-L2" }
+
+// Sensor for line 2 to line 3 reactive net AC electric power
+ElecL2L3ReactiveNetPowerSensor : ElecLineReactiveNetPowerSensor { linePower: "L2-L3" }
+
+// Sensor for line 3 to line 1 reactive net AC electric power
+ElecL3L1ReactiveNetPowerSensor : ElecLineReactiveNetPowerSensor { linePower: "L3-L1" }
+
+// Sensor for line average reactive net AC electric power
+ElecLineAvgReactiveNetPowerSensor : ElecReactiveNetPowerSensor { lineAvg }
+
+// Sensor for phase reactive net AC electric power
+ElecPhaseReactiveNetPowerSensor : ElecReactiveNetPowerSensor <abstract> { phasePower: PhasePower }
+
+// Sensor for line 1 reactive net AC electric power
+ElecL1ReactiveNetPowerSensor : ElecPhaseReactiveNetPowerSensor { phasePower: "L1" }
+
+// Sensor for line 2 reactive net AC electric power
+ElecL2ReactiveNetPowerSensor : ElecPhaseReactiveNetPowerSensor { phasePower: "L2" }
+
+// Sensor for line 3 reactive net AC electric power
+ElecL3ReactiveNetPowerSensor : ElecPhaseReactiveNetPowerSensor { phasePower: "L3" }
+
+// Sensor for phase average reactive net AC electric power
+ElecPhaseAvgReactiveNetPowerSensor : ElecReactiveNetPowerSensor { phaseAvg }
+
+// Sensor for total apparent net AC electric power
+ElecTotalApparentNetPowerSensor : ElecApparentNetPowerSensor { total }
+
+// Sensor for line apparent net AC electric power
+ElecLineApparentNetPowerSensor : ElecApparentNetPowerSensor <abstract> { linePower: LinePower }
+
+// Sensor for line 1 to line 2 apparent net AC electric power
+ElecL1L2ApparentNetPowerSensor : ElecLineApparentNetPowerSensor { linePower: "L1-L2" }
+
+// Sensor for line 2 to line 3 apparent net AC electric power
+ElecL2L3ApparentNetPowerSensor : ElecLineApparentNetPowerSensor { linePower: "L2-L3" }
+
+// Sensor for line 3 to line 1 apparent net AC electric power
+ElecL3L1ApparentNetPowerSensor : ElecLineApparentNetPowerSensor { linePower: "L3-L1" }
+
+// Sensor for line average apparent net AC electric power
+ElecLineAvgApparentNetPowerSensor : ElecApparentNetPowerSensor { lineAvg }
+
+// Sensor for phase apparent net AC electric power
+ElecPhaseApparentNetPowerSensor : ElecApparentNetPowerSensor <abstract> { phasePower: PhasePower }
+
+// Sensor for line 1 apparent net AC electric power
+ElecL1ApparentNetPowerSensor : ElecPhaseApparentNetPowerSensor { phasePower: "L1" }
+
+// Sensor for line 2 apparent net AC electric power
+ElecL2ApparentNetPowerSensor : ElecPhaseApparentNetPowerSensor { phasePower: "L2" }
+
+// Sensor for line 3 apparent net AC electric power
+ElecL3ApparentNetPowerSensor : ElecPhaseApparentNetPowerSensor { phasePower: "L3" }
+
+// Sensor for phase average apparent net AC electric power
+ElecPhaseAvgApparentNetPowerSensor : ElecApparentNetPowerSensor { phaseAvg }
+
+// Effective setpoint for total active AC electric power imported
+ElecTotalActiveImportPowerEffectiveSp : ElecActiveImportPowerEffectiveSp { total }
+
+// Effective setpoint for line active AC electric power imported
+ElecLineActiveImportPowerEffectiveSp : ElecActiveImportPowerEffectiveSp <abstract> { linePower: LinePower }
+
+// Effective setpoint for line 1 to line 2 active AC electric power imported
+ElecL1L2ActiveImportPowerEffectiveSp : ElecLineActiveImportPowerEffectiveSp { linePower: "L1-L2" }
+
+// Effective setpoint for line 2 to line 3 active AC electric power imported
+ElecL2L3ActiveImportPowerEffectiveSp : ElecLineActiveImportPowerEffectiveSp { linePower: "L2-L3" }
+
+// Effective setpoint for line 3 to line 1 active AC electric power imported
+ElecL3L1ActiveImportPowerEffectiveSp : ElecLineActiveImportPowerEffectiveSp { linePower: "L3-L1" }
+
+// Effective setpoint for phase active AC electric power imported
+ElecPhaseActiveImportPowerEffectiveSp : ElecActiveImportPowerEffectiveSp <abstract> { phasePower: PhasePower }
+
+// Effective setpoint for line 1 active AC electric power imported
+ElecL1ActiveImportPowerEffectiveSp : ElecPhaseActiveImportPowerEffectiveSp { phasePower: "L1" }
+
+// Effective setpoint for line 2 active AC electric power imported
+ElecL2ActiveImportPowerEffectiveSp : ElecPhaseActiveImportPowerEffectiveSp { phasePower: "L2" }
+
+// Effective setpoint for line 3 active AC electric power imported
+ElecL3ActiveImportPowerEffectiveSp : ElecPhaseActiveImportPowerEffectiveSp { phasePower: "L3" }
+
+// Effective setpoint for total active AC electric power exported
+ElecTotalActiveExportPowerEffectiveSp : ElecActiveExportPowerEffectiveSp { total }
+
+// Effective setpoint for line active AC electric power exported
+ElecLineActiveExportPowerEffectiveSp : ElecActiveExportPowerEffectiveSp <abstract> { linePower: LinePower }
+
+// Effective setpoint for line 1 to line 2 active AC electric power exported
+ElecL1L2ActiveExportPowerEffectiveSp : ElecLineActiveExportPowerEffectiveSp { linePower: "L1-L2" }
+
+// Effective setpoint for line 2 to line 3 active AC electric power exported
+ElecL2L3ActiveExportPowerEffectiveSp : ElecLineActiveExportPowerEffectiveSp { linePower: "L2-L3" }
+
+// Effective setpoint for line 3 to line 1 active AC electric power exported
+ElecL3L1ActiveExportPowerEffectiveSp : ElecLineActiveExportPowerEffectiveSp { linePower: "L3-L1" }
+
+// Effective setpoint for phase active AC electric power exported
+ElecPhaseActiveExportPowerEffectiveSp : ElecActiveExportPowerEffectiveSp <abstract> { phasePower: PhasePower }
+
+// Effective setpoint for line 1 active AC electric power exported
+ElecL1ActiveExportPowerEffectiveSp : ElecPhaseActiveExportPowerEffectiveSp { phasePower: "L1" }
+
+// Effective setpoint for line 2 active AC electric power exported
+ElecL2ActiveExportPowerEffectiveSp : ElecPhaseActiveExportPowerEffectiveSp { phasePower: "L2" }
+
+// Effective setpoint for line 3 active AC electric power exported
+ElecL3ActiveExportPowerEffectiveSp : ElecPhaseActiveExportPowerEffectiveSp { phasePower: "L3" }
+
+// Effective setpoint for total active net AC electric power
+ElecTotalActiveNetPowerEffectiveSp : ElecActiveNetPowerEffectiveSp { total }
+
+// Effective setpoint for line active net AC electric power
+ElecLineActiveNetPowerEffectiveSp : ElecActiveNetPowerEffectiveSp <abstract> { linePower: LinePower }
+
+// Effective setpoint for line 1 to line 2 active net AC electric power
+ElecL1L2ActiveNetPowerEffectiveSp : ElecLineActiveNetPowerEffectiveSp { linePower: "L1-L2" }
+
+// Effective setpoint for line 2 to line 3 active net AC electric power
+ElecL2L3ActiveNetPowerEffectiveSp : ElecLineActiveNetPowerEffectiveSp { linePower: "L2-L3" }
+
+// Effective setpoint for line 3 to line 1 active net AC electric power
+ElecL3L1ActiveNetPowerEffectiveSp : ElecLineActiveNetPowerEffectiveSp { linePower: "L3-L1" }
+
+// Effective setpoint for phase active net AC electric power
+ElecPhaseActiveNetPowerEffectiveSp : ElecActiveNetPowerEffectiveSp <abstract> { phasePower: PhasePower }
+
+// Effective setpoint for line 1 active net AC electric power
+ElecL1ActiveNetPowerEffectiveSp : ElecPhaseActiveNetPowerEffectiveSp { phasePower: "L1" }
+
+// Effective setpoint for line 2 active net AC electric power
+ElecL2ActiveNetPowerEffectiveSp : ElecPhaseActiveNetPowerEffectiveSp { phasePower: "L2" }
+
+// Effective setpoint for line 3 active net AC electric power
+ElecL3ActiveNetPowerEffectiveSp : ElecPhaseActiveNetPowerEffectiveSp { phasePower: "L3" }
+
+// Max setpoint for total active AC electric power imported
+ElecTotalActiveImportPowerMaxSp : ElecActiveImportPowerMaxSp { total }
+
+// Max setpoint for line active AC electric power imported
+ElecLineActiveImportPowerMaxSp : ElecActiveImportPowerMaxSp <abstract> { linePower: LinePower }
+
+// Max setpoint for line 1 to line 2 active AC electric power imported
+ElecL1L2ActiveImportPowerMaxSp : ElecLineActiveImportPowerMaxSp { linePower: "L1-L2" }
+
+// Max setpoint for line 2 to line 3 active AC electric power imported
+ElecL2L3ActiveImportPowerMaxSp : ElecLineActiveImportPowerMaxSp { linePower: "L2-L3" }
+
+// Max setpoint for line 3 to line 1 active AC electric power imported
+ElecL3L1ActiveImportPowerMaxSp : ElecLineActiveImportPowerMaxSp { linePower: "L3-L1" }
+
+// Max setpoint for phase active AC electric power imported
+ElecPhaseActiveImportPowerMaxSp : ElecActiveImportPowerMaxSp <abstract> { phasePower: PhasePower }
+
+// Max setpoint for line 1 active AC electric power imported
+ElecL1ActiveImportPowerMaxSp : ElecPhaseActiveImportPowerMaxSp { phasePower: "L1" }
+
+// Max setpoint for line 2 active AC electric power imported
+ElecL2ActiveImportPowerMaxSp : ElecPhaseActiveImportPowerMaxSp { phasePower: "L2" }
+
+// Max setpoint for line 3 active AC electric power imported
+ElecL3ActiveImportPowerMaxSp : ElecPhaseActiveImportPowerMaxSp { phasePower: "L3" }
+
+// Max setpoint for total active AC electric power exported
+ElecTotalActiveExportPowerMaxSp : ElecActiveExportPowerMaxSp { total }
+
+// Max setpoint for line active AC electric power exported
+ElecLineActiveExportPowerMaxSp : ElecActiveExportPowerMaxSp <abstract> { linePower: LinePower }
+
+// Max setpoint for line 1 to line 2 active AC electric power exported
+ElecL1L2ActiveExportPowerMaxSp : ElecLineActiveExportPowerMaxSp { linePower: "L1-L2" }
+
+// Max setpoint for line 2 to line 3 active AC electric power exported
+ElecL2L3ActiveExportPowerMaxSp : ElecLineActiveExportPowerMaxSp { linePower: "L2-L3" }
+
+// Max setpoint for line 3 to line 1 active AC electric power exported
+ElecL3L1ActiveExportPowerMaxSp : ElecLineActiveExportPowerMaxSp { linePower: "L3-L1" }
+
+// Max setpoint for phase active AC electric power exported
+ElecPhaseActiveExportPowerMaxSp : ElecActiveExportPowerMaxSp <abstract> { phasePower: PhasePower }
+
+// Max setpoint for line 1 active AC electric power exported
+ElecL1ActiveExportPowerMaxSp : ElecPhaseActiveExportPowerMaxSp { phasePower: "L1" }
+
+// Max setpoint for line 2 active AC electric power exported
+ElecL2ActiveExportPowerMaxSp : ElecPhaseActiveExportPowerMaxSp { phasePower: "L2" }
+
+// Max setpoint for line 3 active AC electric power exported
+ElecL3ActiveExportPowerMaxSp : ElecPhaseActiveExportPowerMaxSp { phasePower: "L3" }
+
+// Max setpoint for total active net AC electric power
+ElecTotalActiveNetPowerMaxSp : ElecActiveNetPowerMaxSp { total }
+
+// Max setpoint for line active net AC electric power
+ElecLineActiveNetPowerMaxSp : ElecActiveNetPowerMaxSp <abstract> { linePower: LinePower }
+
+// Max setpoint for line 1 to line 2 active net AC electric power
+ElecL1L2ActiveNetPowerMaxSp : ElecLineActiveNetPowerMaxSp { linePower: "L1-L2" }
+
+// Max setpoint for line 2 to line 3 active net AC electric power
+ElecL2L3ActiveNetPowerMaxSp : ElecLineActiveNetPowerMaxSp { linePower: "L2-L3" }
+
+// Max setpoint for line 3 to line 1 active net AC electric power
+ElecL3L1ActiveNetPowerMaxSp : ElecLineActiveNetPowerMaxSp { linePower: "L3-L1" }
+
+// Max setpoint for phase active net AC electric power
+ElecPhaseActiveNetPowerMaxSp : ElecActiveNetPowerMaxSp <abstract> { phasePower: PhasePower }
+
+// Max setpoint for line 1 active net AC electric power
+ElecL1ActiveNetPowerMaxSp : ElecPhaseActiveNetPowerMaxSp { phasePower: "L1" }
+
+// Max setpoint for line 2 active net AC electric power
+ElecL2ActiveNetPowerMaxSp : ElecPhaseActiveNetPowerMaxSp { phasePower: "L2" }
+
+// Max setpoint for line 3 active net AC electric power
+ElecL3ActiveNetPowerMaxSp : ElecPhaseActiveNetPowerMaxSp { phasePower: "L3" }
+
+// Min setpoint for total active AC electric power imported
+ElecTotalActiveImportPowerMinSp : ElecActiveImportPowerMinSp { total }
+
+// Min setpoint for line active AC electric power imported
+ElecLineActiveImportPowerMinSp : ElecActiveImportPowerMinSp <abstract> { linePower: LinePower }
+
+// Min setpoint for line 1 to line 2 active AC electric power imported
+ElecL1L2ActiveImportPowerMinSp : ElecLineActiveImportPowerMinSp { linePower: "L1-L2" }
+
+// Min setpoint for line 2 to line 3 active AC electric power imported
+ElecL2L3ActiveImportPowerMinSp : ElecLineActiveImportPowerMinSp { linePower: "L2-L3" }
+
+// Min setpoint for line 3 to line 1 active AC electric power imported
+ElecL3L1ActiveImportPowerMinSp : ElecLineActiveImportPowerMinSp { linePower: "L3-L1" }
+
+// Min setpoint for phase active AC electric power imported
+ElecPhaseActiveImportPowerMinSp : ElecActiveImportPowerMinSp <abstract> { phasePower: PhasePower }
+
+// Min setpoint for line 1 active AC electric power imported
+ElecL1ActiveImportPowerMinSp : ElecPhaseActiveImportPowerMinSp { phasePower: "L1" }
+
+// Min setpoint for line 2 active AC electric power imported
+ElecL2ActiveImportPowerMinSp : ElecPhaseActiveImportPowerMinSp { phasePower: "L2" }
+
+// Min setpoint for line 3 active AC electric power imported
+ElecL3ActiveImportPowerMinSp : ElecPhaseActiveImportPowerMinSp { phasePower: "L3" }
+
+// Min setpoint for total active AC electric power exported
+ElecTotalActiveExportPowerMinSp : ElecActiveExportPowerMinSp { total }
+
+// Min setpoint for line active AC electric power exported
+ElecLineActiveExportPowerMinSp : ElecActiveExportPowerMinSp <abstract> { linePower: LinePower }
+
+// Min setpoint for line 1 to line 2 active AC electric power exported
+ElecL1L2ActiveExportPowerMinSp : ElecLineActiveExportPowerMinSp { linePower: "L1-L2" }
+
+// Min setpoint for line 2 to line 3 active AC electric power exported
+ElecL2L3ActiveExportPowerMinSp : ElecLineActiveExportPowerMinSp { linePower: "L2-L3" }
+
+// Min setpoint for line 3 to line 1 active AC electric power exported
+ElecL3L1ActiveExportPowerMinSp : ElecLineActiveExportPowerMinSp { linePower: "L3-L1" }
+
+// Min setpoint for phase active AC electric power exported
+ElecPhaseActiveExportPowerMinSp : ElecActiveExportPowerMinSp <abstract> { phasePower: PhasePower }
+
+// Min setpoint for line 1 active AC electric power exported
+ElecL1ActiveExportPowerMinSp : ElecPhaseActiveExportPowerMinSp { phasePower: "L1" }
+
+// Min setpoint for line 2 active AC electric power exported
+ElecL2ActiveExportPowerMinSp : ElecPhaseActiveExportPowerMinSp { phasePower: "L2" }
+
+// Min setpoint for line 3 active AC electric power exported
+ElecL3ActiveExportPowerMinSp : ElecPhaseActiveExportPowerMinSp { phasePower: "L3" }
+
+// Min setpoint for total active net AC electric power
+ElecTotalActiveNetPowerMinSp : ElecActiveNetPowerMinSp { total }
+
+// Min setpoint for line active net AC electric power
+ElecLineActiveNetPowerMinSp : ElecActiveNetPowerMinSp <abstract> { linePower: LinePower }
+
+// Min setpoint for line 1 to line 2 active net AC electric power
+ElecL1L2ActiveNetPowerMinSp : ElecLineActiveNetPowerMinSp { linePower: "L1-L2" }
+
+// Min setpoint for line 2 to line 3 active net AC electric power
+ElecL2L3ActiveNetPowerMinSp : ElecLineActiveNetPowerMinSp { linePower: "L2-L3" }
+
+// Min setpoint for line 3 to line 1 active net AC electric power
+ElecL3L1ActiveNetPowerMinSp : ElecLineActiveNetPowerMinSp { linePower: "L3-L1" }
+
+// Min setpoint for phase active net AC electric power
+ElecPhaseActiveNetPowerMinSp : ElecActiveNetPowerMinSp <abstract> { phasePower: PhasePower }
+
+// Min setpoint for line 1 active net AC electric power
+ElecL1ActiveNetPowerMinSp : ElecPhaseActiveNetPowerMinSp { phasePower: "L1" }
+
+// Min setpoint for line 2 active net AC electric power
+ElecL2ActiveNetPowerMinSp : ElecPhaseActiveNetPowerMinSp { phasePower: "L2" }
+
+// Min setpoint for line 3 active net AC electric power
+ElecL3ActiveNetPowerMinSp : ElecPhaseActiveNetPowerMinSp { phasePower: "L3" }
+
+// Sensor for true power factor of total exported AC electric power
+ElecTotalPfTrueExportPfSensor : ElecPfTrueExportPfSensor { total }
+
+// Sensor for true power factor of line exported AC electric power
+ElecLinePfTrueExportPfSensor : ElecPfTrueExportPfSensor <abstract> { linePf: LinePf }
+
+// Sensor for true power factor of line 1 to line 2 exported AC electric power
+ElecL1L2PfTrueExportPfSensor : ElecLinePfTrueExportPfSensor { linePf: "L1-L2" }
+
+// Sensor for true power factor of line 2 to line 3 exported AC electric power
+ElecL2L3PfTrueExportPfSensor : ElecLinePfTrueExportPfSensor { linePf: "L2-L3" }
+
+// Sensor for true power factor of line 3 to line 1 exported AC electric power
+ElecL3L1PfTrueExportPfSensor : ElecLinePfTrueExportPfSensor { linePf: "L3-L1" }
+
+// Sensor for true power factor of line average exported AC electric power
+ElecLineAvgPfTrueExportPfSensor : ElecPfTrueExportPfSensor { lineAvg }
+
+// Sensor for true power factor of phase exported AC electric power
+ElecPhasePfTrueExportPfSensor : ElecPfTrueExportPfSensor <abstract> { phasePf: PhasePf }
+
+// Sensor for true power factor of line 1 exported AC electric power
+ElecL1PfTrueExportPfSensor : ElecPhasePfTrueExportPfSensor { phasePf: "L1" }
+
+// Sensor for true power factor of line 2 exported AC electric power
+ElecL2PfTrueExportPfSensor : ElecPhasePfTrueExportPfSensor { phasePf: "L2" }
+
+// Sensor for true power factor of line 3 exported AC electric power
+ElecL3PfTrueExportPfSensor : ElecPhasePfTrueExportPfSensor { phasePf: "L3" }
+
+// Sensor for true power factor of phase average exported AC electric power
+ElecPhaseAvgPfTrueExportPfSensor : ElecPfTrueExportPfSensor { phaseAvg }
+
+// Sensor for displacement power factor of total exported AC electric power
+ElecTotalPfDisplacementExportPfSensor : ElecPfDisplacementExportPfSensor { total }
+
+// Sensor for displacement power factor of line exported AC electric power
+ElecLinePfDisplacementExportPfSensor : ElecPfDisplacementExportPfSensor <abstract> { linePf: LinePf }
+
+// Sensor for displacement power factor of line 1 to line 2 exported AC electric power
+ElecL1L2PfDisplacementExportPfSensor : ElecLinePfDisplacementExportPfSensor { linePf: "L1-L2" }
+
+// Sensor for displacement power factor of line 2 to line 3 exported AC electric power
+ElecL2L3PfDisplacementExportPfSensor : ElecLinePfDisplacementExportPfSensor { linePf: "L2-L3" }
+
+// Sensor for displacement power factor of line 3 to line 1 exported AC electric power
+ElecL3L1PfDisplacementExportPfSensor : ElecLinePfDisplacementExportPfSensor { linePf: "L3-L1" }
+
+// Sensor for displacement power factor of line average exported AC electric power
+ElecLineAvgPfDisplacementExportPfSensor : ElecPfDisplacementExportPfSensor { lineAvg }
+
+// Sensor for displacement power factor of phase exported AC electric power
+ElecPhasePfDisplacementExportPfSensor : ElecPfDisplacementExportPfSensor <abstract> { phasePf: PhasePf }
+
+// Sensor for displacement power factor of line 1 exported AC electric power
+ElecL1PfDisplacementExportPfSensor : ElecPhasePfDisplacementExportPfSensor { phasePf: "L1" }
+
+// Sensor for displacement power factor of line 2 exported AC electric power
+ElecL2PfDisplacementExportPfSensor : ElecPhasePfDisplacementExportPfSensor { phasePf: "L2" }
+
+// Sensor for displacement power factor of line 3 exported AC electric power
+ElecL3PfDisplacementExportPfSensor : ElecPhasePfDisplacementExportPfSensor { phasePf: "L3" }
+
+// Sensor for displacement power factor of phase average exported AC electric power
+ElecPhaseAvgPfDisplacementExportPfSensor : ElecPfDisplacementExportPfSensor { phaseAvg }
+
+// Sensor for distortion power factor of total exported AC electric power
+ElecTotalPfDistortionExportPfSensor : ElecPfDistortionExportPfSensor { total }
+
+// Sensor for distortion power factor of line exported AC electric power
+ElecLinePfDistortionExportPfSensor : ElecPfDistortionExportPfSensor <abstract> { linePf: LinePf }
+
+// Sensor for distortion power factor of line 1 to line 2 exported AC electric power
+ElecL1L2PfDistortionExportPfSensor : ElecLinePfDistortionExportPfSensor { linePf: "L1-L2" }
+
+// Sensor for distortion power factor of line 2 to line 3 exported AC electric power
+ElecL2L3PfDistortionExportPfSensor : ElecLinePfDistortionExportPfSensor { linePf: "L2-L3" }
+
+// Sensor for distortion power factor of line 3 to line 1 exported AC electric power
+ElecL3L1PfDistortionExportPfSensor : ElecLinePfDistortionExportPfSensor { linePf: "L3-L1" }
+
+// Sensor for distortion power factor of line average exported AC electric power
+ElecLineAvgPfDistortionExportPfSensor : ElecPfDistortionExportPfSensor { lineAvg }
+
+// Sensor for distortion power factor of phase exported AC electric power
+ElecPhasePfDistortionExportPfSensor : ElecPfDistortionExportPfSensor <abstract> { phasePf: PhasePf }
+
+// Sensor for distortion power factor of line 1 exported AC electric power
+ElecL1PfDistortionExportPfSensor : ElecPhasePfDistortionExportPfSensor { phasePf: "L1" }
+
+// Sensor for distortion power factor of line 2 exported AC electric power
+ElecL2PfDistortionExportPfSensor : ElecPhasePfDistortionExportPfSensor { phasePf: "L2" }
+
+// Sensor for distortion power factor of line 3 exported AC electric power
+ElecL3PfDistortionExportPfSensor : ElecPhasePfDistortionExportPfSensor { phasePf: "L3" }
+
+// Sensor for distortion power factor of phase average exported AC electric power
+ElecPhaseAvgPfDistortionExportPfSensor : ElecPfDistortionExportPfSensor { phaseAvg }
+
+// Sensor for true power factor of total net AC electric power
+ElecTotalPfTrueNetPfSensor : ElecPfTrueNetPfSensor { total }
+
+// Sensor for true power factor of line net AC electric power
+ElecLinePfTrueNetPfSensor : ElecPfTrueNetPfSensor <abstract> { linePf: LinePf }
+
+// Sensor for true power factor of line 1 to line 2 net AC electric power
+ElecL1L2PfTrueNetPfSensor : ElecLinePfTrueNetPfSensor { linePf: "L1-L2" }
+
+// Sensor for true power factor of line 2 to line 3 net AC electric power
+ElecL2L3PfTrueNetPfSensor : ElecLinePfTrueNetPfSensor { linePf: "L2-L3" }
+
+// Sensor for true power factor of line 3 to line 1 net AC electric power
+ElecL3L1PfTrueNetPfSensor : ElecLinePfTrueNetPfSensor { linePf: "L3-L1" }
+
+// Sensor for true power factor of line average net AC electric power
+ElecLineAvgPfTrueNetPfSensor : ElecPfTrueNetPfSensor { lineAvg }
+
+// Sensor for true power factor of phase net AC electric power
+ElecPhasePfTrueNetPfSensor : ElecPfTrueNetPfSensor <abstract> { phasePf: PhasePf }
+
+// Sensor for true power factor of line 1 net AC electric power
+ElecL1PfTrueNetPfSensor : ElecPhasePfTrueNetPfSensor { phasePf: "L1" }
+
+// Sensor for true power factor of line 2 net AC electric power
+ElecL2PfTrueNetPfSensor : ElecPhasePfTrueNetPfSensor { phasePf: "L2" }
+
+// Sensor for true power factor of line 3 net AC electric power
+ElecL3PfTrueNetPfSensor : ElecPhasePfTrueNetPfSensor { phasePf: "L3" }
+
+// Sensor for true power factor of phase average net AC electric power
+ElecPhaseAvgPfTrueNetPfSensor : ElecPfTrueNetPfSensor { phaseAvg }
+
+// Sensor for displacement power factor of total net AC electric power
+ElecTotalPfDisplacementNetPfSensor : ElecPfDisplacementNetPfSensor { total }
+
+// Sensor for displacement power factor of line net AC electric power
+ElecLinePfDisplacementNetPfSensor : ElecPfDisplacementNetPfSensor <abstract> { linePf: LinePf }
+
+// Sensor for displacement power factor of line 1 to line 2 net AC electric power
+ElecL1L2PfDisplacementNetPfSensor : ElecLinePfDisplacementNetPfSensor { linePf: "L1-L2" }
+
+// Sensor for displacement power factor of line 2 to line 3 net AC electric power
+ElecL2L3PfDisplacementNetPfSensor : ElecLinePfDisplacementNetPfSensor { linePf: "L2-L3" }
+
+// Sensor for displacement power factor of line 3 to line 1 net AC electric power
+ElecL3L1PfDisplacementNetPfSensor : ElecLinePfDisplacementNetPfSensor { linePf: "L3-L1" }
+
+// Sensor for displacement power factor of line average net AC electric power
+ElecLineAvgPfDisplacementNetPfSensor : ElecPfDisplacementNetPfSensor { lineAvg }
+
+// Sensor for displacement power factor of phase net AC electric power
+ElecPhasePfDisplacementNetPfSensor : ElecPfDisplacementNetPfSensor <abstract> { phasePf: PhasePf }
+
+// Sensor for displacement power factor of line 1 net AC electric power
+ElecL1PfDisplacementNetPfSensor : ElecPhasePfDisplacementNetPfSensor { phasePf: "L1" }
+
+// Sensor for displacement power factor of line 2 net AC electric power
+ElecL2PfDisplacementNetPfSensor : ElecPhasePfDisplacementNetPfSensor { phasePf: "L2" }
+
+// Sensor for displacement power factor of line 3 net AC electric power
+ElecL3PfDisplacementNetPfSensor : ElecPhasePfDisplacementNetPfSensor { phasePf: "L3" }
+
+// Sensor for displacement power factor of phase average net AC electric power
+ElecPhaseAvgPfDisplacementNetPfSensor : ElecPfDisplacementNetPfSensor { phaseAvg }
+
+// Sensor for distortion power factor of total net AC electric power
+ElecTotalPfDistortionNetPfSensor : ElecPfDistortionNetPfSensor { total }
+
+// Sensor for distortion power factor of line net AC electric power
+ElecLinePfDistortionNetPfSensor : ElecPfDistortionNetPfSensor <abstract> { linePf: LinePf }
+
+// Sensor for distortion power factor of line 1 to line 2 net AC electric power
+ElecL1L2PfDistortionNetPfSensor : ElecLinePfDistortionNetPfSensor { linePf: "L1-L2" }
+
+// Sensor for distortion power factor of line 2 to line 3 net AC electric power
+ElecL2L3PfDistortionNetPfSensor : ElecLinePfDistortionNetPfSensor { linePf: "L2-L3" }
+
+// Sensor for distortion power factor of line 3 to line 1 net AC electric power
+ElecL3L1PfDistortionNetPfSensor : ElecLinePfDistortionNetPfSensor { linePf: "L3-L1" }
+
+// Sensor for distortion power factor of line average net AC electric power
+ElecLineAvgPfDistortionNetPfSensor : ElecPfDistortionNetPfSensor { lineAvg }
+
+// Sensor for distortion power factor of phase net AC electric power
+ElecPhasePfDistortionNetPfSensor : ElecPfDistortionNetPfSensor <abstract> { phasePf: PhasePf }
+
+// Sensor for distortion power factor of line 1 net AC electric power
+ElecL1PfDistortionNetPfSensor : ElecPhasePfDistortionNetPfSensor { phasePf: "L1" }
+
+// Sensor for distortion power factor of line 2 net AC electric power
+ElecL2PfDistortionNetPfSensor : ElecPhasePfDistortionNetPfSensor { phasePf: "L2" }
+
+// Sensor for distortion power factor of line 3 net AC electric power
+ElecL3PfDistortionNetPfSensor : ElecPhasePfDistortionNetPfSensor { phasePf: "L3" }
+
+// Sensor for distortion power factor of phase average net AC electric power
+ElecPhaseAvgPfDistortionNetPfSensor : ElecPfDistortionNetPfSensor { phaseAvg }
+
+// Sensor for total active AC electric demand exported
+ElecTotalActiveExportDemandSensor : ElecActiveExportDemandSensor { total }
+
+// Sensor for total reactive AC electric demand exported
+ElecTotalReactiveExportDemandSensor : ElecReactiveExportDemandSensor { total }
+
+// Sensor for total apparent AC electric demand exported
+ElecTotalApparentExportDemandSensor : ElecApparentExportDemandSensor { total }
+
+// Sensor for total active net AC electric demand
+ElecTotalActiveNetDemandSensor : ElecActiveNetDemandSensor { total }
+
+// Sensor for total reactive net AC electric demand
+ElecTotalReactiveNetDemandSensor : ElecReactiveNetDemandSensor { total }
+
+// Sensor for total apparent net AC electric demand
+ElecTotalApparentNetDemandSensor : ElecApparentNetDemandSensor { total }
+
+// Effective setpoint for total active AC electric demand imported
+ElecTotalActiveImportDemandEffectiveSp : ElecActiveImportDemandEffectiveSp { total }
+
+// Effective setpoint for total active AC electric demand exported
+ElecTotalActiveExportDemandEffectiveSp : ElecActiveExportDemandEffectiveSp { total }
+
+// Effective setpoint for total active net AC electric demand
+ElecTotalActiveNetDemandEffectiveSp : ElecActiveNetDemandEffectiveSp { total }
+
+// Max setpoint for total active AC electric demand imported
+ElecTotalActiveImportDemandMaxSp : ElecActiveImportDemandMaxSp { total }
+
+// Max setpoint for total active AC electric demand exported
+ElecTotalActiveExportDemandMaxSp : ElecActiveExportDemandMaxSp { total }
+
+// Max setpoint for total active net AC electric demand
+ElecTotalActiveNetDemandMaxSp : ElecActiveNetDemandMaxSp { total }
+
+// Min setpoint for total active AC electric demand imported
+ElecTotalActiveImportDemandMinSp : ElecActiveImportDemandMinSp { total }
+
+// Min setpoint for total active AC electric demand exported
+ElecTotalActiveExportDemandMinSp : ElecActiveExportDemandMinSp { total }
+
+// Min setpoint for total active net AC electric demand
+ElecTotalActiveNetDemandMinSp : ElecActiveNetDemandMinSp { total }
+
+// Sensor for total active AC electric energy exported
+ElecTotalActiveExportEnergySensor : ElecActiveExportEnergySensor { total }
+
+// Sensor for line active AC electric energy exported
+ElecLineActiveExportEnergySensor : ElecActiveExportEnergySensor <abstract> { lineEnergy: LineEnergy }
+
+// Sensor for line 1 to line 2 active AC electric energy exported
+ElecL1L2ActiveExportEnergySensor : ElecLineActiveExportEnergySensor { lineEnergy: "L1-L2" }
+
+// Sensor for line 2 to line 3 active AC electric energy exported
+ElecL2L3ActiveExportEnergySensor : ElecLineActiveExportEnergySensor { lineEnergy: "L2-L3" }
+
+// Sensor for line 3 to line 1 active AC electric energy exported
+ElecL3L1ActiveExportEnergySensor : ElecLineActiveExportEnergySensor { lineEnergy: "L3-L1" }
+
+// Sensor for line average active AC electric energy exported
+ElecLineAvgActiveExportEnergySensor : ElecActiveExportEnergySensor { lineAvg }
+
+// Sensor for phase active AC electric energy exported
+ElecPhaseActiveExportEnergySensor : ElecActiveExportEnergySensor <abstract> { phaseEnergy: PhaseEnergy }
+
+// Sensor for line 1 active AC electric energy exported
+ElecL1ActiveExportEnergySensor : ElecPhaseActiveExportEnergySensor { phaseEnergy: "L1" }
+
+// Sensor for line 2 active AC electric energy exported
+ElecL2ActiveExportEnergySensor : ElecPhaseActiveExportEnergySensor { phaseEnergy: "L2" }
+
+// Sensor for line 3 active AC electric energy exported
+ElecL3ActiveExportEnergySensor : ElecPhaseActiveExportEnergySensor { phaseEnergy: "L3" }
+
+// Sensor for phase average active AC electric energy exported
+ElecPhaseAvgActiveExportEnergySensor : ElecActiveExportEnergySensor { phaseAvg }
+
+// Sensor for total reactive AC electric energy exported
+ElecTotalReactiveExportEnergySensor : ElecReactiveExportEnergySensor { total }
+
+// Sensor for line reactive AC electric energy exported
+ElecLineReactiveExportEnergySensor : ElecReactiveExportEnergySensor <abstract> { lineEnergy: LineEnergy }
+
+// Sensor for line 1 to line 2 reactive AC electric energy exported
+ElecL1L2ReactiveExportEnergySensor : ElecLineReactiveExportEnergySensor { lineEnergy: "L1-L2" }
+
+// Sensor for line 2 to line 3 reactive AC electric energy exported
+ElecL2L3ReactiveExportEnergySensor : ElecLineReactiveExportEnergySensor { lineEnergy: "L2-L3" }
+
+// Sensor for line 3 to line 1 reactive AC electric energy exported
+ElecL3L1ReactiveExportEnergySensor : ElecLineReactiveExportEnergySensor { lineEnergy: "L3-L1" }
+
+// Sensor for line average reactive AC electric energy exported
+ElecLineAvgReactiveExportEnergySensor : ElecReactiveExportEnergySensor { lineAvg }
+
+// Sensor for phase reactive AC electric energy exported
+ElecPhaseReactiveExportEnergySensor : ElecReactiveExportEnergySensor <abstract> { phaseEnergy: PhaseEnergy }
+
+// Sensor for line 1 reactive AC electric energy exported
+ElecL1ReactiveExportEnergySensor : ElecPhaseReactiveExportEnergySensor { phaseEnergy: "L1" }
+
+// Sensor for line 2 reactive AC electric energy exported
+ElecL2ReactiveExportEnergySensor : ElecPhaseReactiveExportEnergySensor { phaseEnergy: "L2" }
+
+// Sensor for line 3 reactive AC electric energy exported
+ElecL3ReactiveExportEnergySensor : ElecPhaseReactiveExportEnergySensor { phaseEnergy: "L3" }
+
+// Sensor for phase average reactive AC electric energy exported
+ElecPhaseAvgReactiveExportEnergySensor : ElecReactiveExportEnergySensor { phaseAvg }
+
+// Sensor for total apparent AC electric energy exported
+ElecTotalApparentExportEnergySensor : ElecApparentExportEnergySensor { total }
+
+// Sensor for line apparent AC electric energy exported
+ElecLineApparentExportEnergySensor : ElecApparentExportEnergySensor <abstract> { lineEnergy: LineEnergy }
+
+// Sensor for line 1 to line 2 apparent AC electric energy exported
+ElecL1L2ApparentExportEnergySensor : ElecLineApparentExportEnergySensor { lineEnergy: "L1-L2" }
+
+// Sensor for line 2 to line 3 apparent AC electric energy exported
+ElecL2L3ApparentExportEnergySensor : ElecLineApparentExportEnergySensor { lineEnergy: "L2-L3" }
+
+// Sensor for line 3 to line 1 apparent AC electric energy exported
+ElecL3L1ApparentExportEnergySensor : ElecLineApparentExportEnergySensor { lineEnergy: "L3-L1" }
+
+// Sensor for line average apparent AC electric energy exported
+ElecLineAvgApparentExportEnergySensor : ElecApparentExportEnergySensor { lineAvg }
+
+// Sensor for phase apparent AC electric energy exported
+ElecPhaseApparentExportEnergySensor : ElecApparentExportEnergySensor <abstract> { phaseEnergy: PhaseEnergy }
+
+// Sensor for line 1 apparent AC electric energy exported
+ElecL1ApparentExportEnergySensor : ElecPhaseApparentExportEnergySensor { phaseEnergy: "L1" }
+
+// Sensor for line 2 apparent AC electric energy exported
+ElecL2ApparentExportEnergySensor : ElecPhaseApparentExportEnergySensor { phaseEnergy: "L2" }
+
+// Sensor for line 3 apparent AC electric energy exported
+ElecL3ApparentExportEnergySensor : ElecPhaseApparentExportEnergySensor { phaseEnergy: "L3" }
+
+// Sensor for phase average apparent AC electric energy exported
+ElecPhaseAvgApparentExportEnergySensor : ElecApparentExportEnergySensor { phaseAvg }
+
+// Sensor for total active net AC electric energy
+ElecTotalActiveNetEnergySensor : ElecActiveNetEnergySensor { total }
+
+// Sensor for line active net AC electric energy
+ElecLineActiveNetEnergySensor : ElecActiveNetEnergySensor <abstract> { lineEnergy: LineEnergy }
+
+// Sensor for line 1 to line 2 active net AC electric energy
+ElecL1L2ActiveNetEnergySensor : ElecLineActiveNetEnergySensor { lineEnergy: "L1-L2" }
+
+// Sensor for line 2 to line 3 active net AC electric energy
+ElecL2L3ActiveNetEnergySensor : ElecLineActiveNetEnergySensor { lineEnergy: "L2-L3" }
+
+// Sensor for line 3 to line 1 active net AC electric energy
+ElecL3L1ActiveNetEnergySensor : ElecLineActiveNetEnergySensor { lineEnergy: "L3-L1" }
+
+// Sensor for line average active net AC electric energy
+ElecLineAvgActiveNetEnergySensor : ElecActiveNetEnergySensor { lineAvg }
+
+// Sensor for phase active net AC electric energy
+ElecPhaseActiveNetEnergySensor : ElecActiveNetEnergySensor <abstract> { phaseEnergy: PhaseEnergy }
+
+// Sensor for line 1 active net AC electric energy
+ElecL1ActiveNetEnergySensor : ElecPhaseActiveNetEnergySensor { phaseEnergy: "L1" }
+
+// Sensor for line 2 active net AC electric energy
+ElecL2ActiveNetEnergySensor : ElecPhaseActiveNetEnergySensor { phaseEnergy: "L2" }
+
+// Sensor for line 3 active net AC electric energy
+ElecL3ActiveNetEnergySensor : ElecPhaseActiveNetEnergySensor { phaseEnergy: "L3" }
+
+// Sensor for phase average active net AC electric energy
+ElecPhaseAvgActiveNetEnergySensor : ElecActiveNetEnergySensor { phaseAvg }
+
+// Sensor for total reactive net AC electric energy
+ElecTotalReactiveNetEnergySensor : ElecReactiveNetEnergySensor { total }
+
+// Sensor for line reactive net AC electric energy
+ElecLineReactiveNetEnergySensor : ElecReactiveNetEnergySensor <abstract> { lineEnergy: LineEnergy }
+
+// Sensor for line 1 to line 2 reactive net AC electric energy
+ElecL1L2ReactiveNetEnergySensor : ElecLineReactiveNetEnergySensor { lineEnergy: "L1-L2" }
+
+// Sensor for line 2 to line 3 reactive net AC electric energy
+ElecL2L3ReactiveNetEnergySensor : ElecLineReactiveNetEnergySensor { lineEnergy: "L2-L3" }
+
+// Sensor for line 3 to line 1 reactive net AC electric energy
+ElecL3L1ReactiveNetEnergySensor : ElecLineReactiveNetEnergySensor { lineEnergy: "L3-L1" }
+
+// Sensor for line average reactive net AC electric energy
+ElecLineAvgReactiveNetEnergySensor : ElecReactiveNetEnergySensor { lineAvg }
+
+// Sensor for phase reactive net AC electric energy
+ElecPhaseReactiveNetEnergySensor : ElecReactiveNetEnergySensor <abstract> { phaseEnergy: PhaseEnergy }
+
+// Sensor for line 1 reactive net AC electric energy
+ElecL1ReactiveNetEnergySensor : ElecPhaseReactiveNetEnergySensor { phaseEnergy: "L1" }
+
+// Sensor for line 2 reactive net AC electric energy
+ElecL2ReactiveNetEnergySensor : ElecPhaseReactiveNetEnergySensor { phaseEnergy: "L2" }
+
+// Sensor for line 3 reactive net AC electric energy
+ElecL3ReactiveNetEnergySensor : ElecPhaseReactiveNetEnergySensor { phaseEnergy: "L3" }
+
+// Sensor for phase average reactive net AC electric energy
+ElecPhaseAvgReactiveNetEnergySensor : ElecReactiveNetEnergySensor { phaseAvg }
+
+// Sensor for total apparent net AC electric energy
+ElecTotalApparentNetEnergySensor : ElecApparentNetEnergySensor { total }
+
+// Sensor for line apparent net AC electric energy
+ElecLineApparentNetEnergySensor : ElecApparentNetEnergySensor <abstract> { lineEnergy: LineEnergy }
+
+// Sensor for line 1 to line 2 apparent net AC electric energy
+ElecL1L2ApparentNetEnergySensor : ElecLineApparentNetEnergySensor { lineEnergy: "L1-L2" }
+
+// Sensor for line 2 to line 3 apparent net AC electric energy
+ElecL2L3ApparentNetEnergySensor : ElecLineApparentNetEnergySensor { lineEnergy: "L2-L3" }
+
+// Sensor for line 3 to line 1 apparent net AC electric energy
+ElecL3L1ApparentNetEnergySensor : ElecLineApparentNetEnergySensor { lineEnergy: "L3-L1" }
+
+// Sensor for line average apparent net AC electric energy
+ElecLineAvgApparentNetEnergySensor : ElecApparentNetEnergySensor { lineAvg }
+
+// Sensor for phase apparent net AC electric energy
+ElecPhaseApparentNetEnergySensor : ElecApparentNetEnergySensor <abstract> { phaseEnergy: PhaseEnergy }
+
+// Sensor for line 1 apparent net AC electric energy
+ElecL1ApparentNetEnergySensor : ElecPhaseApparentNetEnergySensor { phaseEnergy: "L1" }
+
+// Sensor for line 2 apparent net AC electric energy
+ElecL2ApparentNetEnergySensor : ElecPhaseApparentNetEnergySensor { phaseEnergy: "L2" }
+
+// Sensor for line 3 apparent net AC electric energy
+ElecL3ApparentNetEnergySensor : ElecPhaseApparentNetEnergySensor { phaseEnergy: "L3" }
+
+// Sensor for phase average apparent net AC electric energy
+ElecPhaseAvgApparentNetEnergySensor : ElecApparentNetEnergySensor { phaseAvg }
+
