@@ -92,15 +92,6 @@ ElecExportAcReactiveEnergySensor : ElecAcReactiveEnergySensor <abstract> { expor
 // Sensor for net AC electric reactive energy
 ElecNetAcReactiveEnergySensor : ElecAcReactiveEnergySensor <abstract> { net }
 
-// Sensor for AC electric apparent energy imported
-ElecImportAcApparentEnergySensor : ElecAcApparentEnergySensor <abstract> { import }
-
-// Sensor for AC electric apparent energy exported
-ElecExportAcApparentEnergySensor : ElecAcApparentEnergySensor <abstract> { export }
-
-// Sensor for net AC electric apparent energy
-ElecNetAcApparentEnergySensor : ElecAcApparentEnergySensor <abstract> { net }
-
 // Sensor for AC electric active demand imported
 ElecImportAcActiveDemandSensor : ElecAcActiveDemandSensor <abstract> { import }
 
@@ -118,15 +109,6 @@ ElecExportAcReactiveDemandSensor : ElecAcReactiveDemandSensor <abstract> { expor
 
 // Sensor for net AC electric reactive demand
 ElecNetAcReactiveDemandSensor : ElecAcReactiveDemandSensor <abstract> { net }
-
-// Sensor for AC electric apparent demand imported
-ElecImportAcApparentDemandSensor : ElecAcApparentDemandSensor <abstract> { import }
-
-// Sensor for AC electric apparent demand exported
-ElecExportAcApparentDemandSensor : ElecAcApparentDemandSensor <abstract> { export }
-
-// Sensor for net AC electric apparent demand
-ElecNetAcApparentDemandSensor : ElecAcApparentDemandSensor <abstract> { net }
 
 // Sensor for total AC electric power factor
 ElecTotalAcPfSensor : ElecAcPfSensor { total }
@@ -149,14 +131,8 @@ ElecTotalExportAcReactiveEnergySensor : ElecExportAcReactiveEnergySensor { total
 // Sensor for total net AC electric reactive energy
 ElecTotalNetAcReactiveEnergySensor : ElecNetAcReactiveEnergySensor { total }
 
-// Sensor for total AC electric apparent energy imported
-ElecTotalImportAcApparentEnergySensor : ElecImportAcApparentEnergySensor { total }
-
-// Sensor for total AC electric apparent energy exported
-ElecTotalExportAcApparentEnergySensor : ElecExportAcApparentEnergySensor { total }
-
-// Sensor for total net AC electric apparent energy
-ElecTotalNetAcApparentEnergySensor : ElecNetAcApparentEnergySensor { total }
+// Sensor for total AC electric apparent energy
+ElecTotalAcApparentEnergySensor : ElecAcApparentEnergySensor { total }
 
 // Sensor for total AC electric active demand imported
 ElecTotalImportAcActiveDemandSensor : ElecImportAcActiveDemandSensor { total }
@@ -176,12 +152,6 @@ ElecTotalExportAcReactiveDemandSensor : ElecExportAcReactiveDemandSensor { total
 // Sensor for total net AC electric reactive demand
 ElecTotalNetAcReactiveDemandSensor : ElecNetAcReactiveDemandSensor { total }
 
-// Sensor for total AC electric apparent demand imported
-ElecTotalImportAcApparentDemandSensor : ElecImportAcApparentDemandSensor { total }
-
-// Sensor for total AC electric apparent demand exported
-ElecTotalExportAcApparentDemandSensor : ElecExportAcApparentDemandSensor { total }
-
-// Sensor for total net AC electric apparent demand
-ElecTotalNetAcApparentDemandSensor : ElecNetAcApparentDemandSensor { total }
+// Sensor for total AC electric apparent demand
+ElecTotalAcApparentDemandSensor : ElecAcApparentDemandSensor { total }
 
