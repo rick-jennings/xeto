@@ -438,3 +438,15 @@ PressureDependentVavModulation: VavModulation { pressureDependent }
 // setpoint; independent of the duct pressure
 PressureIndependentVavModulation: VavModulation { pressureIndependent }
 
+//////////////////////////////////////////////////////////////////////////
+// Choices for water flow
+//////////////////////////////////////////////////////////////////////////
+
+WaterProcess: Choice
+ChilledWaterProcess: WaterProcess { chilled }
+CondenserWaterProcess: WaterProcess { condenser }
+HotWaterProcess: WaterProcess { hot }
+
+HeatRecoveryLocation: Choice
+ProductionHeatRecoveryLocation: HeatRecoveryLocation { production }
+ConsumptionHeatRecoveryLocation: HeatRecoveryLocation { consumption }
