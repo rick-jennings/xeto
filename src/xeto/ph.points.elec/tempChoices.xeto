@@ -1,0 +1,46 @@
+// TODO: formalize these in haystack-defs then in xeto
+
+ElecSpectralContent: Choice
+ElecWaveform: ElecSpectralContent { elec, waveform }
+ElecFundamentalComponent: ElecSpectralContent { elec, fundamental }
+ElecHarmonicComponent: ElecSpectralContent { elec, harmonic }
+
+ElecDirection: Choice
+ElecImportDirection: ElecDirection { import }
+ElecExportDirection: ElecDirection { export }
+ElecNetDirection: ElecDirection { net }
+ElecAbsoluteDirection: ElecDirection { absolute }
+
+ElecWaveformMagnitude: Choice
+ElecAvgWaveformMagnitude: ElecWaveformMagnitude { avg, magnitude }
+ElecRmsWaveformMagnitude: ElecWaveformMagnitude { rms, magnitude }
+ElecPeakWaveformMagnitude: ElecWaveformMagnitude { peak, magnitude }
+ElecPeakToPeakWaveformMagnitude: ElecWaveformMagnitude { peakToPeak, magnitude }
+
+ElecWaveformStat: Choice
+ElecThffWaveformStat: ElecWaveformStat { thff }
+ElecThdWaveformStat: ElecWaveformStat { thd }
+ElecOddThdWaveformStat: ElecWaveformStat { oddThd }
+ElecEvenThdWaveformStat: ElecWaveformStat { evenThd }
+ElecKFactorWaveformStat: ElecWaveformStat { kFactor }
+ElecCrestFactorWaveformStat: ElecWaveformStat { crestFactor }
+ElecImbalanceWaveformStat: ElecWaveformStat { imbalance }
+
+ElecDemandCalc: Choice
+ElecFixedWindowDemandCalc: ElecDemandCalc { fixedWindow }
+ElecSlidingWindowDemandCalc : ElecDemandCalc { slidingWindow }
+
+ElecPowerSubtype: Choice
+ElecActivePower: ElecPowerSubtype { active }
+ElecReactivePower: ElecPowerSubtype { reactive }
+ElecApparentPower: ElecPowerSubtype { apparent }
+
+ElecQuadrant: Choice
+ElecQuadrant1: ElecQuadrant { elecQuadrant1 }
+ElecQuadrant2: ElecQuadrant { elecQuadrant2 }
+ElecQuadrant3: ElecQuadrant { elecQuadrant3 }
+ElecQuadrant4: ElecQuadrant { elecQuadrant4 }
+
+ElecQuadrantDirection: Choice
+ElecQuadrantImport: ElecQuadrantDirection { import }
+ElecQuadrantExport: ElecQuadrantDirection { export }

@@ -9,179 +9,84 @@
 // Sensor for electricity
 ElecSensor : NumberPoint & SensorPoint <abstract> { elec }
 
-// Sensor for electric demand
-ElecDemandSensor : ElecSensor <abstract> {
-  demand
-  unit: Unit <quantity:"power"> "kW"
+//
+// Energy
+//
+
+// Sensor for AC electric energy
+ElecAcEnergySensor : ElecSensor <abstract> {
+  ac
+  energy
+  elecPowerSubtype: ElecPowerSubtype
+  elecDirection: ElecDirection
 }
 
-// Sensor for electric energy
-ElecEnergySensor : ElecSensor <abstract> {
-  energy
+// Sensor for AC electric active energy
+ElecAcActiveEnergySensor : ElecAcEnergySensor {
+  active
   unit: Unit <quantity:"energy"> "kWh"
 }
 
+// Sensor for AC electric reactive energy
+ElecAcReactiveEnergySensor : ElecAcEnergySensor {
+  reactive
+  unit: Unit <quantity:"reactiveEnergy"> "kVARh"
+}
+
+// Sensor for AC electric apparent energy
+ElecAcApparentEnergySensor : ElecAcEnergySensor {
+  apparent
+  unit: Unit <quantity:"apparentEnergy"> "kVAh"
+}
+
+//
+// Demand
+//
+
+// Sensor for AC electric demand
+ElecAcDemandSensor : ElecSensor <abstract> {
+  demand
+  elecDemandCalc: ElecDemandCalc?
+}
+
+//
+// Power Demand
+//
+
+// Sensor for AC electric power demand
+ElecAcPowerDemandSensor : ElecAcDemandSensor <abstract> {
+  power
+  elecPowerSubtype: ElecPowerSubtype
+  elecDirection: ElecDirection
+}
+
+// Sensor for AC electric active power demand
+ElecAcActivePowerDemandSensor : ElecAcPowerDemandSensor {
+  active
+  unit: Unit <quantity:"power"> "kW"
+}
+
+// Sensor for AC electric reactive power demand
+ElecAcReactivePowerDemandSensor : ElecAcPowerDemandSensor {
+  reactive
+  unit: Unit <quantity:"reactivePower"> "kVAR"
+}
+
+// Sensor for AC electric apparent power demand
+ElecAcApparentPowerDemandSensor : ElecAcPowerDemandSensor {
+  apparent
+  unit: Unit <quantity:"reactivePower"> "kVA"
+}
+
+//
+// Power Factor
+//
+
 // Sensor for AC electric power factor
-ElecAcPfSensor : ElecSensor <abstract> {
+ElecAcPfSensor : ElecSensor {
   pf
   unit: Unit <fixed> "pf"
   ac
   pfScope: PfScope?
   pfStandard: PfStandard?
 }
-
-// Sensor for AC electric active energy
-ElecAcActiveEnergySensor : ElecEnergySensor <abstract> {
-  active
-  ac
-}
-
-// Sensor for AC electric reactive energy
-ElecAcReactiveEnergySensor : ElecSensor <abstract> {
-  energy
-  reactive
-  unit: Unit <quantity:"reactiveEnergy"> "kVARh"
-  ac
-}
-
-// Sensor for AC electric apparent energy
-ElecAcApparentEnergySensor : ElecSensor <abstract> {
-  energy
-  apparent
-  unit: Unit <quantity:"apparentEnergy"> "kVAh"
-  ac
-}
-
-// Sensor for AC electric active demand
-ElecAcActiveDemandSensor : ElecDemandSensor <abstract> {
-  active
-  ac
-}
-
-// Sensor for AC electric reactive demand
-ElecAcReactiveDemandSensor : ElecSensor <abstract> {
-  demand
-  reactive
-  unit: Unit <quantity:"reactivePower"> "kVAR"
-  ac
-}
-
-// Sensor for AC electric apparent demand
-ElecAcApparentDemandSensor : ElecSensor <abstract> {
-  demand
-  apparent
-  unit: Unit <quantity:"apparentPower"> "kVA"
-  ac
-}
-
-// Sensor for AC electric active energy imported
-ElecImportAcActiveEnergySensor : ElecAcActiveEnergySensor <abstract> { import }
-
-// Sensor for AC electric active energy exported
-ElecExportAcActiveEnergySensor : ElecAcActiveEnergySensor <abstract> { export }
-
-// Sensor for net AC electric active energy
-ElecNetAcActiveEnergySensor : ElecAcActiveEnergySensor <abstract> { net }
-
-// Sensor for AC electric reactive energy imported
-ElecImportAcReactiveEnergySensor : ElecAcReactiveEnergySensor <abstract> { import }
-
-// Sensor for AC electric reactive energy exported
-ElecExportAcReactiveEnergySensor : ElecAcReactiveEnergySensor <abstract> { export }
-
-// Sensor for net AC electric reactive energy
-ElecNetAcReactiveEnergySensor : ElecAcReactiveEnergySensor <abstract> { net }
-
-// Sensor for AC electric apparent energy imported
-ElecImportAcApparentEnergySensor : ElecAcApparentEnergySensor <abstract> { import }
-
-// Sensor for AC electric apparent energy exported
-ElecExportAcApparentEnergySensor : ElecAcApparentEnergySensor <abstract> { export }
-
-// Sensor for net AC electric apparent energy
-ElecNetAcApparentEnergySensor : ElecAcApparentEnergySensor <abstract> { net }
-
-// Sensor for AC electric active demand imported
-ElecImportAcActiveDemandSensor : ElecAcActiveDemandSensor <abstract> { import }
-
-// Sensor for AC electric active demand exported
-ElecExportAcActiveDemandSensor : ElecAcActiveDemandSensor <abstract> { export }
-
-// Sensor for net AC electric active demand
-ElecNetAcActiveDemandSensor : ElecAcActiveDemandSensor <abstract> { net }
-
-// Sensor for AC electric reactive demand imported
-ElecImportAcReactiveDemandSensor : ElecAcReactiveDemandSensor <abstract> { import }
-
-// Sensor for AC electric reactive demand exported
-ElecExportAcReactiveDemandSensor : ElecAcReactiveDemandSensor <abstract> { export }
-
-// Sensor for net AC electric reactive demand
-ElecNetAcReactiveDemandSensor : ElecAcReactiveDemandSensor <abstract> { net }
-
-// Sensor for AC electric apparent demand imported
-ElecImportAcApparentDemandSensor : ElecAcApparentDemandSensor <abstract> { import }
-
-// Sensor for AC electric apparent demand exported
-ElecExportAcApparentDemandSensor : ElecAcApparentDemandSensor <abstract> { export }
-
-// Sensor for net AC electric apparent demand
-ElecNetAcApparentDemandSensor : ElecAcApparentDemandSensor <abstract> { net }
-
-// Sensor for total AC electric power factor
-ElecTotalAcPfSensor : ElecAcPfSensor { total }
-
-// Sensor for total AC electric active energy imported
-ElecTotalImportAcActiveEnergySensor : ElecImportAcActiveEnergySensor { total }
-
-// Sensor for total AC electric active energy exported
-ElecTotalExportAcActiveEnergySensor : ElecExportAcActiveEnergySensor { total }
-
-// Sensor for total net AC electric active energy
-ElecTotalNetAcActiveEnergySensor : ElecNetAcActiveEnergySensor { total }
-
-// Sensor for total AC electric reactive energy imported
-ElecTotalImportAcReactiveEnergySensor : ElecImportAcReactiveEnergySensor { total }
-
-// Sensor for total AC electric reactive energy exported
-ElecTotalExportAcReactiveEnergySensor : ElecExportAcReactiveEnergySensor { total }
-
-// Sensor for total net AC electric reactive energy
-ElecTotalNetAcReactiveEnergySensor : ElecNetAcReactiveEnergySensor { total }
-
-// Sensor for total AC electric apparent energy imported
-ElecTotalImportAcApparentEnergySensor : ElecImportAcApparentEnergySensor { total }
-
-// Sensor for total AC electric apparent energy exported
-ElecTotalExportAcApparentEnergySensor : ElecExportAcApparentEnergySensor { total }
-
-// Sensor for total net AC electric apparent energy
-ElecTotalNetAcApparentEnergySensor : ElecNetAcApparentEnergySensor { total }
-
-// Sensor for total AC electric active demand imported
-ElecTotalImportAcActiveDemandSensor : ElecImportAcActiveDemandSensor { total }
-
-// Sensor for total AC electric active demand exported
-ElecTotalExportAcActiveDemandSensor : ElecExportAcActiveDemandSensor { total }
-
-// Sensor for total net AC electric active demand
-ElecTotalNetAcActiveDemandSensor : ElecNetAcActiveDemandSensor { total }
-
-// Sensor for total AC electric reactive demand imported
-ElecTotalImportAcReactiveDemandSensor : ElecImportAcReactiveDemandSensor { total }
-
-// Sensor for total AC electric reactive demand exported
-ElecTotalExportAcReactiveDemandSensor : ElecExportAcReactiveDemandSensor { total }
-
-// Sensor for total net AC electric reactive demand
-ElecTotalNetAcReactiveDemandSensor : ElecNetAcReactiveDemandSensor { total }
-
-// Sensor for total AC electric apparent demand imported
-ElecTotalImportAcApparentDemandSensor : ElecImportAcApparentDemandSensor { total }
-
-// Sensor for total AC electric apparent demand exported
-ElecTotalExportAcApparentDemandSensor : ElecExportAcApparentDemandSensor { total }
-
-// Sensor for total net AC electric apparent demand
-ElecTotalNetAcApparentDemandSensor : ElecNetAcApparentDemandSensor { total }
-
