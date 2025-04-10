@@ -30,24 +30,6 @@ ElecDemandMaxSp : ElecMaxSp <abstract> {
   unit: Unit <quantity:"power"> "kW"
 }
 
-// Max setpoint for DC electric current
-ElecDcCurrentMaxSp : ElecCurrentMaxSp <abstract> { dc }
-
-// Max setpoint for DC electric power
-ElecDcPowerMaxSp : ElecPowerMaxSp <abstract> { dc }
-
-// Max setpoint for DC electric demand
-ElecDcDemandMaxSp : ElecDemandMaxSp <abstract> { dc }
-
-// Max setpoint for DC electric power imported
-ElecImportDcPowerMaxSp : ElecDcPowerMaxSp { import }
-
-// Max setpoint for DC electric current imported
-ElecImportDcCurrentMaxSp : ElecDcCurrentMaxSp { import }
-
-// Max setpoint for DC electric demand imported
-ElecImportDcDemandMaxSp : ElecDcDemandMaxSp { import }
-
 // Max setpoint for magnitude of AC electric current
 ElecAcMagnitudeCurrentMaxSp : ElecCurrentMaxSp <abstract> {
   magnitude
@@ -66,7 +48,7 @@ ElecAcActiveDemandMaxSp : ElecDemandMaxSp <abstract> {
   ac
 }
 
-// Max setpoint for magnitude of AC electric current
+// Max setpoint for magnitude of AC electric current imported
 ElecImportAcMagnitudeCurrentMaxSp : ElecAcMagnitudeCurrentMaxSp <abstract> { import }
 
 // Max setpoint for AC electric active power imported
@@ -75,11 +57,11 @@ ElecImportAcActivePowerMaxSp : ElecAcActivePowerMaxSp <abstract> { import }
 // Max setpoint for AC electric active demand imported
 ElecImportAcActiveDemandMaxSp : ElecAcActiveDemandMaxSp <abstract> { import }
 
-// Max setpoint for line magnitude of AC electric current
-ElecLineAcMagnitudeCurrentMaxSp : ElecAcMagnitudeCurrentMaxSp { lineCurrent: LineCurrent }
+// Max setpoint for line magnitude of AC electric current imported
+ElecLineImportAcMagnitudeCurrentMaxSp : ElecImportAcMagnitudeCurrentMaxSp { lineCurrent: LineCurrent }
 
-// Max setpoint for phase magnitude of AC electric current
-ElecPhaseAcMagnitudeCurrentMaxSp : ElecAcMagnitudeCurrentMaxSp { phaseCurrent: PhaseCurrent }
+// Max setpoint for phase magnitude of AC electric current imported
+ElecPhaseImportAcMagnitudeCurrentMaxSp : ElecImportAcMagnitudeCurrentMaxSp { phaseCurrent: PhaseCurrent }
 
 // Max setpoint for total AC electric active power imported
 ElecTotalImportAcActivePowerMaxSp : ElecImportAcActivePowerMaxSp { total }

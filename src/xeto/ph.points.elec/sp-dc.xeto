@@ -1,0 +1,25 @@
+//
+// Copyright (c) 2025, Project-Haystack
+// Licensed under the Academic Free License version 3.0
+//
+// History:
+//   8 Apr 2025  Rick Jennings  Creation
+//
+
+// Max setpoint for DC electric current
+ElecDcCurrentMaxSp : ElecCurrentMaxSp <abstract> { dc }
+
+// Max setpoint for DC electric power
+ElecDcPowerMaxSp : ElecPowerMaxSp <abstract> { dc }
+
+// Max setpoint for DC electric demand
+ElecDcDemandMaxSp : ElecDemandMaxSp <abstract> { dc }
+
+// Max setpoint for DC electric power imported
+ElecImportDcPowerMaxSp : ElecDcPowerMaxSp { import }
+
+// Max setpoint for DC electric current imported
+ElecImportDcCurrentMaxSp : ElecDcCurrentMaxSp { import }
+
+// Max setpoint for DC electric demand imported
+ElecImportDcDemandMaxSp : ElecDcDemandMaxSp { import }
