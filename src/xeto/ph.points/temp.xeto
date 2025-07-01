@@ -1,0 +1,26 @@
+//
+// Copyright (c) 2025, Project-Haystack
+// Licensed under the Academic Free License version 3.0
+//
+// History:
+//   1 Jul 2025  Rick Jennings  Creation
+//
+
+
+// Sensor for temperature
+TempSensor : SensorPoint <abstract> {
+  temp
+  unit: Unit <quantity:"temperature"> "°F"
+}
+
+// Sensor for heatsink temperature
+HeatsinkTempSensor : TempSensor { heatsinkTemp }
+
+// Sensor for space temperature internal to a cabinet
+CabinetTempSensor : TempSensor { cabinetTemp }
+
+// Sensor for cable temperature
+CableTempSensor : TempSensor { cableTemp }
+
+// Sensor for charging cable plug temperature
+EvseCablePlugTempSensor : TempSensor { evseCablePlugTemp }
