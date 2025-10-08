@@ -570,9 +570,13 @@ Phase: Enum {
   n <key:"N">    // neutral current
 }
 
-// Single-phase current measured line-to-line in an AC electric power
-// system.  May also be referred to as a phase current measurement.
-PhaseCurrent: Enum {
+WyePhaseCurrent: Enum {
+  pL1 <key:"L1">  // line 1 measurement
+  pL2 <key:"L2">  // line 2 measurement
+  pL3 <key:"L3">  // line 3 measurement
+}
+
+DeltaPhaseCurrent: Enum {
   pL1L2 <key:"L1-L2">  // line 1 to line 2 measurement
   pL2L3 <key:"L2-L3">  // line 2 to line 3 measurement
   pL3L1 <key:"L3-L1">  // line 3 to line 1 measurement
@@ -580,35 +584,57 @@ PhaseCurrent: Enum {
 
 // Single-phase energy measured line-to-neutral in an AC electric power
 // system.  Neutral might not be referenced, but implied.
-PhaseEnergy: Enum {
+WyePhaseEnergy: Enum {
   pL1 <key:"L1">  // line 1 measurement
   pL2 <key:"L2">  // line 2 measurement
   pL3 <key:"L3">  // line 3 measurement
 }
 
+DeltaPhaseEnergy: Enum {
+  pL1L2 <key:"L1-L2">  // line 1 to line 2 measurement
+  pL2L3 <key:"L2-L3">  // line 2 to line 3 measurement
+  pL3L1 <key:"L3-L1">  // line 3 to line 1 measurement
+}
+
 // Single-phase power factor measured line-to-neutral in an AC electric
 // power system.  Neutral might not be referenced, but implied.
-PhasePf: Enum {
+WyePhasePf: Enum {
   pL1 <key:"L1">  // line 1 measurement
   pL2 <key:"L2">  // line 2 measurement
   pL3 <key:"L3">  // line 3 measurement
+}
+
+DeltaPhasePf: Enum {
+  pL1L2 <key:"L1-L2">  // line 1 to line 2 measurement
+  pL2L3 <key:"L2-L3">  // line 2 to line 3 measurement
+  pL3L1 <key:"L3-L1">  // line 3 to line 1 measurement
 }
 
 // Single-phase power measured line-to-neutral in an AC electric power
 // system.  May also be referred to as a phase power measurement.  Neutral
 // might not be referenced, but implied.
-PhasePower: Enum {
+WyePhasePower: Enum {
   pL1 <key:"L1">  // line 1 measurement
   pL2 <key:"L2">  // line 2 measurement
   pL3 <key:"L3">  // line 3 measurement
 }
 
-// Single-phase voltage measured line-to-neutral in an AC electric power
-// system.  May also be referred to as a phase voltage measurement.
-PhaseVolt: Enum {
+DeltaPhasePower: Enum {
+  pL1L2 <key:"L1-L2">  // line 1 to line 2 measurement
+  pL2L3 <key:"L2-L3">  // line 2 to line 3 measurement
+  pL3L1 <key:"L3-L1">  // line 3 to line 1 measurement
+}
+
+WyePhaseVolt: Enum {
   pL1N <key:"L1-N">  // line 1 to neutral measurement
   pL2N <key:"L2-N">  // line 2 to neutral measurement
   pL3N <key:"L3-N">  // line 3 to neutral measurement
+}
+
+DeltaPhaseVolt: Enum {
+  pL1L2 <key:"L1-L2">  // line 1 to line 2 measurement
+  pL2L3 <key:"L2-L3">  // line 2 to line 3 measurement
+  pL3L1 <key:"L3-L1">  // line 3 to line 1 measurement
 }
 
 // Primary function of building as US Energy Star key
