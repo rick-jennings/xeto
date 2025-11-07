@@ -7,7 +7,7 @@
 //
 
 // Sensor for DC electric voltage
-ElecDcVoltSensor : ElecVoltSensor { dc }
+ElecDcVoltageSensor : ElecVoltageSensor { dc }
 
 // Sensor for DC electric current
 ElecDcCurrentSensor : ElecCurrentSensor <abstract> {

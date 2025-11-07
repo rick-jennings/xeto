@@ -30,27 +30,20 @@ ElecDemandMaxSp : ElecMaxSp <abstract> {
   unit: Unit <quantity:"power"> "kW"
 }
 
-// Max setpoint for RMS of AC electric current
-ElecAcCurrentMaxSp : ElecCurrentMaxSp <abstract> {
-  ac
-  magnitude
-  rootMeanSquare
-}
+// Max setpoint for AC electric current
+ElecAcCurrentMaxSp : ElecCurrentMaxSp <abstract> { ac }
+
+// Max setpoint for RMS AC electric current
+ElecAcRmsCurrentMaxSp : ElecAcCurrentMaxSp <abstract> { rootMeanSquare }
 
 // Max setpoint for AC electric power
 ElecAcPowerMaxSp : ElecPowerMaxSp <abstract> { ac }
 
-// Max setpoint for magnitude of AC electric power
-ElecAcMagnitudePowerMaxSp : ElecAcPowerMaxSp <abstract> {
-  magnitude
-  elecAcWaveformMagnitude: ElecAcWaveformMagnitude
-}
+// Max setpoint for AC electric active power
+ElecAcActivePowerMaxSp : ElecAcPowerMaxSp <abstract> { active }
 
-// Max setpoint for average magnitude of AC electric active power
-ElecAcActivePowerMaxSp : ElecAcMagnitudePowerMaxSp <abstract> {
-  avg
-  active
-}
+// Max setpoint for average AC electric active power
+ElecAcAvgActivePowerMaxSp : ElecAcActivePowerMaxSp <abstract> { avg }
 
 // Max setpoint for AC electric active power demand
 ElecAcActiveDemandMaxSp : ElecDemandMaxSp <abstract> {
@@ -59,23 +52,17 @@ ElecAcActiveDemandMaxSp : ElecDemandMaxSp <abstract> {
   power
 }
 
-// Max setpoint for import of RMS of AC electric current
-ElecAcImportCurrentMaxSp : ElecAcCurrentMaxSp <abstract> { import }
+// Max setpoint for import of RMS AC electric current
+ElecAcImportRmsCurrentMaxSp : ElecAcRmsCurrentMaxSp { import }
 
-// Max setpoint for import of average magnitude of AC electric active power
-ElecAcImportActivePowerMaxSp : ElecAcActivePowerMaxSp <abstract> { import }
+// Max setpoint for import of average AC electric active power
+ElecAcImportAvgActivePowerMaxSp : ElecAcAvgActivePowerMaxSp { import }
 
 // Max setpoint for import of AC electric active power demand
-ElecAcImportActiveDemandMaxSp : ElecAcActiveDemandMaxSp <abstract> { import }
+ElecAcImportActiveDemandMaxSp : ElecAcActiveDemandMaxSp { import }
 
-// Max setpoint for line import of RMS of AC electric current
-ElecAcLineImportCurrentMaxSp : ElecAcImportCurrentMaxSp { lineCurrent: LineCurrent }
-
-// Max setpoint for phase import of RMS of AC electric current
-ElecAcPhaseImportCurrentMaxSp : ElecAcImportCurrentMaxSp { phaseCurrent: PhaseCurrent }
-
-// Max setpoint for total import of average magnitude of AC electric active power
-ElecAcTotalImportActivePowerMaxSp : ElecAcImportActivePowerMaxSp { total }
+// Max setpoint for total import of average AC electric active power
+ElecAcTotalImportAvgActivePowerMaxSp : ElecAcImportAvgActivePowerMaxSp { total }
 
 // Max setpoint for total import of AC electric active power demand
 ElecAcTotalImportActiveDemandMaxSp : ElecAcImportActiveDemandMaxSp { total }
