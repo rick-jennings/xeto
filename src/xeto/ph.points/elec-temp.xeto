@@ -1,0 +1,36 @@
+//
+// Copyright (c) 2025, Project-Haystack
+// Licensed under the Academic Free License version 3.0
+//
+// History:
+//   10 Dec 2025  Rick Jennings  Creation
+//
+
+// Point associated with temperature of an electrical component
+ElecTempPoint : NumberPoint <abstract> {
+  elec
+  temp
+  unit: Unit <quantity:"temperature"> "°F"
+}
+
+// Sensor that measures temperature of an electrical component
+ElecTempSensor : ElecTempPoint & SensorPoint <abstract>
+
+// Sensor that measures temperature of a heatsink used to cool electrical component(s)
+ElecHeatsinkTempSensor : ElecTempSensor { heatsink }
+
+// Sensor that measures temperature of an electric cable
+ElecCableTempSensor : ElecTempSensor { cable }
+
+// Sensor that measures temperature of an electric coupler
+ElecCouplerTempSensor : ElecTempSensor { coupler }
+
+//////////////////////////////////////////////////////////////////////////
+// EVSE
+//////////////////////////////////////////////////////////////////////////
+
+// Sensor that measures temperature of an EVSE cable
+EvseCableTempSensor : ElecCableTempSensor { evse }
+
+// Sensor that measures temperature of an EVSE coupler
+EvseCouplerTempSensor : ElecCouplerTempSensor { evse }

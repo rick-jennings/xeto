@@ -120,3 +120,9 @@ ZoneAirTempUnoccHeatingSp : ZoneAirTempHeatingSp { unocc }
 // Heating mode temperature setpoint for zone when in standby mode
 ZoneAirTempStandbyHeatingSp : ZoneAirTempHeatingSp { standby }
 
+//////////////////////////////////////////////////////////////////////////
+// Elec cabinet
+//////////////////////////////////////////////////////////////////////////
+
+// Sensor for air temperature inside an electrical cabinet or enclosure
+ElecCabinetAirTempSensor : AirTempSensor { elec, cabinet }
