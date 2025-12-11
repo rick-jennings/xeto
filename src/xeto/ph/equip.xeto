@@ -231,10 +231,16 @@ Escalator: VerticalTransport {
   escalator
 }
 
+// Coupler that provides the mechanical and electrical connection between
+// the EVSE and vehicle inlet.
+EvseCoupler: EvseEquip <abstract> {
+  coupler
+}
+
 // The electrical cable between an `evse-port` and an EV charging inlet
 // on a vehicle. The `evseCableType` tag distinguishes the type of cable.
 // See `docHaystack::EVSE#cable` chapter.
-EvseCable: EvseEquip {
+EvseCable: EvseCoupler {
   cable
   evseCableType: EvseCableType?
 }
