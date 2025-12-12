@@ -25,10 +25,10 @@ FanEnableSensor : FanPoint & EnableSensor <abstract>
 FanEnableCmd : FanPoint & EnableCmd <abstract>
 
 // Sensor for speed of a fan as percentage 0% off and 100% full speed
-FanSpeedSensor : FanPoint & VfdSpeedSensor <abstract>
+FanSpeedSensor : FanPoint & VfdOutputSpeedSensor <abstract>
 
 // Command for speed of a fan as percentage 0% off and 100% full speed
-FanSpeedCmd : FanPoint & VfdSpeedCmd <abstract>
+FanSpeedCmd : FanPoint & VfdOutputSpeedCmd <abstract>
 
 //////////////////////////////////////////////////////////////////////////
 // Discharge

@@ -130,6 +130,11 @@ PhEntity: Entity <abstract> {
   // chapter.
   *branchSelector: Marker
 
+  // Electrical conductor or system of conductors that serves as a common
+  // connection for multiple circuits.  In power systems, a bus distributes
+  // electrical power from one or more sources to multiple loads or circuits.
+  *bus: Marker
+
   // Pipe used to bypass an equipment
   *bypass: Marker
 

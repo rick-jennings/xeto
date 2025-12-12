@@ -1,0 +1,54 @@
+//
+// Copyright (c) 2025, Project-Haystack
+// Licensed under the Academic Free License version 3.0
+//
+// History:
+//   7 Jul 2025  Rick Jennings  Creation
+//
+
+// Sensor indicating whether a VFD is running or stopped
+VfdRunSensor : RunSensor { vfd }
+
+// Command to run or stop a VFD
+VfdRunCmd : RunCmd { vfd }
+
+// Point associated with VFD output speed.  Speed is the ratio of the
+// actual output electrical frequency to the maximum possible electrical
+// frequency by the VFD, independent of direction.  It is expressed as a
+// percentage where 0% is minimum speed and 100% is maximum speed.
+VfdOutputSpeedPoint : NumberPoint <abstract> {
+  vfd
+  output
+  speed
+  unit: "%"
+}
+
+// Sensor for VFD output speed.  Speed is the ratio of the
+// actual output electrical frequency to the maximum possible electrical
+// frequency by the VFD, independent of direction.  It is expressed as a
+// percentage where 0% is minimum speed and 100% is maximum speed.
+VfdOutputSpeedSensor : VfdOutputSpeedPoint & SensorPoint
+
+// Command for VFD output speed.
+VfdOutputSpeedCmd : VfdOutputSpeedPoint & CmdPoint <abstract>
+
+// Command for VFD's minimum output speed.  Speed is the ratio of the
+// actual output electrical frequency to the maximum possible electrical
+// frequency by the VFD, independent of direction.  It is expressed as a
+// percentage where 0% is minimum speed and 100% is maximum speed.
+VfdOutputSpeedMinCmd : VfdOutputSpeedCmd { min }
+
+// Command for VFD's maximum output speed.  Speed is the ratio of the
+// actual output electrical frequency to the maximum possible electrical
+// frequency by the VFD, independent of direction.  It is expressed as a
+// percentage where 0% is minimum speed and 100% is maximum speed.
+VfdOutputSpeedMaxCmd : VfdOutputSpeedCmd { max }
+
+// Command for VFD's target output speed.  Speed is the ratio of the
+// actual output electrical frequency to the maximum possible electrical
+// frequency by the VFD, independent of direction.  It is expressed as a
+// percentage where 0% is minimum speed and 100% is maximum speed.
+VfdOutputSpeedEffectiveCmd : VfdOutputSpeedCmd { effective }
+
+// Sensor for a VFD's input AC electric active energy consumed
+VfdInputElecAcImportActiveEnergySensor : ElecAcImportActiveEnergySensor { vfd, input }

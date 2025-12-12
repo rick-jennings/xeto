@@ -36,30 +36,25 @@ EnableCmd : EnablePoint & CmdPoint <abstract>
 // Boolean alarm condition
 AlarmSensor : BoolPoint & SensorPoint <abstract> { alarm }
 
-// Point associated with VFD frequency measured in Hertz
-VfdFreqPoint : NumberPoint <abstract> {
-  vfd
-  freq
-  unit: "Hz"
-}
-
-// Sensor for VFD frequency in Hertz
-VfdFreqSensor : VfdFreqPoint & SensorPoint <abstract>
-
-// Command for VFD frequency in Hertz
-VfdFreqCmd : VfdFreqPoint & CmdPoint <abstract>
-
-// Point associated with VFD speed.  Speed is measured as
-// percentage where 0% is off and 100% if full speed
-VfdSpeedPoint : NumberPoint <abstract> {
-  vfd
+// Sensor for motor speed
+MotorRpmSensor : NumberPoint {
+  motor
   speed
-  unit: "%"
+  unit: "rpm"
 }
 
-// VFD speed sensor as percentage where 0% is off, 100% if full speed
-VfdSpeedSensor : VfdSpeedPoint & SensorPoint <abstract>
+// Point associated with motor shaft rotation direction; forward or reverse
+MotorDirectionPoint : BoolPoint <abstract> {
+  motor
+  direction
+  enum: Obj <val:MotorDirection>
+}
 
-// VFD speed command as percentage where 0% is off, 100% if full speed
-VfdSpeedCmd : VfdSpeedPoint & CmdPoint <abstract>
+// Motor shaft rotation direction enumeration
+MotorDirection: Enum { forward, reverse }
 
+// Sensor for motor shaft rotation direction; forward or reverse
+MotorDirectionSensor : MotorDirectionPoint & SensorPoint
+
+// Command for motor shaft rotation direction; forward or reverse
+MotorDirectionCmd : MotorDirectionPoint & CmdPoint

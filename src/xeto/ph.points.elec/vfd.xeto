@@ -1,0 +1,22 @@
+//
+// Copyright (c) 2025, Project-Haystack
+// Licensed under the Academic Free License version 3.0
+//
+// History:
+//   12 Dec 2025  Rick Jennings  Creation
+//
+
+// Sensor for a VFD's output AC electric frequency
+VfdOutputElecAcFreqSensor : ElecAcFreqSensor { vfd, output }
+
+// Sensor for a VFD's output AC electric active power
+VfdOutputElecAcImportActivePowerSensor : ElecAcImportActivePowerSensor { vfd, output }
+
+// Sensor for a VFD's output AC electric current
+VfdOutputElecAcCurrentSensor : ElecAcCurrentSensor { vfd, output }
+
+// Sensor for a VFD's output AC electric voltage
+VfdOutputElecAcVoltSensor : ElecAcVoltSensor { vfd, output }
+
+// Sensor for a VFD's DC bus electric voltage
+VfdBusElecDcVoltSensor : ElecDcVoltSensor { vfd, bus }
