@@ -1,0 +1,19 @@
+//
+// Copyright (c) 2022, Project-Haystack
+// Licensed under the Academic Free License version 3.0
+//
+// History:
+//   3 Nov 2022  Brian Frank  Creation
+//
+
+VfdOutput : PhEntity { vfd, output }
+
+// Point associated with a VFD's output speed.  Speed is measured
+// as a percentage where 0% is off and 100% is full speed
+VfdOutputSpeedPoint : VfdOutput & NumberPoint  <abstract> {
+  speed
+  unit: "%"
+}
+
+// Sensor for a VFD's output AC electric speed where 0% is off, 100% is full speed
+VfdOutputElecAcSpeedSensor : VfdOutputSpeedPoint & ElecSensor { ac }

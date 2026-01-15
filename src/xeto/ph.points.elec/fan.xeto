@@ -1,0 +1,5 @@
+
+
+
+// Command for speed of a fan as percentage 0% off and 100% full speed
+FanSpeedCmd : FanPoint & VfdOutputElecAcSpeedCmd <abstract>

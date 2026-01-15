@@ -1,0 +1,25 @@
+//
+// Copyright (c) 2026, Project-Haystack
+// Licensed under the Academic Free License version 3.0
+//
+// History:
+//   15 Jan 2026  Rick Jennings  Creation
+//
+
+// Sensor for a VFD's output AC electric frequency
+VfdOutputElecAcFreqSensor : VfdOutput & ElecAcFreqSensor
+
+// Command for a VFD's output AC electric frequency
+VfdOutputElecAcFreqCmd : VfdOutput & ElecAcFreqCmd
+
+// Command for a VFD's output AC electric speed where 0% is off, 100% is full speed
+VfdOutputElecAcSpeedCmd : VfdOutputSpeedPoint & ElecCmd { ac }
+
+// Sensor for a VFD's output AC electric active power
+VfdOutputElecAcImportActivePowerSensor : VfdOutput & ElecAcImportActivePowerSensor
+
+// Sensor for a VFD's output AC electric current
+VfdOutputElecAcCurrentSensor : VfdOutput & ElecAcCurrentSensor
+
+// Sensor for a VFD's output AC electric voltage
+VfdOutputElecAcVoltSensor : VfdOutput & ElecAcVoltSensor
