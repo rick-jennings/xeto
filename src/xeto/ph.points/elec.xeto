@@ -8,9 +8,6 @@
 
 ElecDirection: Choice
 ElecImportDirection: ElecDirection { import }
-ElecExportDirection: ElecDirection { export }
-ElecNetDirection: ElecDirection { net }
-ElecAbsoluteDirection: ElecDirection { absolute }
 
 ElecAcPowerSubtype: Choice
 ElecAcActivePower: ElecAcPowerSubtype { active }
@@ -95,83 +92,29 @@ ElecAcApparentDemandSensor : ElecAcPowerDemandSensor <abstract> {
 // Sensor for import of AC electric active energy
 ElecAcImportActiveEnergySensor : ElecAcActiveEnergySensor { import }
 
-// Sensor for export of AC electric active energy
-ElecAcExportActiveEnergySensor : ElecAcActiveEnergySensor { export }
-
-// Sensor for net of AC electric active energy
-ElecAcNetActiveEnergySensor : ElecAcActiveEnergySensor { net }
-
 // Sensor for import of AC electric reactive energy
 ElecAcImportReactiveEnergySensor : ElecAcReactiveEnergySensor { import }
-
-// Sensor for export of AC electric reactive energy
-ElecAcExportReactiveEnergySensor : ElecAcReactiveEnergySensor { export }
-
-// Sensor for net of AC electric reactive energy
-ElecAcNetReactiveEnergySensor : ElecAcReactiveEnergySensor { net }
 
 // Sensor for import of AC electric apparent energy
 ElecAcImportApparentEnergySensor : ElecAcApparentEnergySensor { import }
 
-// Sensor for export of AC electric apparent energy
-ElecAcExportApparentEnergySensor : ElecAcApparentEnergySensor { export }
-
-// Sensor for net of AC electric apparent energy
-ElecAcNetApparentEnergySensor : ElecAcApparentEnergySensor { net }
-
 // Sensor for import of AC electric active power demand
 ElecAcImportActiveDemandSensor : ElecAcActiveDemandSensor { import }
-
-// Sensor for export of AC electric active power demand
-ElecAcExportActiveDemandSensor : ElecAcActiveDemandSensor { export }
-
-// Sensor for net of AC electric active power demand
-ElecAcNetActiveDemandSensor : ElecAcActiveDemandSensor { net }
 
 // Sensor for import of AC electric reactive power demand
 ElecAcImportReactiveDemandSensor : ElecAcReactiveDemandSensor { import }
 
-// Sensor for export of AC electric reactive power demand
-ElecAcExportReactiveDemandSensor : ElecAcReactiveDemandSensor { export }
-
-// Sensor for net of AC electric reactive power demand
-ElecAcNetReactiveDemandSensor : ElecAcReactiveDemandSensor { net }
-
 // Sensor for import of AC electric apparent power demand
 ElecAcImportApparentDemandSensor : ElecAcApparentDemandSensor { import }
-
-// Sensor for export of AC electric apparent power demand
-ElecAcExportApparentDemandSensor : ElecAcApparentDemandSensor { export }
-
-// Sensor for net of AC electric apparent power demand
-ElecAcNetApparentDemandSensor : ElecAcApparentDemandSensor { net }
 
 // Sensor for total import of AC electric active energy
 ElecAcTotalImportActiveEnergySensor : ElecAcImportActiveEnergySensor { total }
 
-// Sensor for total export of AC electric active energy
-ElecAcTotalExportActiveEnergySensor : ElecAcExportActiveEnergySensor { total }
-
-// Sensor for total net of AC electric active energy
-ElecAcTotalNetActiveEnergySensor : ElecAcNetActiveEnergySensor { total }
-
 // Sensor for total import of AC electric reactive energy
 ElecAcTotalImportReactiveEnergySensor : ElecAcImportReactiveEnergySensor { total }
 
-// Sensor for total export of AC electric reactive energy
-ElecAcTotalExportReactiveEnergySensor : ElecAcExportReactiveEnergySensor { total }
-
-// Sensor for total net of AC electric reactive energy
-ElecAcTotalNetReactiveEnergySensor : ElecAcNetReactiveEnergySensor { total }
-
 // Sensor for total import of AC electric apparent energy
 ElecAcTotalImportApparentEnergySensor : ElecAcImportApparentEnergySensor { total }
-
-// Sensor for total export of AC electric apparent energy
-ElecAcTotalExportApparentEnergySensor : ElecAcExportApparentEnergySensor { total }
-
-// Sensor for total net of AC electric apparent energy
-ElecAcTotalNetApparentEnergySensor : ElecAcNetApparentEnergySensor { total }
 
 // Sensor for total AC electric power factor
 ElecAcTotalPfSensor : ElecAcPfSensor { total }
@@ -179,27 +122,298 @@ ElecAcTotalPfSensor : ElecAcPfSensor { total }
 // Sensor for total import of AC electric active power demand
 ElecAcTotalImportActiveDemandSensor : ElecAcImportActiveDemandSensor { total }
 
-// Sensor for total export of AC electric active power demand
-ElecAcTotalExportActiveDemandSensor : ElecAcExportActiveDemandSensor { total }
-
-// Sensor for total net of AC electric active power demand
-ElecAcTotalNetActiveDemandSensor : ElecAcNetActiveDemandSensor { total }
-
 // Sensor for total import of AC electric reactive power demand
 ElecAcTotalImportReactiveDemandSensor : ElecAcImportReactiveDemandSensor { total }
-
-// Sensor for total export of AC electric reactive power demand
-ElecAcTotalExportReactiveDemandSensor : ElecAcExportReactiveDemandSensor { total }
-
-// Sensor for total net of AC electric reactive power demand
-ElecAcTotalNetReactiveDemandSensor : ElecAcNetReactiveDemandSensor { total }
 
 // Sensor for total import of AC electric apparent power demand
 ElecAcTotalImportApparentDemandSensor : ElecAcImportApparentDemandSensor { total }
 
-// Sensor for total export of AC electric apparent power demand
-ElecAcTotalExportApparentDemandSensor : ElecAcExportApparentDemandSensor { total }
+////////////////////////////////////////////////////////////////////////////////////////
+// Voltage
+////////////////////////////////////////////////////////////////////////////////////////
 
-// Sensor for total net of AC electric apparent power demand
-ElecAcTotalNetApparentDemandSensor : ElecAcNetApparentDemandSensor { total }
+// Sensor for electric voltage
+ElecVoltSensor : ElecSensor <abstract> { volt }
 
+// Sensor for AC electric voltage (base)
+ElecAcVoltSensorX : ElecVoltSensor <abstract> {
+  ac
+  elecAcSpectralContent: ElecAcSpectralContent?
+  elecAcHarmonicOrder: Int? <minVal: 2>
+}
+
+// Sensor for magnitude of AC electric voltage
+ElecAcMagnitudeVoltSensor : ElecAcVoltSensorX <abstract> {
+  magnitude
+  elecAcWaveformMagnitude: ElecAcWaveformMagnitude
+  unit: Unit <quantity:"electricPotential"> "V"
+}
+
+// Sensor for RMS of AC electric voltage
+ElecAcVoltSensor : ElecAcMagnitudeVoltSensor { rootMeanSquare }
+
+// Sensor for line average RMS of AC electric voltage
+ElecAcLLAvgVoltSensor : ElecAcVoltSensor { elecLLAvg }
+
+// Sensor for phase RMS of AC electric voltage
+ElecAcPhaseVoltSensor : ElecAcVoltSensor { phase: Phase }
+
+// Sensor for phase average RMS of AC electric voltage
+ElecAcLAvgVoltSensor : ElecAcVoltSensor { elecLAvg }
+
+////////////////////////////////////////////////////////////////////////////////////////
+// Current
+////////////////////////////////////////////////////////////////////////////////////////
+
+// Sensor for electric current
+ElecCurrentSensor : ElecSensor <abstract> { current }
+
+// Sensor for AC electric current (base)
+ElecAcCurrentSensorX : ElecCurrentSensor <abstract> {
+  ac
+  elecAcSpectralContent: ElecAcSpectralContent?
+  elecAcHarmonicOrder: Int? <minVal: 2>
+}
+
+// Sensor for magnitude of AC electric current
+ElecAcMagnitudeCurrentSensor : ElecAcCurrentSensorX <abstract> {
+  magnitude
+  unit: Unit <quantity:"electricCurrent"> "A"
+  elecAcWaveformMagnitude: ElecAcWaveformMagnitude?
+}
+
+// Sensor for RMS of AC electric current
+ElecAcCurrentSensor : ElecAcMagnitudeCurrentSensor { rootMeanSquare }
+
+// Sensor for line average RMS of AC electric current
+ElecAcLAvgCurrentSensor : ElecAcCurrentSensor { elecLAvg }
+
+// Sensor for phase RMS of AC electric current
+ElecAcPhaseCurrentSensor : ElecAcCurrentSensor { phase: Phase }
+
+// Sensor for neutral RMS of AC electric current
+ElecAcNeutralCurrentSensor : ElecAcCurrentSensor { neutral }
+
+// Sensor for ground RMS of AC electric current
+ElecAcGroundCurrentSensor : ElecAcCurrentSensor { ground }
+
+////////////////////////////////////////////////////////////////////////////////////////
+// Power
+////////////////////////////////////////////////////////////////////////////////////////
+
+// Sensor for electric power
+ElecPowerSensor : ElecSensor <abstract> {
+  power
+  elecDirection: ElecDirection
+}
+
+// Sensor for average magnitude of AC electric power
+ElecAcAvgMagnitudePowerSensor : ElecPowerSensor <abstract> {
+  ac
+  avg
+  magnitude
+  elecAcPowerSubtype: ElecAcPowerSubtype
+}
+
+// Sensor for average magnitude of AC electric active power
+ElecAcActivePowerSensor : ElecAcAvgMagnitudePowerSensor <abstract> {
+  active
+  unit: Unit <quantity:"power"> "kW"
+}
+
+// Sensor for average magnitude of AC electric reactive power
+ElecAcReactivePowerSensor : ElecAcAvgMagnitudePowerSensor <abstract> {
+  reactive
+  unit: Unit <quantity:"reactivePower"> "kVAR"
+}
+
+// Sensor for average magnitude of AC electric apparent power
+ElecAcApparentPowerSensor : ElecAcAvgMagnitudePowerSensor <abstract> {
+  apparent
+  unit: Unit <quantity:"apparentPower"> "kVA"
+}
+
+// Sensor for import of average magnitude of AC electric active power
+ElecAcImportActivePowerSensor : ElecAcActivePowerSensor { import }
+
+// Sensor for import of average magnitude of AC electric reactive power
+ElecAcImportReactivePowerSensor : ElecAcReactivePowerSensor { import }
+
+// Sensor for import of average magnitude of AC electric apparent power
+ElecAcImportApparentPowerSensor : ElecAcApparentPowerSensor { import }
+
+// Sensor for total import of average magnitude of AC electric active power
+ElecAcTotalImportActivePowerSensor : ElecAcImportActivePowerSensor { total }
+
+// Sensor for phase import of average magnitude of AC electric active power
+ElecAcPhaseImportActivePowerSensor : ElecAcImportActivePowerSensor { phase: Phase }
+
+// Sensor for total import of average magnitude of AC electric reactive power
+ElecAcTotalImportReactivePowerSensor : ElecAcImportReactivePowerSensor { total }
+
+// Sensor for phase import of average magnitude of AC electric reactive power
+ElecAcPhaseImportReactivePowerSensor : ElecAcImportReactivePowerSensor { phase: Phase }
+
+// Sensor for total import of average magnitude of AC electric apparent power
+ElecAcTotalImportApparentPowerSensor : ElecAcImportApparentPowerSensor { total }
+
+// Sensor for phase import of average magnitude of AC electric apparent power
+ElecAcPhaseImportApparentPowerSensor : ElecAcImportApparentPowerSensor { phase: Phase }
+
+////////////////////////////////////////////////////////////////////////////////////////
+// Frequency
+////////////////////////////////////////////////////////////////////////////////////////
+
+// Sensor for AC electric frequency
+ElecAcFreqSensor : ElecSensor {
+  freq
+  unit: "Hz"
+  ac
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+// Energy
+////////////////////////////////////////////////////////////////////////////////////////
+
+// Sensor for phase import of AC electric active energy
+ElecAcPhaseImportActiveEnergySensor : ElecAcImportActiveEnergySensor { phase: Phase }
+
+// Sensor for phase import of AC electric reactive energy
+ElecAcPhaseImportReactiveEnergySensor : ElecAcImportReactiveEnergySensor { phase: Phase }
+
+// Sensor for phase import of AC electric apparent energy
+ElecAcPhaseImportApparentEnergySensor : ElecAcImportApparentEnergySensor { phase: Phase }
+
+////////////////////////////////////////////////////////////////////////////////////////
+// Power factor
+////////////////////////////////////////////////////////////////////////////////////////
+
+// Sensor for phase AC electric power factor
+ElecAcPhasePfSensor : ElecAcPfSensor { phase: Phase }
+
+////////////////////////////////////////////////////////////////////////////////////////
+// DC
+////////////////////////////////////////////////////////////////////////////////////////
+
+// Sensor for DC electric voltage
+ElecDcVoltSensor : ElecVoltSensor { dc }
+
+// Sensor for DC electric current
+ElecDcCurrentSensor : ElecCurrentSensor <abstract> {
+  dc
+  unit: Unit <quantity:"electricCurrent"> "A"
+}
+
+// Sensor for DC electric power
+ElecDcPowerSensor : ElecPowerSensor <abstract> {
+  dc
+  unit: Unit <quantity:"power"> "kW"
+}
+
+// Sensor for DC electric energy
+ElecDcEnergySensor : ElecEnergySensor <abstract> {
+  dc
+  unit: Unit <quantity:"energy"> "kWh"
+}
+
+// Sensor for DC electric state of charge
+ElecDcStateOfChargeSensor : ElecSensor {
+  dc
+  stateOfCharge
+  unit: Unit <fixed> "%"
+}
+
+// Sensor for import of DC electric power
+ElecDcImportPowerSensor : ElecDcPowerSensor { import }
+
+// Sensor for import of DC electric current
+ElecDcImportCurrentSensor : ElecDcCurrentSensor { import }
+
+// Sensor for import of DC electric energy
+ElecDcImportEnergySensor : ElecDcEnergySensor { import }
+
+// Max setpoint for DC electric current
+ElecDcCurrentMaxSp : ElecCurrentMaxSp <abstract> { dc }
+
+// Max setpoint for DC electric power
+ElecDcPowerMaxSp : ElecPowerMaxSp <abstract> { dc }
+
+// Max setpoint for import of DC electric power
+ElecDcImportPowerMaxSp : ElecDcPowerMaxSp { import }
+
+// Max setpoint for import of DC electric current
+ElecDcImportCurrentMaxSp : ElecDcCurrentMaxSp { import }
+
+////////////////////////////////////////////////////////////////////////////////////////
+// Other
+////////////////////////////////////////////////////////////////////////////////////////
+
+// Setpoint for electricity
+ElecSp : NumberPoint & SpPoint <abstract> { elec }
+
+// Max setpoint for electricity
+ElecMaxSp : ElecSp <abstract> { max }
+
+// Max setpoint for electric current
+ElecCurrentMaxSp : ElecMaxSp <abstract> {
+  current
+  unit: Unit <quantity:"electricCurrent"> "A"
+}
+
+// Max setpoint for electric power
+ElecPowerMaxSp : ElecMaxSp <abstract> {
+  power
+  unit: Unit <quantity:"power"> "kW"
+}
+
+// Max setpoint for electric power demand
+ElecDemandMaxSp : ElecMaxSp <abstract> {
+  demand
+  unit: Unit <quantity:"power"> "kW"
+}
+
+// Max setpoint for RMS of AC electric current
+ElecAcCurrentMaxSp : ElecCurrentMaxSp <abstract> {
+  ac
+  magnitude
+  rootMeanSquare
+}
+
+// Max setpoint for AC electric power
+ElecAcPowerMaxSp : ElecPowerMaxSp <abstract> { ac }
+
+// Max setpoint for magnitude of AC electric power
+ElecAcMagnitudePowerMaxSp : ElecAcPowerMaxSp <abstract> {
+  magnitude
+  elecAcWaveformMagnitude: ElecAcWaveformMagnitude
+}
+
+// Max setpoint for average magnitude of AC electric active power
+ElecAcActivePowerMaxSp : ElecAcMagnitudePowerMaxSp <abstract> {
+  avg
+  active
+}
+
+// Max setpoint for AC electric active power demand
+ElecAcActiveDemandMaxSp : ElecDemandMaxSp <abstract> {
+  ac
+  active
+}
+
+// Max setpoint for import of RMS of AC electric current
+ElecAcImportCurrentMaxSp : ElecAcCurrentMaxSp { import }
+
+// Max setpoint for import of average magnitude of AC electric active power
+ElecAcImportActivePowerMaxSp : ElecAcActivePowerMaxSp { import }
+
+// Max setpoint for import of AC electric active power demand
+ElecAcImportActiveDemandMaxSp : ElecAcActiveDemandMaxSp { import }
+
+// Max setpoint for phase import of RMS of AC electric current
+ElecAcPhaseImportCurrentMaxSp : ElecAcImportCurrentMaxSp { phase: Phase }
+
+// Max setpoint for total import of average magnitude of AC electric active power
+ElecAcTotalImportActivePowerMaxSp : ElecAcImportActivePowerMaxSp { total }
+
+// Max setpoint for total import of AC electric active power demand
+ElecAcTotalImportActiveDemandMaxSp : ElecAcImportActiveDemandMaxSp { total }
