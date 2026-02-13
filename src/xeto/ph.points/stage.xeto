@@ -1,0 +1,37 @@
+//
+// Copyright (c) 2026, Project-Haystack
+// Licensed under the Academic Free License version 3.0
+//
+// History:
+//   28 Jan 2026  Lincoln Harmer  Creation
+//
+
+// Command to permit/prohibit a cooling stage to run.
+// Used as an interlock with a run command.
+StageCoolEnableCmd : CoolEnableCmd {
+  stage: Number <minVal: 1>
+}
+
+// Command to permit/prohibit a heating stage to run.
+// Used as an interlock with a run command.
+StageHeatEnableCmd : HeatEnableCmd {
+  stage: Number <minVal: 1>
+}
+
+// Sensor for on/off state of a cooling stage
+StageCoolRunSensor : CoolRunSensor {
+  stage: Number <minVal: 1>
+}
+
+// Sensor for on/off state of a heating stage
+StageHeatRunSensor : HeatRunSensor { heat }
+
+// On/off command to run a cooling stage
+StageCoolRunCmd : CoolRunCmd {
+  stage: Number <minVal: 1>
+}
+
+// On/off command to run a heating stage
+StageHeatRunCmd : HeatRunCmd {
+  stage: Number <minVal: 1>
+}
