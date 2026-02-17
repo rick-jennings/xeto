@@ -4,6 +4,7 @@
 // Auto-generated 11-Dec-2023
 //
 
+/* TODO
 // Operation for HTTP API.  See [ph.doc::Ops] chapter.
 Op: Feature {
   // Op marker
@@ -97,4 +98,5 @@ Op: Feature {
 // See [ph.doc::Ops#watchunsub] chapter.
 @op:watchUnsub : Op {
 }
+*/
 

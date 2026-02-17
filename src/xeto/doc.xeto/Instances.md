@@ -6,10 +6,11 @@ JSON objects.  Instances may be defined within a [lib](Libs.md)
 or outside of a lib.
 
 # Id
-All instances must define an 'id' tag that is the unique identifier
-for the data entity.  The 'id' tag must always be a Ref value and cannot
-start with an uppercase letter.  Instances which are defined within a
-lib will have a id formed from the qname:
+All instances must define an `id` tag that is the unique identifier
+for the data entity.  The `id` tag must always be a Ref value and cannot
+start with an uppercase letter nor contains the `:` character; valid
+characters are ASCI letters, digits, or `_ - . ~` characters.  Instances
+which are defined within a lib will have a id formed from the qname:
 
 ```xeto
 // instance in lib acme.widgets; id is @acme.widgets::sku-123
@@ -259,5 +260,4 @@ spec: @acme::Toolbar
 Note that in the reflection APIs the nested instances can be looked
 up directly.  However, when exporting libs that contain nested instances
 only top-level instances are included (with their nested instances).
-
 

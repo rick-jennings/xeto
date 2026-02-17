@@ -4,6 +4,7 @@
 // Auto-generated 29-Nov-2024
 //
 
+/* TODO
 // File format type definition
 Filetype: Feature {
   filetype         // Filetype marker
@@ -57,4 +58,5 @@ Filetype: Feature {
   fileExt: "zinc"
   mime: "text/zinc"
 }
+*/
 
