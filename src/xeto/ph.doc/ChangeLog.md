@@ -9,6 +9,7 @@ license:    Licensed under the Academic Free License version 3.0
 **Version 5.0.0 (working)**
 - Xeto based design
 - Convert documentation to markdown
+- Timezone database update to 2025c
 
 **Version 4.0.0 (7 Jul 2024)**
 - Final 4.0 defs based release

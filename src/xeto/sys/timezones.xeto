@@ -1,20 +1,18 @@
 //
-// Copyright (c) 2011-2024, Project-Haystack
+// Copyright (c) 2011-2025, Project-Haystack
 // Licensed under the Academic Free License version 3.0
-// Auto-generated 07-Aug-2024
+// Auto-generated 17-Feb-2026
 //
 
 // TimeZone names for standardized database
 TimeZone: Enum {
   utc <key:"UTC">
   abidjan <key:"Abidjan">
-  accra <key:"Accra">
   adak <key:"Adak">
   adelaide <key:"Adelaide">
   algiers <key:"Algiers">
   almaty <key:"Almaty">
   amman <key:"Amman">
-  amsterdam <key:"Amsterdam">
   anadyr <key:"Anadyr">
   anchorage <key:"Anchorage">
   andorra <key:"Andorra">
@@ -26,7 +24,6 @@ TimeZone: Enum {
   astrakhan <key:"Astrakhan">
   asuncion <key:"Asuncion">
   athens <key:"Athens">
-  atikokan <key:"Atikokan">
   atyrau <key:"Atyrau">
   auckland <key:"Auckland">
   azores <key:"Azores">
@@ -46,20 +43,16 @@ TimeZone: Enum {
   beulah <key:"Beulah">
   bishkek <key:"Bishkek">
   bissau <key:"Bissau">
-  blancSablon <key:"Blanc-Sablon">
   boa_Vista <key:"Boa_Vista">
   bogota <key:"Bogota">
   boise <key:"Boise">
   bougainville <key:"Bougainville">
   brisbane <key:"Brisbane">
   broken_Hill <key:"Broken_Hill">
-  brunei <key:"Brunei">
   brussels <key:"Brussels">
   bucharest <key:"Bucharest">
   budapest <key:"Budapest">
   buenos_Aires <key:"Buenos_Aires">
-  cet <key:"CET">
-  cst6CDT <key:"CST6CDT">
   cairo <key:"Cairo">
   cambridge_Bay <key:"Cambridge_Bay">
   campo_Grande <key:"Campo_Grande">
@@ -79,18 +72,12 @@ TimeZone: Enum {
   chihuahua <key:"Chihuahua">
   chisinau <key:"Chisinau">
   chita <key:"Chita">
-  choibalsan <key:"Choibalsan">
-  christmas <key:"Christmas">
-  chuuk <key:"Chuuk">
-  cocos <key:"Cocos">
+  ciudad_Juarez <key:"Ciudad_Juarez">
   colombo <key:"Colombo">
-  copenhagen <key:"Copenhagen">
   cordoba <key:"Cordoba">
   costa_Rica <key:"Costa_Rica">
-  creston <key:"Creston">
+  coyhaique <key:"Coyhaique">
   cuiaba <key:"Cuiaba">
-  curacao <key:"Curacao">
-  currie <key:"Currie">
   damascus <key:"Damascus">
   danmarkshavn <key:"Danmarkshavn">
   darwin <key:"Darwin">
@@ -103,18 +90,13 @@ TimeZone: Enum {
   dili <key:"Dili">
   dubai <key:"Dubai">
   dublin <key:"Dublin">
-  dumontDUrville <key:"DumontDUrville">
   dushanbe <key:"Dushanbe">
-  eet <key:"EET">
-  est <key:"EST">
-  est5EDT <key:"EST5EDT">
   easter <key:"Easter">
   edmonton <key:"Edmonton">
   efate <key:"Efate">
   eirunepe <key:"Eirunepe">
   el_Aaiun <key:"El_Aaiun">
   el_Salvador <key:"El_Salvador">
-  enderbury <key:"Enderbury">
   eucla <key:"Eucla">
   fakaofo <key:"Fakaofo">
   famagusta <key:"Famagusta">
@@ -122,7 +104,6 @@ TimeZone: Enum {
   fiji <key:"Fiji">
   fort_Nelson <key:"Fort_Nelson">
   fortaleza <key:"Fortaleza">
-  funafuti <key:"Funafuti">
   gmt <key:"GMT">
   gmtPlus1 <key:"GMT+1">
   gmtPlus10 <key:"GMT+10">
@@ -155,7 +136,6 @@ TimeZone: Enum {
   gaza <key:"Gaza">
   gibraltar <key:"Gibraltar">
   glace_Bay <key:"Glace_Bay">
-  godthab <key:"Godthab">
   goose_Bay <key:"Goose_Bay">
   grand_Turk <key:"Grand_Turk">
   guadalcanal <key:"Guadalcanal">
@@ -163,7 +143,6 @@ TimeZone: Enum {
   guatemala <key:"Guatemala">
   guayaquil <key:"Guayaquil">
   guyana <key:"Guyana">
-  hst <key:"HST">
   halifax <key:"Halifax">
   havana <key:"Havana">
   hebron <key:"Hebron">
@@ -190,21 +169,20 @@ TimeZone: Enum {
   kabul <key:"Kabul">
   kaliningrad <key:"Kaliningrad">
   kamchatka <key:"Kamchatka">
+  kanton <key:"Kanton">
   karachi <key:"Karachi">
   kathmandu <key:"Kathmandu">
-  kerguelen <key:"Kerguelen">
   khandyga <key:"Khandyga">
   khartoum <key:"Khartoum">
-  kiev <key:"Kiev">
   kiritimati <key:"Kiritimati">
   kirov <key:"Kirov">
   knox <key:"Knox">
   kolkata <key:"Kolkata">
   kosrae <key:"Kosrae">
   krasnoyarsk <key:"Krasnoyarsk">
-  kuala_Lumpur <key:"Kuala_Lumpur">
   kuching <key:"Kuching">
   kwajalein <key:"Kwajalein">
+  kyiv <key:"Kyiv">
   la_Paz <key:"La_Paz">
   la_Rioja <key:"La_Rioja">
   lagos <key:"Lagos">
@@ -215,18 +193,12 @@ TimeZone: Enum {
   lord_Howe <key:"Lord_Howe">
   los_Angeles <key:"Los_Angeles">
   louisville <key:"Louisville">
-  luxembourg <key:"Luxembourg">
-  met <key:"MET">
-  mst <key:"MST">
-  mst7MDT <key:"MST7MDT">
   macau <key:"Macau">
   maceio <key:"Maceio">
   macquarie <key:"Macquarie">
   madeira <key:"Madeira">
   madrid <key:"Madrid">
   magadan <key:"Magadan">
-  mahe <key:"Mahe">
-  majuro <key:"Majuro">
   makassar <key:"Makassar">
   maldives <key:"Maldives">
   malta <key:"Malta">
@@ -249,7 +221,6 @@ TimeZone: Enum {
   mexico_City <key:"Mexico_City">
   minsk <key:"Minsk">
   miquelon <key:"Miquelon">
-  monaco <key:"Monaco">
   moncton <key:"Moncton">
   monrovia <key:"Monrovia">
   monterrey <key:"Monterrey">
@@ -257,13 +228,11 @@ TimeZone: Enum {
   monticello <key:"Monticello">
   moscow <key:"Moscow">
   nairobi <key:"Nairobi">
-  nassau <key:"Nassau">
   nauru <key:"Nauru">
   ndjamena <key:"Ndjamena">
   new_Salem <key:"New_Salem">
   new_York <key:"New_York">
   nicosia <key:"Nicosia">
-  nipigon <key:"Nipigon">
   niue <key:"Niue">
   nome <key:"Nome">
   norfolk <key:"Norfolk">
@@ -271,27 +240,23 @@ TimeZone: Enum {
   noumea <key:"Noumea">
   novokuznetsk <key:"Novokuznetsk">
   novosibirsk <key:"Novosibirsk">
+  nuuk <key:"Nuuk">
   ojinaga <key:"Ojinaga">
   omsk <key:"Omsk">
   oral <key:"Oral">
-  oslo <key:"Oslo">
-  pst8PDT <key:"PST8PDT">
   pago_Pago <key:"Pago_Pago">
   palau <key:"Palau">
   palmer <key:"Palmer">
   panama <key:"Panama">
-  pangnirtung <key:"Pangnirtung">
   paramaribo <key:"Paramaribo">
   paris <key:"Paris">
   perth <key:"Perth">
   petersburg <key:"Petersburg">
   phoenix <key:"Phoenix">
   pitcairn <key:"Pitcairn">
-  pohnpei <key:"Pohnpei">
   pontianak <key:"Pontianak">
   portAuPrince <key:"Port-au-Prince">
   port_Moresby <key:"Port_Moresby">
-  port_of_Spain <key:"Port_of_Spain">
   porto_Velho <key:"Porto_Velho">
   prague <key:"Prague">
   puerto_Rico <key:"Puerto_Rico">
@@ -300,15 +265,12 @@ TimeZone: Enum {
   qatar <key:"Qatar">
   qostanay <key:"Qostanay">
   qyzylorda <key:"Qyzylorda">
-  rainy_River <key:"Rainy_River">
   rankin_Inlet <key:"Rankin_Inlet">
   rarotonga <key:"Rarotonga">
   recife <key:"Recife">
   regina <key:"Regina">
   rel <key:"Rel">
   resolute <key:"Resolute">
-  reunion <key:"Reunion">
-  reykjavik <key:"Reykjavik">
   riga <key:"Riga">
   rio_Branco <key:"Rio_Branco">
   rio_Gallegos <key:"Rio_Gallegos">
@@ -338,10 +300,8 @@ TimeZone: Enum {
   srednekolymsk <key:"Srednekolymsk">
   st_Johns <key:"St_Johns">
   stanley <key:"Stanley">
-  stockholm <key:"Stockholm">
   swift_Current <key:"Swift_Current">
   sydney <key:"Sydney">
-  syowa <key:"Syowa">
   tahiti <key:"Tahiti">
   taipei <key:"Taipei">
   tallinn <key:"Tallinn">
@@ -353,7 +313,6 @@ TimeZone: Enum {
   tell_City <key:"Tell_City">
   thimphu <key:"Thimphu">
   thule <key:"Thule">
-  thunder_Bay <key:"Thunder_Bay">
   tijuana <key:"Tijuana">
   tirane <key:"Tirane">
   tokyo <key:"Tokyo">
@@ -369,7 +328,6 @@ TimeZone: Enum {
   urumqi <key:"Urumqi">
   ushuaia <key:"Ushuaia">
   ustNera <key:"Ust-Nera">
-  uzhgorod <key:"Uzhgorod">
   vancouver <key:"Vancouver">
   vevay <key:"Vevay">
   vienna <key:"Vienna">
@@ -378,9 +336,6 @@ TimeZone: Enum {
   vladivostok <key:"Vladivostok">
   volgograd <key:"Volgograd">
   vostok <key:"Vostok">
-  wet <key:"WET">
-  wake <key:"Wake">
-  wallis <key:"Wallis">
   warsaw <key:"Warsaw">
   whitehorse <key:"Whitehorse">
   winamac <key:"Winamac">
@@ -390,8 +345,6 @@ TimeZone: Enum {
   yakutsk <key:"Yakutsk">
   yangon <key:"Yangon">
   yekaterinburg <key:"Yekaterinburg">
-  yellowknife <key:"Yellowknife">
   yerevan <key:"Yerevan">
-  zaporozhye <key:"Zaporozhye">
   zurich <key:"Zurich">
 }
