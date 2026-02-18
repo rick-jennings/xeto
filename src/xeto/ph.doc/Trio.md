@@ -46,7 +46,7 @@ Trio uses a simple plain text format designed for easy editing by hand:
   - nested lists may be encoded in Zinc as a multi-line string
     prefixed with "[" on the tag line; the multi-line string should
     be parsed as follows: 1) skip lines starting with "//", 2) strip
-    newlines, and 3) parse a zinc '<val>' production
+    newlines, and 3) parse a zinc `<val>` production
 
   - can use `//` as line comment
 

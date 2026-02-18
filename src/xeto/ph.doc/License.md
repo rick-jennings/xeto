@@ -169,8 +169,9 @@ license:    Licensed under the Academic Free License version 3.0
     License is the "Academic Free License" or "AFL" and you may not use
     those names in the name of your Modified License; (ii) You must
     replace the notice specified in the first paragraph above with the
-    notice "Licensed under <insert your license name here>" or with a notice
+    notice "Licensed under `<insert your license name here>`" or with a notice
     of your own that is not confusingly similar to the notice in this License;
     and (iii) You may not claim that your original works are open source software
     unless your Modified License has been approved by Open Source Initiative
     (OSI) and You comply with its license review and certification process.
+
