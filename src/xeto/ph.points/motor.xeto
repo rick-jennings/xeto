@@ -20,3 +20,48 @@ MotorSpeedModulatingSensor : MotorSpeedModulatingPoint & SensorPoint
 // Command for modulating motor speed.  Speed is measured as a
 // percentage where 0% is off and 100% is full speed.
 MotorSpeedModulatingCmd : MotorSpeedModulatingPoint & CmdPoint
+
+// Sensor for on/off state of a motor
+MotorRunSensor : RunSensor { motor }
+
+// On/off command to run a motor
+MotorRunCmd : RunCmd { motor }
+
+// Low/medium/high enumeration for a three-speed motor
+Motor3Speed: Enum {
+  low
+  medium
+  high
+}
+
+// Sensor for on/off run state of a three-speed motor at a specific speed
+Motor3SpeedRunSensor : RunSensor {
+  motor
+  speed
+  motor3Speed: Motor3Speed
+}
+
+// Command for on/off run state of a three-speed motor at a specific speed
+Motor3SpeedRunCmd : RunCmd {
+  motor
+  speed
+  motor3Speed: Motor3Speed
+}
+
+// Sensor for low/medium/high speed of a three-speed motor
+Motor3SpeedSensor : EnumPoint & SensorPoint {
+  motor
+  speed
+  motor3Speed: Motor3Speed
+}
+
+// Command for low/medium/high speed of a three-speed motor
+Motor3SpeedCmd : EnumPoint & CmdPoint {
+  motor
+  speed
+  motor3Speed: Motor3Speed
+}
+
+// Command to permit/prohibit a motor to run.
+// Used as an interlock with a run command.
+MotorEnableCmd : EnableCmd
