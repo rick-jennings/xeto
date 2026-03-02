@@ -12,21 +12,23 @@ FanPoint : Point <abstract> {
   fan
 }
 
-// Sensor for on/off state of a fan
-FanRunSensor : FanPoint & RunSensor <abstract>
-
-// On/off command to run a fan
-FanRunCmd : FanPoint & RunCmd <abstract>
-
 // Command to permit/prohibit a fan to run.
 // Used as an interlock with a run command.
-FanEnableCmd : FanPoint & EnableCmd <abstract>
+FanEnableCmd : FanPoint & MotorEnableCmd
 
-// Sensor for speed of a fan as percentage 0% off and 100% full speed
-FanSpeedSensor : FanPoint & VfdSpeedSensor <abstract>
+// Sensor for on/off state of a fan
+FanRunSensor : FanPoint & MotorRunSensor
 
-// Command for speed of a fan as percentage 0% off and 100% full speed
-FanSpeedCmd : FanPoint & VfdSpeedCmd <abstract>
+// On/off command to run a fan
+FanRunCmd : FanPoint & MotorRunCmd
+
+// Sensor for modulating fan speed.  Speed is measured as a
+// percentage where 0% is off and 100% is full speed.
+FanSpeedSensor : FanPoint & MotorSpeedModulatingSensor
+
+// Command for modulating fan speed.  Speed is measured as a
+// percentage where 0% is off and 100% is full speed.
+FanSpeedCmd : FanPoint & MotorSpeedModulatingCmd
 
 //////////////////////////////////////////////////////////////////////////
 // Discharge
