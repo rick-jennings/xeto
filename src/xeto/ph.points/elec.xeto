@@ -87,7 +87,7 @@ ElecAcReactiveDemandSensor : ElecAcPowerDemandSensor <abstract> {
 }
 
 // Sensor for AC electric apparent power demand
-ElecAcApparentDemandSensor : ElecAcPowerDemandSensor <abstract> {
+ElecAcApparentDemandSensor : ElecAcPowerDemandSensor {
   apparent
   unit: Unit <quantity:"apparentPower"> "kVA"
 }
@@ -137,15 +137,6 @@ ElecAcExportReactiveDemandSensor : ElecAcReactiveDemandSensor { export }
 // Sensor for net of AC electric reactive power demand
 ElecAcNetReactiveDemandSensor : ElecAcReactiveDemandSensor { net }
 
-// Sensor for import of AC electric apparent power demand
-ElecAcImportApparentDemandSensor : ElecAcApparentDemandSensor { import }
-
-// Sensor for export of AC electric apparent power demand
-ElecAcExportApparentDemandSensor : ElecAcApparentDemandSensor { export }
-
-// Sensor for net of AC electric apparent power demand
-ElecAcNetApparentDemandSensor : ElecAcApparentDemandSensor { net }
-
 // Sensor for total import of AC electric active energy
 ElecAcTotalImportActiveEnergySensor : ElecAcImportActiveEnergySensor { total }
 
@@ -194,12 +185,6 @@ ElecAcTotalExportReactiveDemandSensor : ElecAcExportReactiveDemandSensor { total
 // Sensor for total net of AC electric reactive power demand
 ElecAcTotalNetReactiveDemandSensor : ElecAcNetReactiveDemandSensor { total }
 
-// Sensor for total import of AC electric apparent power demand
-ElecAcTotalImportApparentDemandSensor : ElecAcImportApparentDemandSensor { total }
-
-// Sensor for total export of AC electric apparent power demand
-ElecAcTotalExportApparentDemandSensor : ElecAcExportApparentDemandSensor { total }
-
-// Sensor for total net of AC electric apparent power demand
-ElecAcTotalNetApparentDemandSensor : ElecAcNetApparentDemandSensor { total }
+// Sensor for total of AC electric apparent power demand
+ElecAcTotalApparentDemandSensor : ElecAcApparentDemandSensor { total }
 

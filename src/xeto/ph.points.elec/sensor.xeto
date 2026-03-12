@@ -112,7 +112,7 @@ ElecAcReactivePowerSensor : ElecAcAvgMagnitudePowerSensor <abstract> {
 }
 
 // Sensor for average magnitude of AC electric apparent power
-ElecAcApparentPowerSensor : ElecAcAvgMagnitudePowerSensor <abstract> {
+ElecAcApparentPowerSensor : ElecAcAvgMagnitudePowerSensor {
   apparent
   unit: Unit <quantity:"apparentPower"> "kVA"
 }
@@ -146,15 +146,6 @@ ElecAcExportReactivePowerSensor : ElecAcReactivePowerSensor {
 
 // Sensor for net of average magnitude of AC electric reactive power
 ElecAcNetReactivePowerSensor : ElecAcReactivePowerSensor { net }
-
-// Sensor for import of average magnitude of AC electric apparent power
-ElecAcImportApparentPowerSensor : ElecAcApparentPowerSensor { import }
-
-// Sensor for export of average magnitude of AC electric apparent power
-ElecAcExportApparentPowerSensor : ElecAcApparentPowerSensor { export }
-
-// Sensor for net of average magnitude of AC electric apparent power
-ElecAcNetApparentPowerSensor : ElecAcApparentPowerSensor { net }
 
 // Sensor for net of AC electric current demand
 ElecAcNetCurrentDemandSensor : ElecAcCurrentDemandSensor { net }
@@ -252,23 +243,11 @@ ElecAcPhaseExportReactivePowerSensor : ElecAcExportReactivePowerSensor { phase: 
 // Sensor for phase net of average magnitude of AC electric reactive power
 ElecAcPhaseNetReactivePowerSensor : ElecAcNetReactivePowerSensor { phase: Phase }
 
-// Sensor for total import of average magnitude of AC electric apparent power
-ElecAcTotalImportApparentPowerSensor : ElecAcImportApparentPowerSensor { total }
+// Sensor for total of average magnitude of AC electric apparent power
+ElecAcTotalApparentPowerSensor : ElecAcApparentPowerSensor { total }
 
-// Sensor for total export of average magnitude of AC electric apparent power
-ElecAcTotalExportApparentPowerSensor : ElecAcExportApparentPowerSensor { total }
-
-// Sensor for total net of average magnitude of AC electric apparent power
-ElecAcTotalNetApparentPowerSensor : ElecAcNetApparentPowerSensor { total }
-
-// Sensor for phase import of average magnitude of AC electric apparent power
-ElecAcPhaseImportApparentPowerSensor : ElecAcImportApparentPowerSensor { phase: Phase }
-
-// Sensor for phase export of average magnitude of AC electric apparent power
-ElecAcPhaseExportApparentPowerSensor : ElecAcExportApparentPowerSensor { phase: Phase }
-
-// Sensor for phase net of average magnitude of AC electric apparent power
-ElecAcPhaseNetApparentPowerSensor : ElecAcNetApparentPowerSensor { phase: Phase }
+// Sensor for phase of average magnitude of AC electric apparent power
+ElecAcPhaseApparentPowerSensor : ElecAcApparentPowerSensor { phase: Phase }
 
 // Sensor for phase AC electric power factor
 ElecAcPhasePfSensor : ElecAcPfSensor { phase: Phase }

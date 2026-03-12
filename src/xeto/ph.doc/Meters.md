@@ -234,6 +234,25 @@ Haystack recommends normalizing AC reactive power points as follows:
  - When the manufacturer does not expose a `net` point, both `import` and
    `export` points should be used to derive a normalized `net` value.
 
+### Apparent Power
+
+Apparent power (S = √(P² + Q²), where P is active power and Q is reactive power)
+is by definition a non-negative magnitude — it has no inherent direction.  Because
+apparent power is derived from both active and reactive power, each of which carries
+its own directional convention (import/export for active power; inductive/capacitive
+for reactive power), there is no single directional semantic that can be cleanly
+applied to apparent power.  For this reason, Haystack does not define `import`,
+`export`, or `net` variants for apparent power points.
+
+However, some meter manufacturers sign apparent power to match the sign of active
+power when the load is generating (i.e., active power is negative).  This behavior
+is non-standard and inconsistent across manufacturers.
+
+Haystack recommends normalizing AC apparent power points as follows:
+ - Apply the absolute value to any apparent power reading that may be reported
+   as negative.  This normalization may need to be applied at the data source
+   or within the analytics system prior to analysis.
+
 ## Normalizing AC Electric Active Energy Measurements
 
 Electricity meters typically report active energy as accumulated totalized
