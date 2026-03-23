@@ -25,6 +25,9 @@ CableSurfaceTempSensor : SurfaceTempSensor { cable }
 // Sensor that measures temperature of an electric coupler
 CouplerSurfaceTempSensor : SurfaceTempSensor { coupler }
 
+// Sensor that measures temperature of a motor
+MotorSurfaceTempSensor : SurfaceTempSensor { motor }
+
 //////////////////////////////////////////////////////////////////////////
 // EVSE
 //////////////////////////////////////////////////////////////////////////

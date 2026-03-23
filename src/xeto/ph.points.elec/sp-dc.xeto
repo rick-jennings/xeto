@@ -15,5 +15,14 @@ ElecDcPowerMaxSp : ElecPowerMaxSp <abstract> { dc }
 // Max setpoint for import of DC electric power
 ElecDcImportPowerMaxSp : ElecDcPowerMaxSp { import }
 
+// Max setpoint for net DC electric power
+ElecDcNetPowerMaxSp : ElecDcPowerMaxSp { net }
+
 // Max setpoint for import of DC electric current
 ElecDcImportCurrentMaxSp : ElecDcCurrentMaxSp { import }
+
+// Max setpoint for a vehicle's input net DC electric power
+VehicleInputElecDcNetPowerMaxSp : ElecDcNetPowerMaxSp {
+  vehicle
+  input
+}
