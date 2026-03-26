@@ -87,7 +87,7 @@ ElecAcReactiveDemandSensor : ElecAcPowerDemandSensor <abstract> {
 }
 
 // Sensor for AC electric apparent power demand
-ElecAcApparentDemandSensor : ElecAcPowerDemandSensor <abstract> {
+ElecAcApparentDemandSensorX : ElecAcPowerDemandSensor <abstract> {
   apparent
   unit: Unit <quantity:"apparentPower"> "kVA"
 }
@@ -137,14 +137,20 @@ ElecAcExportReactiveDemandSensor : ElecAcReactiveDemandSensor { export }
 // Sensor for net of AC electric reactive power demand
 ElecAcNetReactiveDemandSensor : ElecAcReactiveDemandSensor { net }
 
-// Sensor for import of AC electric apparent power demand
-ElecAcImportApparentDemandSensor : ElecAcApparentDemandSensor { import }
+// Sensor for net of AC electric apparent power demand. Although apparent
+// power is non-negative by definition, this spec follows the manufacturer
+// convention of using signed values to encode the direction of active
+// power flow: positive for import, negative for export.
+ElecAcNetApparentDemandSensor : ElecAcApparentDemandSensorX { net }
 
-// Sensor for export of AC electric apparent power demand
-ElecAcExportApparentDemandSensor : ElecAcApparentDemandSensor { export }
-
-// Sensor for net of AC electric apparent power demand
-ElecAcNetApparentDemandSensor : ElecAcApparentDemandSensor { net }
+// Sensor for AC electric apparent power demand. This spec follows
+// the mathematical definition of apparent power as a non-negative magnitude,
+// in contrast to the net variant which uses signed values to encode the
+// direction of active power flow.
+ElecAcApparentDemandSensor : ElecAcApparentDemandSensorX {
+  absolute
+  minVal: Number 0.0
+}
 
 // Sensor for total import of AC electric active energy
 ElecAcTotalImportActiveEnergySensor : ElecAcImportActiveEnergySensor { total }
@@ -194,12 +200,15 @@ ElecAcTotalExportReactiveDemandSensor : ElecAcExportReactiveDemandSensor { total
 // Sensor for total net of AC electric reactive power demand
 ElecAcTotalNetReactiveDemandSensor : ElecAcNetReactiveDemandSensor { total }
 
-// Sensor for total import of AC electric apparent power demand
-ElecAcTotalImportApparentDemandSensor : ElecAcImportApparentDemandSensor { total }
-
-// Sensor for total export of AC electric apparent power demand
-ElecAcTotalExportApparentDemandSensor : ElecAcExportApparentDemandSensor { total }
-
-// Sensor for total net of AC electric apparent power demand
+// Sensor for total net of AC electric apparent power demand. Although apparent
+// power is non-negative by definition, this spec follows the manufacturer
+// convention of using signed values to encode the direction of active
+// power flow: positive for import, negative for export.
 ElecAcTotalNetApparentDemandSensor : ElecAcNetApparentDemandSensor { total }
+
+// Sensor for total AC electric apparent power demand. This spec follows
+// the mathematical definition of apparent power as a non-negative magnitude,
+// in contrast to the net variant which uses signed values to encode the
+// direction of active power flow.
+ElecAcTotalApparentDemandSensor : ElecAcApparentDemandSensor { total }
 
