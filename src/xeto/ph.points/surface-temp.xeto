@@ -20,10 +20,16 @@ SurfaceTempSensor : SurfaceTempPoint & SensorPoint <abstract>
 HeatsinkSurfaceTempSensor : SurfaceTempSensor { heatsink }
 
 // Sensor that measures temperature of an electric cable
-CableSurfaceTempSensor : SurfaceTempSensor { cable }
+ElecCableTempSensor : SurfaceTempSensor {
+  elec
+  cable
+}
 
-// Sensor that measures temperature of an electric coupler
-CouplerSurfaceTempSensor : SurfaceTempSensor { coupler }
+// Sensor that measures temperature of an electric connector
+ElecConnectorTempSensor : SurfaceTempSensor {
+  elec
+  connector
+}
 
 // Sensor that measures temperature of a motor
 MotorTempSensor : SurfaceTempSensor { motor }
@@ -39,7 +45,7 @@ MotorBearingTempSensor : MotorTempSensor { bearing }
 //////////////////////////////////////////////////////////////////////////
 
 // Sensor that measures temperature of an EVSE cable
-EvseCableSurfaceTempSensor : CableSurfaceTempSensor { evse }
+EvseCableTempSensor : ElecCableTempSensor { evse }
 
-// Sensor that measures temperature of an EVSE coupler
-EvseCouplerSurfaceTempSensor : CouplerSurfaceTempSensor { evse }
+// Sensor that measures temperature of an EVSE connector
+EvseConnectorTempSensor : ElecConnectorTempSensor { evse }
