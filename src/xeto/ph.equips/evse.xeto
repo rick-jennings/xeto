@@ -1,0 +1,74 @@
+//
+// Copyright (c) 2026, Project-Haystack
+// Licensed under the Academic Free License version 3.0
+//
+// History:
+//   16 Jun 2026 Rick Jennings  Creation
+//
+
+//////////////////////////////////////////////////////////////////////////
+// AC
+//////////////////////////////////////////////////////////////////////////
+
+// An AC EVSE port with a single AC EVSE connector, modeled as one combined entity.
+// See [ph.doc::EVSE] chapter.
+AcEvsePortConnector : AcEvsePort & AcEvseConnector
+
+// An EVSE dispenser containing a single [ph.equips::AcEvsePortConnector]
+// child equip.  See [ph.doc::EVSE] chapter.
+EvseDispenserWithOneAcPortConnector : EvseDispenser {
+  childEquips: {
+    AcEvsePortConnector
+  }
+}
+
+// An EVSE dispenser containing two [ph.equips::AcEvsePortConnector]
+// child equips.  See [ph.doc::EVSE] chapter.
+EvseDispenserWithTwoAcPortConnectors : EvseDispenser {
+  childEquips: {
+    AcEvsePortConnector
+    AcEvsePortConnector
+  }
+}
+
+//////////////////////////////////////////////////////////////////////////
+// DC
+//////////////////////////////////////////////////////////////////////////
+
+// A DC EVSE port with a single DC EVSE connector, modeled as one combined entity.
+// See [ph.doc::EVSE] chapter.
+DcEvsePortConnector : DcEvsePort & DcEvseConnector
+
+// An EVSE dispenser containing a single [ph.equips::DcEvsePortConnector]
+// child equip.  See [ph.doc::EVSE] chapter.
+EvseDispenserWithOneDcPortConnector : EvseDispenser {
+  childEquips: {
+    DcEvsePortConnector
+  }
+}
+
+// An EVSE dispenser containing two [ph.equips::DcEvsePortConnector]
+// child equips.  See [ph.doc::EVSE] chapter.
+EvseDispenserWithTwoDcPortConnectors : EvseDispenser {
+  childEquips: {
+    DcEvsePortConnector
+    DcEvsePortConnector
+  }
+}
+
+// A DC EVSE port with two [ph::DcEvseConnector] child equips.
+// See [ph.doc::EVSE] chapter.
+DcEvsePortDualConnector : DcEvsePort {
+  childEquips: {
+    DcEvseConnector
+    DcEvseConnector
+  }
+}
+
+// An EVSE dispenser containing a single [ph.equips::DcEvsePortDualConnector]
+// child equip.  See [ph.doc::EVSE] chapter.
+EvseDispenserWithOneDcPortDualConnector : EvseDispenser {
+  childEquips: {
+    DcEvsePortDualConnector
+  }
+}

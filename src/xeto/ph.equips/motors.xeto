@@ -1,0 +1,72 @@
+//
+// Copyright (c) 2026, Project-Haystack
+// Licensed under the Academic Free License version 3.0
+//
+// History:
+//   16 Jun 2026 Rick Jennings  Creation
+//
+
+// TODO: define tag to clarify AC or DC input
+
+//////////////////////////////////////////////////////////////////////////
+// AC motors
+//////////////////////////////////////////////////////////////////////////
+
+// An AC motor converts AC electrical energy into mechanical energy.
+// See [ph.doc::Motors] chapter.
+AcMotor: Motor & ElecAcEquip
+
+// An AC motor operated at one or more discrete speed stages, as opposed
+// to modulating speed control via a VFD.  A 'stageCount' of one indicates
+// a single-speed on/off motor; greater values indicate the number of
+// discrete speed stages.  See [ph.doc::Motors] chapter.
+AcMotorStaged : AcMotor {
+  stageCount: Int <minVal: 1>
+}
+
+// A combined fan and AC motor entity used to move air.
+// See [ph.doc::Motors] chapter.
+FanAcMotor : Fan & AcMotor
+
+// A combined fan and staged AC motor entity used to move air at one or more
+// discrete speed stages.  See [ph.doc::Motors] chapter.
+FanAcMotorStaged : FanAcMotor & AcMotorStaged
+
+// A combined fan, VFD, and AC motor entity used to move air with modulating
+// speed control of the motor shaft.  See [ph.doc::Motors] chapter.
+FanAcMotorVfd : FanAcMotor & Vfd
+
+// A combined pump and AC motor entity used to move fluid.
+// See [ph.doc::Motors] chapter.
+PumpAcMotor : Pump & AcMotor
+
+// A combined pump, VFD, and AC motor entity used to move fluid with modulating
+// speed control of the motor shaft.  See [ph.doc::Motors] chapter.
+PumpAcMotorVfd : PumpAcMotor & Vfd
+
+//////////////////////////////////////////////////////////////////////////
+// DC motors
+//////////////////////////////////////////////////////////////////////////
+
+// A DC motor converts DC electrical energy into mechanical energy.
+// See [ph.doc::Motors] chapter.
+DcMotor : Motor & ElecDcEquip
+
+// A combined VSD and DC motor entity converts electrical energy into
+// mechanical energy with modulating speed control of the DC motor shaft.
+// See [ph.doc::Motors] chapter.
+VsdDcMotor : DcVsd & DcMotor
+
+// An Electronically Commutated Motor (ECM) converts electrical energy
+// into mechanical energy. It has built-in power electronics that control
+// its internal DC motor to enable modulating speed control of the DC motor shaft.
+// See [ph.doc::Motors] chapter.
+EcmMotor : VsdDcMotor { ecm }
+
+// A combined fan and ECM motor entity used to move air with modulating
+// speed control of the motor shaft.  See [ph.doc::Motors] chapter.
+FanEcmMotor : Fan & EcmMotor
+
+// A combined pump and ECM motor entity used to move fluid with modulating
+// speed control of the motor shaft.  See [ph.doc::Motors] chapter.
+PumpEcmMotor : Pump & EcmMotor

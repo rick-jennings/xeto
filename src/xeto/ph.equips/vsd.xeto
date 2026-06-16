@@ -1,0 +1,19 @@
+//
+// Copyright (c) 2026, Project-Haystack
+// Licensed under the Academic Free License version 3.0
+//
+// History:
+//   16 Jun 2026 Rick Jennings  Creation
+//
+
+// A Variable Speed Drive (VSD) controls the electrical energy applied to
+// a motor for variable speed control. See [ph.doc::Motors] chapter.
+Vsd: ElecEquip { vsd }
+
+// A DC Variable Speed Drive (VSD) controls the electrical energy applied to
+// a DC motor for variable speed control. See [ph.doc::Motors] chapter.
+DcVsd: Vsd & ElecDcEquip
+
+// A Variable Frequency Drive (VFD) controls the electrical energy applied
+// to an AC motor for variable speed control. See [ph.doc::Motors] chapter.
+Vfd: Vsd & ElecAcEquip
