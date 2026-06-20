@@ -108,3 +108,47 @@ RuntimeSensor : NumberPoint & SensorPoint {
   runtime
   unit: Unit <quantity:"time"> "hr"
 }
+
+//////////////////////////////////////////////////////////////////////////
+// Setpoints
+//////////////////////////////////////////////////////////////////////////
+
+// Min setpoint
+MinSp : SpPoint <abstract> { min }
+
+// Max setpoint
+MaxSp : SpPoint <abstract> { max }
+
+// Candidate setpoint from a schedule, operator override, or EMS, which
+// is resolved into an [ph.points::EffectiveSp]
+ConditionalSp : SpPoint <abstract> { conditional }
+
+// Candidate max setpoint from a schedule, operator override, or EMS, which
+// is resolved into an [ph.points::EffectiveSp]
+ConditionalMaxSp : ConditionalSp & MaxSp <abstract>
+
+// Candidate min setpoint from a schedule, operator override, or EMS, which
+// is resolved into an [ph.points::EffectiveSp]
+ConditionalMinSp : ConditionalSp & MinSp <abstract>
+
+// Setpoint currently in effect, which may be resolved from one or more
+// [ph.points::ConditionalSp] points such as a schedule, operator
+// override, or EMS
+EffectiveSp : SpPoint <abstract> { effective }
+
+// Max setpoint currently in effect, which may be resolved from one or more
+// [ph.points::ConditionalSp] points such as a schedule, operator
+// override, or EMS
+EffectiveMaxSp : EffectiveSp & MaxSp <abstract>
+
+// Min setpoint currently in effect, which may be resolved from one or more
+// [ph.points::ConditionalSp] points such as a schedule, operator
+// override, or EMS
+EffectiveMinSp : EffectiveSp & MinSp <abstract>
+
+//////////////////////////////////////////////////////////////////////////
+// Cooling setpoints
+//////////////////////////////////////////////////////////////////////////
+
+CoolConditionalSp : ConditionalSp { cool }
+CoolEffectiveSp : EffectiveSp { cool }
