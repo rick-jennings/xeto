@@ -93,32 +93,45 @@ ZoneAirTempSensor : AirTempSensor { zone }
 // Setpoint for drybulb air temperature zone
 ZoneAirTempSp : AirTempSp <abstract> { zone }
 
-// Effective setpoint for drybulb air temperature a zone
-ZoneAirTempEffectiveSp : ZoneAirTempSp { effective }
+// Effective setpoint for drybulb air temperature of a zone,
+// resolving the heating and cooling modes when present
+ZoneAirTempEffectiveSp : ZoneAirTempSp & EffectiveSp
 
 // Cooling mode temperature setpoint for zone
-ZoneAirTempCoolingSp : ZoneAirTempSp { cooling }
+ZoneAirTempCoolingSp : ZoneAirTempSp <abstract> { cooling }
+
+// Effective cooling mode temperature setpoint for zone
+ZoneAirTempCoolingEffectiveSp : ZoneAirTempCoolingSp & EffectiveSp
+
+// Condition for effective cooling mode temperature setpoint for zone
+ZoneAirTempCoolingCandidateSp : ZoneAirTempCoolingSp & CandidateSp <abstract>
 
 // Cooling mode temperature setpoint for zone when occupied
-ZoneAirTempOccCoolingSp : ZoneAirTempCoolingSp { occ }
+ZoneAirTempOccCoolingSp : ZoneAirTempCoolingCandidateSp { occ }
 
 // Cooling mode temperature setpoint for zone when unoccupied
-ZoneAirTempUnoccCoolingSp : ZoneAirTempCoolingSp { unocc }
+ZoneAirTempUnoccCoolingSp : ZoneAirTempCoolingCandidateSp { unocc }
 
 // Cooling mode temperature setpoint for zone when in standby mode
-ZoneAirTempStandbyCoolingSp : ZoneAirTempCoolingSp { standby }
+ZoneAirTempStandbyCoolingSp : ZoneAirTempCoolingCandidateSp { standby }
 
 // Heating mode temperature setpoint for zone
-ZoneAirTempHeatingSp : ZoneAirTempSp { heating }
+ZoneAirTempHeatingSp : ZoneAirTempSp <abstract> { heating }
+
+// Effective heating mode temperature setpoint for zone
+ZoneAirTempHeatingEffectiveSp : ZoneAirTempHeatingSp & EffectiveSp
+
+// Condition for effective heating mode temperature setpoint for zone
+ZoneAirTempHeatingCandidateSp : ZoneAirTempHeatingSp & CandidateSp <abstract>
 
 // Heating mode temperature setpoint for zone when occupied
-ZoneAirTempOccHeatingSp : ZoneAirTempHeatingSp { occ }
+ZoneAirTempOccHeatingSp : ZoneAirTempHeatingCandidateSp { occ }
 
 // Heating mode temperature setpoint for zone when unoccupied
-ZoneAirTempUnoccHeatingSp : ZoneAirTempHeatingSp { unocc }
+ZoneAirTempUnoccHeatingSp : ZoneAirTempHeatingCandidateSp { unocc }
 
 // Heating mode temperature setpoint for zone when in standby mode
-ZoneAirTempStandbyHeatingSp : ZoneAirTempHeatingSp { standby }
+ZoneAirTempStandbyHeatingSp : ZoneAirTempHeatingCandidateSp { standby }
 
 //////////////////////////////////////////////////////////////////////////
 // Other
