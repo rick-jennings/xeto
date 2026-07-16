@@ -123,29 +123,56 @@ RuntimeSensor : NumberPoint & SensorPoint {
 }
 
 // Setpoint for a limit that constrains the range a value is kept
-// within.  See [ph.doc::PointPatterns] chapter.
+// within.  Limits are absolute bounds with no deadband, unlike a
+// [ph.points::TargetSp] that tolerates deviation from the target
+// within a deadband.  See [ph.doc::PointPatterns] chapter.
 LimitSp : SpPoint <abstract>
 
 // Setpoint for the lower limit that a control system keeps a value
-// at or above, such as the minimum airflow of a VAV.
+// at or above, such as the minimum airflow of a VAV.  Limits are
+// absolute bounds with no deadband, unlike a [ph.points::TargetSp]
+// that tolerates deviation from the target within a deadband.
 // See [ph.doc::PointPatterns] chapter.
 MinSp : LimitSp <abstract>
 
 // Setpoint for the upper limit that a control system keeps a value
-// at or below, such as an electrical demand limit.
+// at or below, such as an electrical demand limit.  Limits are
+// absolute bounds with no deadband, unlike a [ph.points::TargetSp]
+// that tolerates deviation from the target within a deadband.
 // See [ph.doc::PointPatterns] chapter.
 MaxSp : LimitSp <abstract>
 
-// Setpoint for the target that control drives a value toward.
-// See [ph.doc::PointPatterns] chapter.
-TargetSp : SpPoint <abstract>
+// Direction from which control drives a value toward a target
+// setpoint.  See [ph.doc::PointPatterns] chapter.
+TargetSpType: Enum {
+  twoSided       // control drives the value toward the setpoint from both directions
+  oneSidedLower  // control drives the value up toward the setpoint; it may float above
+  oneSidedUpper  // control drives the value down toward the setpoint; it may float below
+}
+
+// Setpoint for the target that control drives a value toward, from
+// both directions or only one as specified by its spTargetType.
+// Deviation from the target is tolerated within a deadband, unlike
+// a [ph.points::LimitSp] that bounds a value absolutely with no
+// deadband.  See [ph.doc::PointPatterns] chapter.
+TargetSp : SpPoint <abstract> {
+  targetSpType: TargetSpType
+}
 
 // Setpoint the control loop may use while its conditions are met,
-// such as occupancy, heating/cooling mode, or a demand response event.
-// See [ph.doc::PointPatterns] chapter.
+// such as occupancy, heating/cooling mode, or a demand response
+// event.  Control drives the value toward it from both directions
+// or only one as specified by its spTargetType.  Deviation from
+// the target is tolerated within a deadband, unlike a
+// [ph.points::LimitSp] that bounds a value absolutely with no
+// deadband.  See [ph.doc::PointPatterns] chapter.
 CandidateSp : TargetSp <abstract>
 
 // Setpoint the control loop is currently using, resolving the
 // conditions in effect when the same value has multiple candidate
-// setpoints.  See [ph.doc::PointPatterns] chapter.
+// setpoints.  Control drives the value toward it from both
+// directions or only one as specified by its spTargetType.
+// Deviation from the target is tolerated within a deadband, unlike
+// a [ph.points::LimitSp] that bounds a value absolutely with no
+// deadband.  See [ph.doc::PointPatterns] chapter.
 EffectiveSp : TargetSp <abstract> { effective }
