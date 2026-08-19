@@ -20,6 +20,37 @@ AirFlowSensor : AirFlowPoint & SensorPoint <abstract>
 AirFlowSp : AirFlowPoint & SpPoint <abstract>
 
 //////////////////////////////////////////////////////////////////////////
+// New specs
+//////////////////////////////////////////////////////////////////////////
+
+// Minimum air flow setpoint when in startup status, regardless of cooling or heating mode
+AirFlowStartupMinSp : AirFlowSp { min }
+
+// Minimum air flow setpoint when unoccupied, regardless of cooling or heating mode
+AirFlowUnoccMinSp : AirFlowSp { unocc, min }
+
+// Minimum air flow setpoint when in standby status, regardless of cooling or heating mode
+AirFlowStandbyMinSp : AirFlowSp { standby, min }
+
+// Cooling mode minimum air flow setpoint when occupied
+AirFlowOccCoolingMinSp : AirFlowSp { occ, cooling, min }
+
+// Heating mode minimum air flow setpoint when occupied
+AirFlowOccHeatingMinSp : AirFlowSp { occ, heating, min }
+
+// Cooling mode maximum air flow setpoint when occupied
+AirFlowOccCoolingMaxSp : AirFlowSp { occ, cooling, max }
+
+// Heating mode maximum air flow setpoint when occupied
+AirFlowOccHeatingMaxSp : AirFlowSp { occ, heating, max }
+
+// Target air flow setpoint that overrides normal automatic control
+AirFlowOverrideSp : AirFlowSp
+
+// Effective target air flow setpoint
+AirFlowEffectiveSp : AirFlowSp { effective }
+
+//////////////////////////////////////////////////////////////////////////
 // Discharge
 //////////////////////////////////////////////////////////////////////////
 

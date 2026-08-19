@@ -20,6 +20,25 @@ AirTempSensor : AirTempPoint & SensorPoint <abstract>
 AirTempSp : AirTempPoint & SpPoint <abstract>
 
 //////////////////////////////////////////////////////////////////////////
+// New specs
+//////////////////////////////////////////////////////////////////////////
+
+// Minimum setpoint for drybulb air temperature of discharge duct
+DischargeAirTempMinSp : DischargeAirTempSp { min }
+
+// Maximum setpoint for drybulb air temperature of discharge duct
+DischargeAirTempMaxSp : DischargeAirTempSp { max }
+
+// Setpoint for outside air temperature
+OutsideAirTempSp : AirTempSp { outside }
+
+// Maximum setpoint for outside air temperature that allows the use of a reheater
+ReheaterOutsideAirTempMaxSp : OutsideAirTempSp { max }
+
+// Maximum setpoint for outside air temperature that allows the use of a perimeter
+PerimeterOutsideAirTempMaxSp : OutsideAirTempSp { max }
+
+//////////////////////////////////////////////////////////////////////////
 // Discharge
 //////////////////////////////////////////////////////////////////////////
 

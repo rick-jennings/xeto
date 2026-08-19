@@ -83,3 +83,19 @@ MotorMechRotationalDirectionSensor : MechRotationalDirectionSensor { motor }
 
 // Command for a motor shaft's mechanical rotational direction
 MotorMechRotationalDirectionCmd : MechRotationalDirectionCmd { motor }
+
+//////////////////////////////////////////////////////////////////////////
+// New specs
+//////////////////////////////////////////////////////////////////////////
+
+// Setpoint for modulating motor speed.  Speed is measured as a
+// percentage where 0% is off and 100% is full speed.
+MotorSpeedModulatingSp : MotorSpeedModulatingPoint & SpPoint <abstract>
+
+// Minimum setpoint for modulating motor speed.  Speed is measured as a
+// percentage where 0% is off and 100% is full speed.
+MotorSpeedModulatingMinSp : MotorSpeedModulatingSp { min }
+
+// Maximum setpoint for modulating motor speed.  Speed is measured as a
+// percentage where 0% is off and 100% is full speed.
+MotorSpeedModulatingMaxSp : MotorSpeedModulatingSp { max }

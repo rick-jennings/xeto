@@ -20,6 +20,38 @@ DamperSensor : DamperPoint & SensorPoint <abstract>
 DamperCmd : DamperPoint & CmdPoint <abstract>
 
 //////////////////////////////////////////////////////////////////////////
+// New specs
+//////////////////////////////////////////////////////////////////////////
+
+// Damper position setpoint; 0% is fully closed, 100% is fully open
+DamperSp : DamperPoint & SpPoint <abstract>
+
+// Minimum damper position setpoint; 0% is fully closed, 100% is fully open
+DamperMinSp : DamperSp { min }
+
+// Maximum damper position setpoint; 0% is fully closed, 100% is fully open
+DamperMaxSp : DamperSp { max }
+
+// Damper position command that overrides normal automatic control; 0% is fully closed, 100% is fully open
+DamperOverrideCmd : DamperCmd
+
+// Damper opening direction enumeration
+DamperDirectionEnum: Enum { clockwise, counterclockwise }
+
+// Point associated with damper opening direction
+DamperDirectionPoint : EnumPoint <abstract> {
+  damper
+  direction
+  enum: Obj <val:DamperDirectionEnum>
+}
+
+// Sensor for damper opening direction
+DamperDirectionSensor : DamperDirectionPoint & SensorPoint
+
+// Command to set damper opening direction
+DamperDirectionCmd : DamperDirectionPoint & CmdPoint
+
+//////////////////////////////////////////////////////////////////////////
 // Discharge
 //////////////////////////////////////////////////////////////////////////
 
