@@ -6,46 +6,6 @@
 //   18 May 2026  Rick Jennings  Creation
 //
 
-//////////////////////////////////////////////////////////////////////////
-// Sensors
-//////////////////////////////////////////////////////////////////////////
-
-// Sensor for electric power
-ElecPowerSensor : ElecSensor <abstract> {
-  power
-  elecDirection: ElecDirection
-}
-
-//////////////////////////////////////////////////////////////////////////
-// AC Sensors
-//////////////////////////////////////////////////////////////////////////
-
-// Sensor for average magnitude of AC electric power
-ElecAcAvgMagnitudePowerSensor : ElecPowerSensor <abstract> {
-  ac
-  avg
-  magnitude
-  elecAcPowerSubtype: ElecAcPowerSubtype
-}
-
-// Sensor for average magnitude of AC electric active power
-ElecAcActivePowerSensor : ElecAcAvgMagnitudePowerSensor <abstract> {
-  active
-  unit: Unit <quantity:"power"> "kW"
-}
-
-// Sensor for average magnitude of AC electric reactive power
-ElecAcReactivePowerSensor : ElecAcAvgMagnitudePowerSensor <abstract> {
-  reactive
-  unit: Unit <quantity:"reactivePower"> "kVAR"
-}
-
-// Sensor for average magnitude of AC electric apparent power
-ElecAcApparentPowerSensor : ElecAcAvgMagnitudePowerSensor <abstract> {
-  apparent
-  unit: Unit <quantity:"apparentPower"> "kVA"
-}
-
 // Sensor for import of average magnitude of AC electric active power
 ElecAcImportActivePowerSensor : ElecAcActivePowerSensor {
   import
@@ -157,12 +117,6 @@ ElecAcPhaseUnsignedApparentPowerSensor : ElecAcUnsignedApparentPowerSensor { pha
 // DC Sensors
 //////////////////////////////////////////////////////////////////////////
 
-// Sensor for DC electric power
-ElecDcPowerSensor : ElecPowerSensor <abstract> {
-  dc
-  unit: Unit <quantity:"power"> "kW"
-}
-
 // Sensor for import of DC electric power
 ElecDcImportPowerSensor : ElecDcPowerSensor { import }
 
@@ -173,33 +127,8 @@ ElecDcExportPowerSensor : ElecDcPowerSensor { export }
 ElecDcNetPowerSensor : ElecDcPowerSensor { net }
 
 //////////////////////////////////////////////////////////////////////////
-// Setpoints
-//////////////////////////////////////////////////////////////////////////
-
-// Max setpoint for electric power
-ElecPowerMaxSp : ElecMaxSp <abstract> {
-  power
-  unit: Unit <quantity:"power"> "kW"
-}
-
-//////////////////////////////////////////////////////////////////////////
 // AC Setpoints
 //////////////////////////////////////////////////////////////////////////
-
-// Max setpoint for AC electric power
-ElecAcPowerMaxSp : ElecPowerMaxSp <abstract> { ac }
-
-// Max setpoint for magnitude of AC electric power
-ElecAcMagnitudePowerMaxSp : ElecAcPowerMaxSp <abstract> {
-  magnitude
-  elecAcWaveformMagnitude: ElecAcWaveformMagnitude
-}
-
-// Max setpoint for average magnitude of AC electric active power
-ElecAcActivePowerMaxSp : ElecAcMagnitudePowerMaxSp <abstract> {
-  avg
-  active
-}
 
 // Max setpoint for import of average magnitude of AC electric active power
 ElecAcImportActivePowerMaxSp : ElecAcActivePowerMaxSp { import }
@@ -210,9 +139,6 @@ ElecAcTotalImportActivePowerMaxSp : ElecAcImportActivePowerMaxSp { total }
 //////////////////////////////////////////////////////////////////////////
 // DC Setpoints
 //////////////////////////////////////////////////////////////////////////
-
-// Max setpoint for DC electric power
-ElecDcPowerMaxSp : ElecPowerMaxSp <abstract> { dc }
 
 // Max setpoint for import of DC electric power
 ElecDcImportPowerMaxSp : ElecDcPowerMaxSp { import }

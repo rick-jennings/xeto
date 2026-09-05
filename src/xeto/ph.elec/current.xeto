@@ -7,49 +7,13 @@
 //
 
 //////////////////////////////////////////////////////////////////////////
-// Sensors
-//////////////////////////////////////////////////////////////////////////
-
-// Sensor for electric current
-ElecCurrentSensor : ElecSensor <abstract> { current }
-
-//////////////////////////////////////////////////////////////////////////
 // AC Sensors
 //////////////////////////////////////////////////////////////////////////
-
-// Sensor for AC electric current
-ElecAcCurrentSensor : ElecCurrentSensor <abstract> {
-  ac
-  elecAcSpectralContent: ElecAcSpectralContent?
-  elecAcHarmonicOrder: Int? <minVal: 2>
-}
-
-// Sensor for magnitude of AC electric current
-ElecAcMagnitudeCurrentSensor : ElecAcCurrentSensor <abstract> {
-  magnitude
-  unit: Unit <quantity:"electricCurrent"> "A"
-  elecAcWaveformMagnitude: ElecAcWaveformMagnitude?
-}
-
-// Sensor for RMS of AC electric current.
-ElecAcRmsCurrentSensor : ElecAcMagnitudeCurrentSensor <abstract> { rootMeanSquare }
 
 // Sensor for RMS of AC electric current. Reports magnitude only; does not
 // use a sign to indicate whether electricity is imported or exported.
 ElecAcUnsignedRmsCurrentSensor : ElecAcRmsCurrentSensor {
   minVal: Number 0.0
-}
-
-// Sensor for angle of AC electric current
-ElecAcAngleCurrentSensor : ElecAcCurrentSensor <abstract> {
-  angle
-  unit: "deg"
-}
-
-// Sensor for metric of AC electric current
-ElecAcQualityCurrentSensor : ElecAcCurrentSensor <abstract> {
-  elecAcQualityMetric: ElecAcQualityMetric
-  unit: Unit <invariant> "%"
 }
 
 // Sensor for line average RMS of AC electric current. Reports magnitude only;
@@ -93,12 +57,6 @@ ElecAcGroundQualityCurrentSensor : ElecAcQualityCurrentSensor { ground }
 // DC Sensors
 //////////////////////////////////////////////////////////////////////////
 
-// Sensor for DC electric current
-ElecDcCurrentSensor : ElecCurrentSensor <abstract> {
-  dc
-  unit: Unit <quantity:"electricCurrent"> "A"
-}
-
 // Sensor for import of DC electric current
 ElecDcImportCurrentSensor : ElecDcCurrentSensor { import }
 
@@ -109,25 +67,8 @@ ElecDcExportCurrentSensor : ElecDcCurrentSensor { export }
 ElecDcNetCurrentSensor : ElecDcCurrentSensor { net }
 
 //////////////////////////////////////////////////////////////////////////
-// Setpoints
-//////////////////////////////////////////////////////////////////////////
-
-// Max setpoint for electric current
-ElecCurrentMaxSp : ElecMaxSp <abstract> {
-  current
-  unit: Unit <quantity:"electricCurrent"> "A"
-}
-
-//////////////////////////////////////////////////////////////////////////
 // AC Setpoints
 //////////////////////////////////////////////////////////////////////////
-
-// Max setpoint for RMS of AC electric current
-ElecAcCurrentMaxSp : ElecCurrentMaxSp <abstract> {
-  ac
-  magnitude
-  rootMeanSquare
-}
 
 // Max setpoint for import of RMS of AC electric current
 ElecAcImportCurrentMaxSp : ElecAcCurrentMaxSp { import }
@@ -138,9 +79,6 @@ ElecAcPhaseImportCurrentMaxSp : ElecAcImportCurrentMaxSp { phase: Phase }
 //////////////////////////////////////////////////////////////////////////
 // DC Setpoints
 //////////////////////////////////////////////////////////////////////////
-
-// Max setpoint for DC electric current
-ElecDcCurrentMaxSp : ElecCurrentMaxSp <abstract> { dc }
 
 // Max setpoint for import of DC electric current
 ElecDcImportCurrentMaxSp : ElecDcCurrentMaxSp { import }
