@@ -10,30 +10,6 @@
 // Sensors
 //////////////////////////////////////////////////////////////////////////
 
-// Sensor for AC electric power demand
-ElecAcPowerDemandSensor : ElecAcDemandSensor <abstract> {
-  power
-  elecAcPowerSubtype: ElecAcPowerSubtype
-}
-
-// Sensor for AC electric active power demand
-ElecAcActiveDemandSensor : ElecAcPowerDemandSensor <abstract> {
-  active
-  unit: Unit <quantity:"power"> "kW"
-}
-
-// Sensor for AC electric reactive power demand
-ElecAcReactiveDemandSensor : ElecAcPowerDemandSensor <abstract> {
-  reactive
-  unit: Unit <quantity:"reactivePower"> "kVAR"
-}
-
-// Sensor for AC electric apparent power demand
-ElecAcApparentDemandSensor : ElecAcPowerDemandSensor <abstract> {
-  apparent
-  unit: Unit <quantity:"apparentPower"> "kVA"
-}
-
 // Sensor for import of AC electric active power demand
 ElecAcImportActiveDemandSensor : ElecAcActiveDemandSensor { import }
 
@@ -91,18 +67,6 @@ ElecAcTotalNetApparentDemandSensor : ElecAcNetApparentDemandSensor { total }
 //////////////////////////////////////////////////////////////////////////
 // Setpoints
 //////////////////////////////////////////////////////////////////////////
-
-// Max setpoint for electric power demand
-ElecDemandMaxSp : ElecMaxSp <abstract> {
-  demand
-  unit: Unit <quantity:"power"> "kW"
-}
-
-// Max setpoint for AC electric active power demand
-ElecAcActiveDemandMaxSp : ElecDemandMaxSp <abstract> {
-  ac
-  active
-}
 
 // Max setpoint for import of AC electric active power demand
 ElecAcImportActiveDemandMaxSp : ElecAcActiveDemandMaxSp { import }

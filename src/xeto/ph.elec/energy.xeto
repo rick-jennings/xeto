@@ -6,44 +6,6 @@
 //   18 May 2026  Rick Jennings  Creation
 //
 
-//////////////////////////////////////////////////////////////////////////
-// Sensors
-//////////////////////////////////////////////////////////////////////////
-
-// Sensor for electric energy
-ElecEnergySensor : ElecSensor <abstract> {
-  energy
-  elecDirection: ElecDirection
-}
-
-//////////////////////////////////////////////////////////////////////////
-// AC Sensors
-//////////////////////////////////////////////////////////////////////////
-
-// Sensor for AC electric energy
-ElecAcEnergySensor : ElecEnergySensor <abstract> {
-  ac
-  elecAcPowerSubtype: ElecAcPowerSubtype
-}
-
-// Sensor for AC electric active energy
-ElecAcActiveEnergySensor : ElecAcEnergySensor <abstract> {
-  active
-  unit: Unit <quantity:"energy"> "kWh"
-}
-
-// Sensor for AC electric reactive energy
-ElecAcReactiveEnergySensor : ElecAcEnergySensor <abstract> {
-  reactive
-  unit: Unit <quantity:"reactiveEnergy"> "kVARh"
-}
-
-// Sensor for AC electric apparent energy
-ElecAcApparentEnergySensor : ElecAcEnergySensor <abstract> {
-  apparent
-  unit: Unit <quantity:"apparentEnergy"> "kVAh"
-}
-
 // Sensor for import of AC electric active energy
 ElecAcImportActiveEnergySensor : ElecAcActiveEnergySensor { import }
 
@@ -128,12 +90,6 @@ ElecAcPhaseNetApparentEnergySensor : ElecAcNetApparentEnergySensor { phase: Phas
 //////////////////////////////////////////////////////////////////////////
 // DC Sensors
 //////////////////////////////////////////////////////////////////////////
-
-// Sensor for DC electric energy
-ElecDcEnergySensor : ElecEnergySensor <abstract> {
-  dc
-  unit: Unit <quantity:"energy"> "kWh"
-}
 
 // Sensor for import of DC electric energy
 ElecDcImportEnergySensor : ElecDcEnergySensor { import }
