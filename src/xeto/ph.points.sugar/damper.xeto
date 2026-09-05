@@ -6,112 +6,216 @@
 //   3 Nov 2022  Brian Frank  Creation
 //
 
-// Point associated with damper position; 0% is fully closed, 100% is fully open
-DamperPoint : NumberPoint <abstract> {
-  air
-  damper
-  unit: Unit <invariant> "%"
-}
+// Sensor for open/close state of a damper
+DamperOpenSensor : ActuatorOpenSensor { damper }
 
-// Damper position sensor; 0% is fully closed, 100% is fully open
-DamperSensor : DamperPoint & SensorPoint <abstract>
+// Command for open/close state of a damper
+DamperOpenCmd : ActuatorOpenCmd { damper }
 
-// Damper position command; 0% is fully closed, 100% is fully open
-DamperCmd : DamperPoint & CmdPoint <abstract>
+// Sensor for modulating position of a damper.  Position is measured as a
+// percentage where 0% is closed and 100% is fully open.
+DamperModulatingSensor : ActuatorModulatingSensor { damper }
 
-//////////////////////////////////////////////////////////////////////////
-// Discharge
-//////////////////////////////////////////////////////////////////////////
-
-// Damper position sensor in dischage duct
-DischargeDamperSensor : DamperSensor { discharge }
-
-// Damper position command in dischage duct
-DischargeDamperCmd : DamperCmd { discharge }
+// Command for modulating position of a damper.  Position is measured as a
+// percentage where 0% is closed and 100% is fully open.
+DamperModulatingCmd : ActuatorModulatingCmd { damper }
 
 //////////////////////////////////////////////////////////////////////////
-// ColdDeck Discharge
+// Air
 //////////////////////////////////////////////////////////////////////////
 
-// Damper position sensor in cold deck dischage duct
-ColdDeckDischargeDamperSensor : DischargeDamperSensor { coldDeck }
+// Sensor for open/close state of a damper in an air duct
+AirDamperOpenSensor : DamperOpenSensor { air }
 
-// Damper position command in cold deck dischage duct
-ColdDeckDischargeDamperCmd : DischargeDamperCmd { coldDeck }
+// Command for open/close state of a damper in an air duct
+AirDamperOpenCmd : DamperOpenCmd { air }
 
-//////////////////////////////////////////////////////////////////////////
-// HotDeck Discharge
-//////////////////////////////////////////////////////////////////////////
+// Sensor for modulating position of a damper in an air duct.  Position is
+// measured as a percentage where 0% is closed and 100% is fully open.
+AirDamperModulatingSensor : DamperModulatingSensor { air }
 
-// Damper position sensor in hot deck dischage duct
-HotDeckDischargeDamperSensor : DischargeDamperSensor { hotDeck }
-
-// Damper position command in hot deck dischage duct
-HotDeckDischargeDamperCmd : DischargeDamperCmd { hotDeck }
+// Command for modulating position of a damper in an air duct.  Position is
+// measured as a percentage where 0% is closed and 100% is fully open.
+AirDamperModulatingCmd : DamperModulatingCmd { air }
 
 //////////////////////////////////////////////////////////////////////////
-// Economizing
+// Discharge Air
 //////////////////////////////////////////////////////////////////////////
 
-// Damper position sensor in economizing duct.
-// Used when there are separate ducts for minimum fresh air vs economizing.
-EconomizingDamperSensor : DamperSensor { economizing }
+// Sensor for open/close state of a damper in a discharge air duct
+DischargeAirDamperOpenSensor : AirDamperOpenSensor { discharge }
 
-// Damper position command in economizing duct.
-// Used when there are separate ducts for minimum fresh air vs economizing.
-EconomizingDamperCmd : DamperCmd { economizing }
+// Command for open/close state of a damper in a discharge air duct
+DischargeAirDamperOpenCmd : AirDamperOpenCmd { discharge }
 
-//////////////////////////////////////////////////////////////////////////
-// Exhaust
-//////////////////////////////////////////////////////////////////////////
+// Sensor for modulating position of a damper in a discharge air duct.
+// Position is measured as a percentage where 0% is closed and 100% is fully
+// open.
+DischargeAirDamperModulatingSensor : AirDamperModulatingSensor { discharge }
 
-// Damper position sensor in exhaust duct
-ExhaustDamperSensor : DamperSensor { exhaust }
-
-// Damper position command in exhaust duct
-ExhaustDamperCmd : DamperCmd { exhaust }
+// Command for modulating position of a damper in a discharge air duct.
+// Position is measured as a percentage where 0% is closed and 100% is fully
+// open.
+DischargeAirDamperModulatingCmd : AirDamperModulatingCmd { discharge }
 
 //////////////////////////////////////////////////////////////////////////
-// Mixed
+// Cold Deck Discharge Air
 //////////////////////////////////////////////////////////////////////////
 
-// Damper position sensor in mixed air duct
-MixedDamperSensor : DamperSensor { mixed }
+// Sensor for open/close state of a damper in a cold deck discharge air duct
+ColdDeckDischargeAirDamperOpenSensor : DischargeAirDamperOpenSensor { coldDeck }
 
-// Damper position command in mixed duct
-MixedDamperCmd : DamperCmd { mixed }
+// Command for open/close state of a damper in a cold deck discharge air duct
+ColdDeckDischargeAirDamperOpenCmd : DischargeAirDamperOpenCmd { coldDeck }
 
-//////////////////////////////////////////////////////////////////////////
-// Outside
-//////////////////////////////////////////////////////////////////////////
+// Sensor for modulating position of a damper in a cold deck discharge air
+// duct.  Position is measured as a percentage where 0% is closed and 100% is
+// fully open.
+ColdDeckDischargeAirDamperModulatingSensor : DischargeAirDamperModulatingSensor { coldDeck }
 
-// Damper position sensor in outside duct.
-// Used when there one duct for both minimum fresh air and economizing.
-OutsideDamperSensor : DamperSensor { outside }
-
-// Damper position command in outside duct.
-// Used when there one duct for both minimum fresh air and economizing.
-OutsideDamperCmd : DamperCmd { outside }
+// Command for modulating position of a damper in a cold deck discharge air
+// duct.  Position is measured as a percentage where 0% is closed and 100% is
+// fully open.
+ColdDeckDischargeAirDamperModulatingCmd : DischargeAirDamperModulatingCmd { coldDeck }
 
 //////////////////////////////////////////////////////////////////////////
-// Return
+// Hot Deck Discharge Air
 //////////////////////////////////////////////////////////////////////////
 
-// Damper position sensor in return duct
-ReturnDamperSensor : DamperSensor { return }
+// Sensor for open/close state of a damper in a hot deck discharge air duct
+HotDeckDischargeAirDamperOpenSensor : DischargeAirDamperOpenSensor { hotDeck }
 
-// Damper position command in return duct
-ReturnDamperCmd : DamperCmd { return }
+// Command for open/close state of a damper in a hot deck discharge air duct
+HotDeckDischargeAirDamperOpenCmd : DischargeAirDamperOpenCmd { hotDeck }
+
+// Sensor for modulating position of a damper in a hot deck discharge air duct.
+// Position is measured as a percentage where 0% is closed and 100% is fully
+// open.
+HotDeckDischargeAirDamperModulatingSensor : DischargeAirDamperModulatingSensor { hotDeck }
+
+// Command for modulating position of a damper in a hot deck discharge air
+// duct.  Position is measured as a percentage where 0% is closed and 100% is
+// fully open.
+HotDeckDischargeAirDamperModulatingCmd : DischargeAirDamperModulatingCmd { hotDeck }
 
 //////////////////////////////////////////////////////////////////////////
-// Ventilation
+// Economizing Air
 //////////////////////////////////////////////////////////////////////////
 
-// Damper position sensor in ventilation or minimum fresh air duct.
-// Used when there are separate ducts for minimum fresh air vs economizing.
-VentilationDamperSensor : DamperSensor { ventilation }
+// Sensor for open/close state of a damper in an economizing air duct
+EconomizingAirDamperOpenSensor : AirDamperOpenSensor { economizing }
 
-// Damper position command in ventilation or minimum fresh air duct.
-// Used when there are separate ducts for minimum fresh air vs economizing.
-VentilationDamperCmd : DamperCmd { ventilation }
+// Command for open/close state of a damper in an economizing air duct
+EconomizingAirDamperOpenCmd : AirDamperOpenCmd { economizing }
+
+// Sensor for modulating position of a damper in an economizing air duct.
+// Position is measured as a percentage where 0% is closed and 100% is fully
+// open.  Used when there are separate ducts for minimum fresh air vs
+// economizing.
+EconomizingAirDamperModulatingSensor : AirDamperModulatingSensor { economizing }
+
+// Command for modulating position of a damper in an economizing air duct.
+// Position is measured as a percentage where 0% is closed and 100% is fully
+// open.  Used when there are separate ducts for minimum fresh air vs
+// economizing.
+EconomizingAirDamperModulatingCmd : AirDamperModulatingCmd { economizing }
+
+//////////////////////////////////////////////////////////////////////////
+// Exhaust Air
+//////////////////////////////////////////////////////////////////////////
+
+// Sensor for open/close state of a damper in an exhaust air duct
+ExhaustAirDamperOpenSensor : AirDamperOpenSensor { exhaust }
+
+// Command for open/close state of a damper in an exhaust air duct
+ExhaustAirDamperOpenCmd : AirDamperOpenCmd { exhaust }
+
+// Sensor for modulating position of a damper in an exhaust air duct.  Position
+// is measured as a percentage where 0% is closed and 100% is fully open.
+ExhaustAirDamperModulatingSensor : AirDamperModulatingSensor { exhaust }
+
+// Command for modulating position of a damper in an exhaust air duct.
+// Position is measured as a percentage where 0% is closed and 100% is fully
+// open.
+ExhaustAirDamperModulatingCmd : AirDamperModulatingCmd { exhaust }
+
+//////////////////////////////////////////////////////////////////////////
+// Mixed Air
+//////////////////////////////////////////////////////////////////////////
+
+// Sensor for open/close state of a damper in a mixed air duct
+MixedAirDamperOpenSensor : AirDamperOpenSensor { mixed }
+
+// Command for open/close state of a damper in a mixed air duct
+MixedAirDamperOpenCmd : AirDamperOpenCmd { mixed }
+
+// Sensor for modulating position of a damper in a mixed air duct.  Position is
+// measured as a percentage where 0% is closed and 100% is fully open.
+MixedAirDamperModulatingSensor : AirDamperModulatingSensor { mixed }
+
+// Command for modulating position of a damper in a mixed air duct.  Position
+// is measured as a percentage where 0% is closed and 100% is fully open.
+MixedAirDamperModulatingCmd : AirDamperModulatingCmd { mixed }
+
+//////////////////////////////////////////////////////////////////////////
+// Outside Air
+//////////////////////////////////////////////////////////////////////////
+
+// Sensor for open/close state of a damper in an outside air duct
+OutsideAirDamperOpenSensor : AirDamperOpenSensor { outside }
+
+// Command for open/close state of a damper in an outside air duct
+OutsideAirDamperOpenCmd : AirDamperOpenCmd { outside }
+
+// Sensor for modulating position of a damper in an outside air duct.
+// Position is measured as a percentage where 0% is closed and 100% is fully
+// open.  Used when there is one duct for both minimum fresh air and
+// economizing.
+OutsideAirDamperModulatingSensor : AirDamperModulatingSensor { outside }
+
+// Command for modulating position of a damper in an outside air duct.
+// Position is measured as a percentage where 0% is closed and 100% is fully
+// open.  Used when there is one duct for both minimum fresh air and
+// economizing.
+OutsideAirDamperModulatingCmd : AirDamperModulatingCmd { outside }
+
+//////////////////////////////////////////////////////////////////////////
+// Return Air
+//////////////////////////////////////////////////////////////////////////
+
+// Sensor for open/close state of a damper in a return air duct
+ReturnAirDamperOpenSensor : AirDamperOpenSensor { return }
+
+// Command for open/close state of a damper in a return air duct
+ReturnAirDamperOpenCmd : AirDamperOpenCmd { return }
+
+// Sensor for modulating position of a damper in a return air duct.  Position
+// is measured as a percentage where 0% is closed and 100% is fully open.
+ReturnAirDamperModulatingSensor : AirDamperModulatingSensor { return }
+
+// Command for modulating position of a damper in a return air duct.  Position
+// is measured as a percentage where 0% is closed and 100% is fully open.
+ReturnAirDamperModulatingCmd : AirDamperModulatingCmd { return }
+
+//////////////////////////////////////////////////////////////////////////
+// Ventilation Air
+//////////////////////////////////////////////////////////////////////////
+
+// Sensor for open/close state of a damper in a ventilation or minimum fresh air duct
+VentilationAirDamperOpenSensor : AirDamperOpenSensor { ventilation }
+
+// Command for open/close state of a damper in a ventilation or minimum fresh air duct
+VentilationAirDamperOpenCmd : AirDamperOpenCmd { ventilation }
+
+// Sensor for modulating position of a damper in a ventilation or minimum fresh
+// air duct.  Position is measured as a percentage where 0% is closed and 100%
+// is fully open.  Used when there are separate ducts for minimum fresh air vs
+// economizing.
+VentilationAirDamperModulatingSensor : AirDamperModulatingSensor { ventilation }
+
+// Command for modulating position of a damper in a ventilation or minimum
+// fresh air duct.  Position is measured as a percentage where 0% is closed and
+// 100% is fully open.  Used when there are separate ducts for minimum fresh
+// air vs economizing.
+VentilationAirDamperModulatingCmd : AirDamperModulatingCmd { ventilation }
 

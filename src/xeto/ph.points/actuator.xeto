@@ -12,11 +12,11 @@ ActuatorOpenSensor : OpenSensor { actuator }
 // Command for open/close state of an actuator
 ActuatorOpenCmd : OpenCmd { actuator }
 
-// Sensor for modulating actuator position.  Position is measured as a
-// percentage where 0% is closed and 100% is fully open.
+// Sensor for modulating position of an actuator.  Position is measured as
+// a percentage where 0% is closed and 100% is fully open.
 ActuatorModulatingSensor : ModulatingSensor { actuator }
 
-// Command for modulating actuator position.  Position is measured as a
-// percentage where 0% is closed and 100% is fully open.
+// Command for modulating position of an actuator.  Position is measured as
+// a percentage where 0% is closed and 100% is fully open.
 ActuatorModulatingCmd : ModulatingCmd { actuator }
 

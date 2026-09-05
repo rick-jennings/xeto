@@ -22,7 +22,7 @@ DischargeAirTempSp : AirTempSp { discharge }
 
 // Sensor for drybulb air temperature of economizing duct.
 // Used when there are separate ducts for minimum fresh air vs economizing.
-EconomizingAirTempSensor : AirTempSensor { economizing  }
+EconomizingAirTempSensor : AirTempSensor { economizing }
 
 //////////////////////////////////////////////////////////////////////////
 // Inlet
@@ -49,8 +49,8 @@ MixedAirTempSp : AirTempSp { mixed }
 //////////////////////////////////////////////////////////////////////////
 
 // Sensor for drybulb air temperature of outside duct.
-// Used when there one duct for both minimum fresh air and economizing.
-OutsideAirTempSensor : AirTempSensor { outside  }
+// Used when there is one duct for both minimum fresh air and economizing.
+OutsideAirTempSensor : AirTempSensor { outside }
 
 //////////////////////////////////////////////////////////////////////////
 // Return
@@ -66,9 +66,9 @@ ReturnAirTempSp : AirTempSp { return }
 // Ventilation
 //////////////////////////////////////////////////////////////////////////
 
-// Sensor for drybulb air temperature of ventilation or minimum fresh  duct.
+// Sensor for drybulb air temperature of ventilation or minimum fresh air duct.
 // Used when there are separate ducts for minimum fresh air vs economizing.
-VentilationAirTempSensor : AirTempSensor { ventilation  }
+VentilationAirTempSensor : AirTempSensor { ventilation }
 
 //////////////////////////////////////////////////////////////////////////
 // Zone
