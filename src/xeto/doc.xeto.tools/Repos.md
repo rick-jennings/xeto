@@ -199,3 +199,85 @@ xeto rf foo-1.2.3         // fetch specific version of foo
 xeto rf foo -dir someDir  // fetch to a specific directory
 ```
 
+
+## install
+
+Install one or more libs from a remote repo into the local repo.  Libs
+are specified as a simple name to install the latest version, or with
+a version constraint such as `foo-3.0.7` or `foo-3.0.x`.  Dependencies
+are resolved recursively and installed too.
+
+The command first prints its plan as a table of actions - which libs
+will be installed at which versions and which were pulled in
+transitively - then prompts for confirmation before making any
+changes.  Use `-preview` to print the plan without executing it, or
+`-y` to skip the confirmation.
+
+If a lib is already installed then install fails; use `update`
+instead.  If a dependency requires updating a currently installed lib,
+install fails unless you pass the `-upgrade` flag to allow it.
+
+Fetched files are verified against the digest advertised by the remote
+catalog, then installed to `lib/xeto/` in your workDir along with an
+[origin](#local-repo) sidecar file recording their provenance.
+
+```
+xeto install foo     // install latest version of 'foo' from default remote repo
+xeto i foo           // using command alias
+xeto i foo-3.0.7     // install specific version
+xeto i foo-3.0.x     // install with depend wildcards
+xeto i foo bar baz   // install multiple libs
+xeto i foo -r acme   // install from remote repo named 'acme'
+xeto i foo -preview  // dry run preview only
+xeto i foo -y        // skip confirmation
+xeto i foo -upgrade  // update installed libs if needed to meet foo depends
+```
+
+## update
+
+Update installed libs to newer versions.  Each lib is updated from the
+remote repo recorded in its [origin](#local-repo) provenance, so there
+is no repo option.  Dependencies are resolved recursively just like
+install, and the update is rejected if the new version would break the
+version constraints of any other installed lib.
+
+The command follows the same plan/confirm flow as install with the
+`-preview` and `-y` options.
+
+```
+xeto update foo      // update to latest version of 'foo'
+xeto u foo           // using command alias
+xeto u foo -preview  // dry run preview only
+xeto u foo -y        // skip confirmation
+```
+
+## uninstall
+
+Remove one or more libs from the local repo.  The lib's xetolib file
+and its origin sidecar file are deleted.  Uninstall is rejected if the
+lib is a source lib or if any other installed lib depends on it.
+
+The command follows the same plan/confirm flow as install with the
+`-preview` and `-y` options.
+
+```
+xeto uninstall foo           // remove 'foo' from local repo
+xeto uninstall foo bar baz   // remove multiple libs from local repo
+xeto uninstall foo -preview  // dry run preview only
+xeto uninstall foo -y        // skip confirmation
+```
+
+## publish
+
+Publish a xetolib file to a remote repo.  You may publish a single
+xetolib file or a directory of xetolibs, in which case every xetolib
+in the directory is published in dependency order over a single
+session.  Files are loaded and validated locally before any network
+traffic, so a corrupt file fails fast.
+
+```
+xeto publish foo.xetolib           // publish to default repo
+xeto publish foo.xetolib -r acme   // publish to repo named 'acme'
+xeto publish foo.xetolib -preview  // report without publishing
+xeto publish someDir/              // publish whole dir in depends order
+```
