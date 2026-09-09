@@ -6,34 +6,74 @@
 //   3 Nov 2022  Brian Frank  Creation
 //
 
-// Sensor for modulating valve position.  Position is measured as a
+// Sensor for open/close state of a valve
+ValveOpenSensor : ActuatorOpenSensor { valve }
+
+// Command for open/close state of a valve
+ValveOpenCmd : ActuatorOpenCmd { valve }
+
+// Sensor for modulating position of a valve.  Position is measured as a
 // percentage where 0% is closed and 100% is fully open.
 ValveModulatingSensor : ActuatorModulatingSensor { valve }
 
-// Command for modulating valve position.  Position is measured as a
+// Command for modulating position of a valve.  Position is measured as a
 // percentage where 0% is closed and 100% is fully open.
 ValveModulatingCmd : ActuatorModulatingCmd { valve }
+
+//////////////////////////////////////////////////////////////////////////
+// Water
+//////////////////////////////////////////////////////////////////////////
+
+// Sensor for open/close state of a valve in a water pipe
+WaterValveOpenSensor : ValveOpenSensor { water }
+
+// Command for open/close state of a valve in a water pipe
+WaterValveOpenCmd : ValveOpenCmd { water }
+
+// Sensor for modulating position of a valve in a water pipe.  Position is
+// measured as a percentage where 0% is closed and 100% is fully open.
+WaterValveModulatingSensor : ValveModulatingSensor { water }
+
+// Command for modulating position of a valve in a water pipe.  Position is
+// measured as a percentage where 0% is closed and 100% is fully open.
+WaterValveModulatingCmd : ValveModulatingCmd { water }
 
 //////////////////////////////////////////////////////////////////////////
 // Chilled Water
 //////////////////////////////////////////////////////////////////////////
 
-// Sensor for chilled water modulating valve position.  Position is
-// measured as a percentage where 0% is closed and 100% is fully open.
-ChilledWaterValveModulatingSensor : ValveModulatingSensor { chilled, water }
+// Sensor for open/close state of a valve in a chilled water pipe
+ChilledWaterValveOpenSensor : WaterValveOpenSensor { chilled }
 
-// Command for chilled water modulating valve position.  Position is
-// measured as a percentage where 0% is closed and 100% is fully open.
-ChilledWaterValveModulatingCmd : ValveModulatingCmd { chilled, water }
+// Command for open/close state of a valve in a chilled water pipe
+ChilledWaterValveOpenCmd : WaterValveOpenCmd { chilled }
+
+// Sensor for modulating position of a valve in a chilled water pipe.
+// Position is measured as a percentage where 0% is closed and 100% is
+// fully open.
+ChilledWaterValveModulatingSensor : WaterValveModulatingSensor { chilled }
+
+// Command for modulating position of a valve in a chilled water pipe.
+// Position is measured as a percentage where 0% is closed and 100% is
+// fully open.
+ChilledWaterValveModulatingCmd : WaterValveModulatingCmd { chilled }
 
 //////////////////////////////////////////////////////////////////////////
 // Hot Water
 //////////////////////////////////////////////////////////////////////////
 
-// Sensor for hot water modulating valve position.  Position is
-// measured as a percentage where 0% is closed and 100% is fully open.
-HotWaterValveModulatingSensor : ValveModulatingSensor { hot, water }
+// Sensor for open/close state of a valve in a hot water pipe
+HotWaterValveOpenSensor : WaterValveOpenSensor { hot }
 
-// Command for hot water modulating valve position.  Position is
-// measured as a percentage where 0% is closed and 100% is fully open.
-HotWaterValveModulatingCmd : ValveModulatingCmd { hot, water }
+// Command for open/close state of a valve in a hot water pipe
+HotWaterValveOpenCmd : WaterValveOpenCmd { hot }
+
+// Sensor for modulating position of a valve in a hot water pipe.
+// Position is measured as a percentage where 0% is closed and 100% is
+// fully open.
+HotWaterValveModulatingSensor : WaterValveModulatingSensor { hot }
+
+// Command for modulating position of a valve in a hot water pipe.
+// Position is measured as a percentage where 0% is closed and 100% is
+// fully open.
+HotWaterValveModulatingCmd : WaterValveModulatingCmd { hot }

@@ -33,14 +33,14 @@ MotorSpeedEnumSensor : MotorSpeedEnumPoint & SensorPoint
 // increase from slowest to highest speed.
 MotorSpeedEnumCmd : MotorSpeedEnumPoint & CmdPoint
 
-// Sensor for modulating motor speed.  Speed is measured as a
+// Sensor for modulating speed of a motor.  Speed is measured as a
 // percentage where 0% is off and 100% is full speed.
 MotorSpeedModulatingSensor : ModulatingSensor {
   motor
   speed
 }
 
-// Command for modulating motor speed.  Speed is measured as a
+// Command for modulating speed of a motor.  Speed is measured as a
 // percentage where 0% is off and 100% is full speed.
 MotorSpeedModulatingCmd : ModulatingCmd {
   motor

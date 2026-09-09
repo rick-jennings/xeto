@@ -32,11 +32,11 @@ FanSpeedEnumSensor : FanPoint & MotorSpeedEnumSensor
 // increase from slowest to highest speed.
 FanSpeedEnumCmd : FanPoint & MotorSpeedEnumCmd
 
-// Sensor for modulating fan speed.  Speed is measured as a
+// Sensor for modulating speed of a fan.  Speed is measured as a
 // percentage where 0% is off and 100% is full speed.
 FanSpeedModulatingSensor : FanPoint & MotorSpeedModulatingSensor
 
-// Command for modulating fan speed.  Speed is measured as a
+// Command for modulating speed of a fan.  Speed is measured as a
 // percentage where 0% is off and 100% is full speed.
 FanSpeedModulatingCmd : FanPoint & MotorSpeedModulatingCmd
 

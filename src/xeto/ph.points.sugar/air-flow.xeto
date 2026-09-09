@@ -72,11 +72,11 @@ InletAirFlowSp : AirFlowSp { inlet }
 //////////////////////////////////////////////////////////////////////////
 
 // Sensor for volumetric air flow in outside duct.
-// Used when there one duct for both minimum fresh air and economizing.
+// Used when there is one duct for both minimum fresh air and economizing.
 OutsideAirFlowSensor : AirFlowSensor { outside }
 
 // Setpoint for volumetric air flow in outside duct.
-// Used when there one duct for both minimum fresh air and economizing.
+// Used when there is one duct for both minimum fresh air and economizing.
 OutsideAirFlowSp : AirFlowSp { outside }
 
 //////////////////////////////////////////////////////////////////////////
