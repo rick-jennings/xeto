@@ -12,6 +12,7 @@ pragma: Lib <
   maturity: BuildVar "ph.maturity"
   depends: {
     { lib: "sys", versions: BuildVar "ph.depend" }
+    { lib: "ph",  versions: BuildVar "ph.depend" }
   }
   categories: {"ph"}
   license: BuildVar "ph.license"
