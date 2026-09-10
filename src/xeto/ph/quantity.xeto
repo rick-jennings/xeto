@@ -130,8 +130,14 @@ Enthalpy: Quantity { enthalpy }
 // Apparent temperature perceived when considering humidity, wind chill, and heat index
 FeelsLike: Quantity { feelsLike }
 
+// Measure of flow of fluid
+Flow: Quantity <abstract> { flow }
+
 // Measure of volumetric flow of fluid
-VolumetricFlow: Quantity { flow }
+VolumetricFlow: Flow { volume }
+
+// Measure of mass flow of fluid
+MassFlow: Flow { mass }
 
 // Occurrences per unit time
 Freq: Quantity { freq }

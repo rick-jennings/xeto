@@ -1,0 +1,49 @@
+//
+// Copyright (c) 2026, Project-Haystack
+// Licensed under the Academic Free License version 3.0
+//
+// History:
+//   9 Sep 2026  Rick Jennings  Creation
+//
+
+//////////////////////////////////////////////////////////////////////////
+// Flow
+//////////////////////////////////////////////////////////////////////////
+
+// Sensor for mass flow of steam
+SteamMassFlowSensor : FluidMassFlowSensor {
+  steam
+  unit: Unit "lb/h"
+}
+
+// Setpoint for mass flow of steam
+SteamMassFlowSp : FluidMassFlowSp {
+  steam
+  unit: Unit "lb/h"
+}
+
+//////////////////////////////////////////////////////////////////////////
+// Pressure
+//////////////////////////////////////////////////////////////////////////
+
+// Sensor for steam pressure
+SteamPressureSensor : FluidPressureSensor {
+  steam
+  unit: Unit "psi"
+}
+
+// Setpoint for steam pressure
+SteamPressureSp : FluidPressureSp {
+  steam
+  unit: Unit "psi"
+}
+
+//////////////////////////////////////////////////////////////////////////
+// Temp
+//////////////////////////////////////////////////////////////////////////
+
+// Sensor for steam temperature
+SteamTempSensor : FluidTempSensor { steam }
+
+// Setpoint for steam temperature
+SteamTempSp : FluidTempSp { steam }

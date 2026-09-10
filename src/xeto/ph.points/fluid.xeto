@@ -10,17 +10,32 @@
 // Flow
 //////////////////////////////////////////////////////////////////////////
 
-// Point associated with rate of volumetric flow of fluid
-FluidFlowPoint : NumberPoint <abstract> {
-  flow
+// Point associated with flow of fluid
+FluidFlowPoint : NumberPoint <abstract> { flow }
+
+// Point associated with volumetric flow of fluid
+FluidVolumetricFlowPoint : FluidFlowPoint <abstract> {
+  volume
   unit: Unit <quantity:"volumetricFlow">
 }
 
 // Sensor for volumetric flow of fluid
-FluidFlowSensor : FluidFlowPoint & SensorPoint <abstract>
+FluidVolumetricFlowSensor : FluidVolumetricFlowPoint & SensorPoint <abstract>
 
 // Setpoint for volumetric flow of fluid
-FluidFlowSp : FluidFlowPoint & SpPoint <abstract>
+FluidVolumetricFlowSp : FluidVolumetricFlowPoint & SpPoint <abstract>
+
+// Point associated with mass flow of fluid
+FluidMassFlowPoint : FluidFlowPoint <abstract> {
+  mass
+  unit: Unit <quantity:"massFlow">
+}
+
+// Sensor for mass flow of fluid
+FluidMassFlowSensor : FluidMassFlowPoint & SensorPoint <abstract>
+
+// Setpoint for mass flow of fluid
+FluidMassFlowSp : FluidMassFlowPoint & SpPoint <abstract>
 
 //////////////////////////////////////////////////////////////////////////
 // Pressure

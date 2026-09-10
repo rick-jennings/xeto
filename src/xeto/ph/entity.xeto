@@ -388,6 +388,10 @@ PhEntity: Entity <abstract> {
   // Domestic water flows from the referent to this entity
   *domesticWaterRef: MultiRef
 
+  // Opening in a building, enclosure, or vehicle body fitted with a
+  // panel that opens to admit passage and closes to block it.
+  *door: Marker
+
   // Two ducts: combination of hotDeck, coldDeck, or neutralDeck
   *dualDuct: Marker
 
@@ -842,6 +846,9 @@ PhEntity: Entity <abstract> {
 
   // Date the asset was produced by the manufacturer.
   *manufactureDate: Marker
+
+  // Measure of the amount of matter in a substance or object
+  *mass: Marker
 
   // Makeup Air Unit: A DOAS that provides make-up air for a separate, dedicated
   // exhaust system. That is, this equip does not contain an exhaust air section.
@@ -1605,6 +1612,10 @@ PhEntity: Entity <abstract> {
   // Coil of wire in a transformer, motor, or other electromagnetic device used to
   // transfer electricity via electromagnetic induction
   *winding: Marker
+
+  // Opening in a building, enclosure, or vehicle body fitted with a
+  // pane that admits light. It may be opened to admit air.
+  *window: Marker
 
   // Cabling used to convey electricity or data
   *wire: Marker

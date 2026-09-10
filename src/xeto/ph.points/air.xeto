@@ -11,13 +11,13 @@
 //////////////////////////////////////////////////////////////////////////
 
 // Sensor for volumetric air flow
-AirFlowSensor : FluidFlowSensor {
+AirFlowSensor : FluidVolumetricFlowSensor {
   air
   unit: Unit "cfm"
 }
 
 // Setpoint for volumetric air flow
-AirFlowSp : FluidFlowSp {
+AirFlowSp : FluidVolumetricFlowSp {
   air
   unit: Unit "cfm"
 }
