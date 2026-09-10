@@ -1,0 +1,49 @@
+//
+// Copyright (c) 2026, Project-Haystack
+// Licensed under the Academic Free License version 3.0
+//
+// History:
+//   9 Sep 2026  Rick Jennings  Creation
+//
+
+//////////////////////////////////////////////////////////////////////////
+// Flow
+//////////////////////////////////////////////////////////////////////////
+
+// Sensor for mass flow of refrigerant
+RefrigMassFlowSensor : FluidMassFlowSensor {
+  refrig
+  unit: Unit "lb/min"
+}
+
+// Setpoint for mass flow of refrigerant
+RefrigMassFlowSp : FluidMassFlowSp {
+  refrig
+  unit: Unit "lb/min"
+}
+
+//////////////////////////////////////////////////////////////////////////
+// Pressure
+//////////////////////////////////////////////////////////////////////////
+
+// Sensor for refrigerant pressure
+RefrigPressureSensor : FluidPressureSensor {
+  refrig
+  unit: Unit "psi"
+}
+
+// Setpoint for refrigerant pressure
+RefrigPressureSp : FluidPressureSp {
+  refrig
+  unit: Unit "psi"
+}
+
+//////////////////////////////////////////////////////////////////////////
+// Temp
+//////////////////////////////////////////////////////////////////////////
+
+// Sensor for refrigerant temperature
+RefrigTempSensor : FluidTempSensor { refrig }
+
+// Setpoint for refrigerant temperature
+RefrigTempSp : FluidTempSp { refrig }
