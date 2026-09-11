@@ -11,13 +11,13 @@
 //////////////////////////////////////////////////////////////////////////
 
 // Sensor for volumetric flow of water
-WaterFlowSensor : FluidFlowSensor {
+WaterFlowSensor : FluidVolumetricFlowSensor {
   water
   unit: Unit "gal/min"
 }
 
 // Setpoint for volumetric flow of water
-WaterFlowSp : FluidFlowSp {
+WaterFlowSp : FluidVolumetricFlowSp {
   water
   unit: Unit "gal/min"
 }

@@ -10,18 +10,17 @@
 // Flow
 //////////////////////////////////////////////////////////////////////////
 
-// Point associated with rate of volumetric flow of natural gas
-NaturalGasFlowPoint : NumberPoint <abstract> {
+// Sensor for volumetric flow of natural gas
+NaturalGasFlowSensor : FluidVolumetricFlowSensor {
   naturalGas
-  flow
-  unit: Unit <quantity:"volumetricFlow"> "cfm"
+  unit: Unit "cfm"
 }
 
-// Sensor for volumetric flow of natural gas
-NaturalGasFlowSensor : NaturalGasFlowPoint & SensorPoint
-
 // Setpoint for volumetric flow of natural gas
-NaturalGasFlowSp : NaturalGasFlowPoint & SpPoint
+NaturalGasFlowSp : FluidVolumetricFlowSp {
+  naturalGas
+  unit: Unit "cfm"
+}
 
 //////////////////////////////////////////////////////////////////////////
 // Volume
