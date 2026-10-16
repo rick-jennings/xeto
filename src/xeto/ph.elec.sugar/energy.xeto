@@ -7,31 +7,31 @@
 //
 
 // Sensor for import of AC electric active energy
-ElecAcImportActiveEnergySensor : ElecAcActiveEnergySensor { import }
+ElecAcImportActiveEnergySensor : ElecAcActiveEnergySensor <sugar> { import }
 
 // Sensor for export of AC electric active energy
-ElecAcExportActiveEnergySensor : ElecAcActiveEnergySensor { export }
+ElecAcExportActiveEnergySensor : ElecAcActiveEnergySensor <sugar> { export }
 
 // Sensor for net of AC electric active energy
-ElecAcNetActiveEnergySensor : ElecAcActiveEnergySensor { net }
+ElecAcNetActiveEnergySensor : ElecAcActiveEnergySensor <sugar> { net }
 
 // Sensor for import of AC electric reactive energy
-ElecAcImportReactiveEnergySensor : ElecAcReactiveEnergySensor { import }
+ElecAcImportReactiveEnergySensor : ElecAcReactiveEnergySensor <sugar> { import }
 
 // Sensor for export of AC electric reactive energy
-ElecAcExportReactiveEnergySensor : ElecAcReactiveEnergySensor { export }
+ElecAcExportReactiveEnergySensor : ElecAcReactiveEnergySensor <sugar> { export }
 
 // Sensor for net of AC electric reactive energy
-ElecAcNetReactiveEnergySensor : ElecAcReactiveEnergySensor { net }
+ElecAcNetReactiveEnergySensor : ElecAcReactiveEnergySensor <sugar> { net }
 
 // Sensor for import of AC electric apparent energy
-ElecAcImportApparentEnergySensor : ElecAcApparentEnergySensor { import }
+ElecAcImportApparentEnergySensor : ElecAcApparentEnergySensor <sugar> { import }
 
 // Sensor for export of AC electric apparent energy
-ElecAcExportApparentEnergySensor : ElecAcApparentEnergySensor { export }
+ElecAcExportApparentEnergySensor : ElecAcApparentEnergySensor <sugar> { export }
 
 // Sensor for net of AC electric apparent energy
-ElecAcNetApparentEnergySensor : ElecAcApparentEnergySensor { net }
+ElecAcNetApparentEnergySensor : ElecAcApparentEnergySensor <sugar> { net }
 
 // Sensor for total import of AC electric active energy
 ElecAcTotalImportActiveEnergySensor : ElecAcImportActiveEnergySensor { total }
@@ -60,42 +60,15 @@ ElecAcTotalExportApparentEnergySensor : ElecAcExportApparentEnergySensor { total
 // Sensor for total net of AC electric apparent energy
 ElecAcTotalNetApparentEnergySensor : ElecAcNetApparentEnergySensor { total }
 
-// Sensor for phase import of AC electric active energy
-ElecAcPhaseImportActiveEnergySensor : ElecAcImportActiveEnergySensor { phase: Phase }
-
-// Sensor for phase export of AC electric active energy
-ElecAcPhaseExportActiveEnergySensor : ElecAcExportActiveEnergySensor { phase: Phase }
-
-// Sensor for phase net of AC electric active energy
-ElecAcPhaseNetActiveEnergySensor : ElecAcNetActiveEnergySensor { phase: Phase }
-
-// Sensor for phase import of AC electric reactive energy
-ElecAcPhaseImportReactiveEnergySensor : ElecAcImportReactiveEnergySensor { phase: Phase }
-
-// Sensor for phase export of AC electric reactive energy
-ElecAcPhaseExportReactiveEnergySensor : ElecAcExportReactiveEnergySensor { phase: Phase }
-
-// Sensor for phase net of AC electric reactive energy
-ElecAcPhaseNetReactiveEnergySensor : ElecAcNetReactiveEnergySensor { phase: Phase }
-
-// Sensor for phase import of AC electric apparent energy
-ElecAcPhaseImportApparentEnergySensor : ElecAcImportApparentEnergySensor { phase: Phase }
-
-// Sensor for phase export of AC electric apparent energy
-ElecAcPhaseExportApparentEnergySensor : ElecAcExportApparentEnergySensor { phase: Phase }
-
-// Sensor for phase net of AC electric apparent energy
-ElecAcPhaseNetApparentEnergySensor : ElecAcNetApparentEnergySensor { phase: Phase }
-
 //////////////////////////////////////////////////////////////////////////
 // DC Sensors
 //////////////////////////////////////////////////////////////////////////
 
 // Sensor for import of DC electric energy
-ElecDcImportEnergySensor : ElecDcEnergySensor { import }
+ElecDcImportEnergySensor : ElecDcEnergySensor <sugar> { import }
 
 // Sensor for export of DC electric energy
-ElecDcExportEnergySensor : ElecDcEnergySensor { export }
+ElecDcExportEnergySensor : ElecDcEnergySensor <sugar> { export }
 
 // Sensor for net of DC electric energy
-ElecDcNetEnergySensor : ElecDcEnergySensor { net }
+ElecDcNetEnergySensor : ElecDcEnergySensor <sugar> { net }

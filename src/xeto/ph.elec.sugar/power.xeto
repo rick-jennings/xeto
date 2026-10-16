@@ -1,0 +1,88 @@
+//
+// Copyright (c) 2026, Project-Haystack
+// Licensed under the Academic Free License version 3.0
+//
+// History:
+//   18 May 2026  Rick Jennings  Creation
+//
+
+// Sensor for import of average magnitude of AC electric active power
+ElecAcImportActivePowerSensor : ElecAcActivePowerSensor <sugar> {
+  import
+  minVal: Number 0.0
+}
+
+// Sensor for export of average magnitude of AC electric active power
+ElecAcExportActivePowerSensor : ElecAcActivePowerSensor <sugar> {
+  export
+  minVal: Number 0.0
+}
+
+// Sensor for net of average magnitude of AC electric active power
+ElecAcNetActivePowerSensor : ElecAcActivePowerSensor <sugar> { net }
+
+// Sensor for import of average magnitude of AC electric reactive power
+ElecAcImportReactivePowerSensor : ElecAcReactivePowerSensor <sugar> {
+  import
+  minVal: Number 0.0
+}
+
+// Sensor for export of average magnitude of AC electric reactive power
+ElecAcExportReactivePowerSensor : ElecAcReactivePowerSensor <sugar> {
+  export
+  minVal: Number 0.0
+}
+
+// Sensor for net of average magnitude of AC electric reactive power
+ElecAcNetReactivePowerSensor : ElecAcReactivePowerSensor <sugar> { net }
+
+// Sensor for total import of average magnitude of AC electric active power
+ElecAcTotalImportActivePowerSensor : ElecAcImportActivePowerSensor { total }
+
+// Sensor for total export of average magnitude of AC electric active power
+ElecAcTotalExportActivePowerSensor : ElecAcExportActivePowerSensor { total }
+
+// Sensor for total net of average magnitude of AC electric active power
+ElecAcTotalNetActivePowerSensor : ElecAcNetActivePowerSensor { total }
+
+// Sensor for total import of average magnitude of AC electric reactive power
+ElecAcTotalImportReactivePowerSensor : ElecAcImportReactivePowerSensor { total }
+
+// Sensor for total export of average magnitude of AC electric reactive power
+ElecAcTotalExportReactivePowerSensor : ElecAcExportReactivePowerSensor { total }
+
+// Sensor for total net of average magnitude of AC electric reactive power
+ElecAcTotalNetReactivePowerSensor : ElecAcNetReactivePowerSensor { total }
+
+// Sensor for total average magnitude of AC electric apparent power.
+ElecAcTotalApparentPowerSensor : ElecAcApparentPowerSensor <sugar> { total }
+
+//////////////////////////////////////////////////////////////////////////
+// DC Sensors
+//////////////////////////////////////////////////////////////////////////
+
+// Sensor for import of DC electric power
+ElecDcImportPowerSensor : ElecDcPowerSensor <sugar> { import }
+
+// Sensor for export of DC electric power
+ElecDcExportPowerSensor : ElecDcPowerSensor <sugar> { export }
+
+// Sensor for net of DC electric power
+ElecDcNetPowerSensor : ElecDcPowerSensor <sugar> { net }
+
+//////////////////////////////////////////////////////////////////////////
+// AC Setpoints
+//////////////////////////////////////////////////////////////////////////
+
+// Max setpoint for import of average magnitude of AC electric active power
+ElecAcImportActivePowerMaxSp : ElecAcActivePowerMaxSp <sugar> { import }
+
+// Max setpoint for total import of average magnitude of AC electric active power
+ElecAcTotalImportActivePowerMaxSp : ElecAcImportActivePowerMaxSp { total }
+
+//////////////////////////////////////////////////////////////////////////
+// DC Setpoints
+//////////////////////////////////////////////////////////////////////////
+
+// Max setpoint for import of DC electric power
+ElecDcImportPowerMaxSp : ElecDcPowerMaxSp <sugar> { import }

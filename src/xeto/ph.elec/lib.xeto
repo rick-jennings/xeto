@@ -7,7 +7,7 @@
 //
 
 pragma: Lib <
-  doc: "Project Haystack's Xeto specs for electricity"
+  doc: "Project Haystack's specs for electricity"
   version: BuildVar "ph.version"
   maturity: BuildVar "ph.maturity"
   depends: {

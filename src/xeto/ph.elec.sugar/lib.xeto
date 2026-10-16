@@ -1,0 +1,30 @@
+//
+// Copyright (c) 2026, Project-Haystack
+// Licensed under the Academic Free License version 3.0
+//
+// History:
+//   18 May 2026  Rick Jennings  Creation
+//
+
+pragma: Lib <
+  doc: "Project Haystack's sugar specs for electricity"
+  version: BuildVar "ph.version"
+  maturity: BuildVar "ph.maturity"
+  depends: {
+    { lib: "sys",       versions: BuildVar "ph.depend" }
+    { lib: "ph",        versions: BuildVar "ph.depend" }
+    { lib: "ph.points", versions: BuildVar "ph.depend" }
+    { lib: "ph.elec",   versions: BuildVar "ph.depend" }
+  }
+  categories: {"ph", "elec"}
+  license: BuildVar "ph.license"
+  org: {
+   dis: BuildVar "ph.org.dis"
+   uri: BuildVar "ph.org.uri"
+  }
+  vcs: {
+    type: BuildVar "ph.vcs.type"
+    uri:  BuildVar "ph.vcs.uri"
+  }
+>
+

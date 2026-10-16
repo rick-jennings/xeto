@@ -11,31 +11,31 @@
 //////////////////////////////////////////////////////////////////////////
 
 // Sensor for import of AC electric active power demand
-ElecAcImportActiveDemandSensor : ElecAcActiveDemandSensor { import }
+ElecAcImportActiveDemandSensor : ElecAcActiveDemandSensor <sugar> { import }
 
 // Sensor for export of AC electric active power demand
-ElecAcExportActiveDemandSensor : ElecAcActiveDemandSensor { export }
+ElecAcExportActiveDemandSensor : ElecAcActiveDemandSensor <sugar> { export }
 
 // Sensor for net of AC electric active power demand
-ElecAcNetActiveDemandSensor : ElecAcActiveDemandSensor { net }
+ElecAcNetActiveDemandSensor : ElecAcActiveDemandSensor <sugar> { net }
 
 // Sensor for import of AC electric reactive power demand
-ElecAcImportReactiveDemandSensor : ElecAcReactiveDemandSensor { import }
+ElecAcImportReactiveDemandSensor : ElecAcReactiveDemandSensor <sugar> { import }
 
 // Sensor for export of AC electric reactive power demand
-ElecAcExportReactiveDemandSensor : ElecAcReactiveDemandSensor { export }
+ElecAcExportReactiveDemandSensor : ElecAcReactiveDemandSensor <sugar> { export }
 
 // Sensor for net of AC electric reactive power demand
-ElecAcNetReactiveDemandSensor : ElecAcReactiveDemandSensor { net }
+ElecAcNetReactiveDemandSensor : ElecAcReactiveDemandSensor <sugar> { net }
 
 // Sensor for import of AC electric apparent power demand
-ElecAcImportApparentDemandSensor : ElecAcApparentDemandSensor { import }
+ElecAcImportApparentDemandSensor : ElecAcApparentDemandSensor <sugar> { import }
 
 // Sensor for export of AC electric apparent power demand
-ElecAcExportApparentDemandSensor : ElecAcApparentDemandSensor { export }
+ElecAcExportApparentDemandSensor : ElecAcApparentDemandSensor <sugar> { export }
 
 // Sensor for net of AC electric apparent power demand
-ElecAcNetApparentDemandSensor : ElecAcApparentDemandSensor { net }
+ElecAcNetApparentDemandSensor : ElecAcApparentDemandSensor <sugar> { net }
 
 // Sensor for total import of AC electric active power demand
 ElecAcTotalImportActiveDemandSensor : ElecAcImportActiveDemandSensor { total }
@@ -69,7 +69,7 @@ ElecAcTotalNetApparentDemandSensor : ElecAcNetApparentDemandSensor { total }
 //////////////////////////////////////////////////////////////////////////
 
 // Max setpoint for import of AC electric active power demand
-ElecAcImportActiveDemandMaxSp : ElecAcActiveDemandMaxSp { import }
+ElecAcImportActiveDemandMaxSp : ElecAcActiveDemandMaxSp <sugar> { import }
 
 // Max setpoint for total import of AC electric active power demand
 ElecAcTotalImportActiveDemandMaxSp : ElecAcImportActiveDemandMaxSp { total }
