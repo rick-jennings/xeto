@@ -151,7 +151,7 @@ Haystack uses the load convention for net electricity flow.
 - Negative net quantities indicate electricity produced (i.e. generation).
 
 The positive or negative sign for power factor is interpreted using IEC or IEEE
-convention specified with [ph::PhEntity.pfIec] or [ph::PhEntity.pfIeee] tags.
+convention specified with [ph.elec::PhEntity.elecPfIec] or [ph.elec::PhEntity.elecPfIeee] tags.
 
 - IEC convention defines the sign based on the direction of active power flow.
 - IEEE convention defines the sign based on whether the load is capacitive or
@@ -186,12 +186,12 @@ If a voltage or current characteristic tag is not specified, then [ph::PhEntity.
 is the assumed or default characteristic.
 
 Similarly AC power factor measurements are further qualified using a
-[ph::PfScope] characteristic choice:
-  - [ph::PhEntity.pfTrue]: True power factor
-  - [ph::PhEntity.pfDisplacement]: Displacement power factor
-  - [ph::PhEntity.pfDistortion]: Distortion power factor
+[ph.elec::ElecPfScope] characteristic choice:
+  - [ph.elec::PhEntity.elecPfTrue]: True power factor
+  - [ph.elec::PhEntity.elecPfDisplacement]: Displacement power factor
+  - [ph.elec::PhEntity.elecPfDistortion]: Distortion power factor
 
-If a power factor characteristic is not specified, then [ph::PhEntity.pfTrue]
+If a power factor characteristic is not specified, then [ph.elec::PhEntity.elecPfTrue]
 is the assumed or default characteristic.
 
 Note:  The primary quantity `freq` does not have characteristic related tags.
