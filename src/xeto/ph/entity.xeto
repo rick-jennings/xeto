@@ -98,6 +98,11 @@ PhEntity: Entity <abstract> {
   // Relating atmospheric pressure
   *barometric: Marker
 
+  // Setpoint that applies regardless of mode, as opposed to an effective
+  // setpoint resolved from modes, schedules, and overrides.  Also see
+  // [ph::SpApplicability].
+  *base: Marker
+
   // Base URI for normalizing relative URIs
   *baseUri: Uri
 
@@ -249,6 +254,11 @@ PhEntity: Entity <abstract> {
   // Condenser water flows from the referent to this entity
   *condenserWaterRef: FedByRef <medium:CondenserWater>
 
+  // Setpoint that applies only when a condition is met, such as an
+  // occupancy mode, a schedule, or a demand response event.  Also see
+  // [ph::SpApplicability].
+  *conditional: Marker
+
   // Related to cleaning, heating, cooling, humidifying, dehumidifying,
   // ventilating or circulating  air. 
   *conditioning: Marker
@@ -326,10 +336,32 @@ PhEntity: Entity <abstract> {
   // Relating to direct current (DC) electricity
   *dc: Marker
 
-  // The range in a process where no changes to output are made.
-  // May also indicate the difference between a base setpoint and effective
-  // setpoint.
+  // The range of an input within which a control loop takes no corrective
+  // action.  Its total width is the sum of the distances from the target
+  // to the low and high edges of the range, which need not be equal.  For
+  // example, in a zone temperature control loop with a 72°F target and a
+  // 4°F total deadband width split evenly around it, the input is the
+  // zone temperature and the output is the heating or cooling command.
+  // Neither heating nor cooling is called for while the zone temperature
+  // is between 70°F and 74°F.  The 4°F total deadband width is the sum of
+  // a heating offset of 2°F below the target and a cooling offset of 2°F
+  // above it.
   *deadband: Marker
+
+  // Fixed distance above a target setpoint to the high edge of its
+  // deadband.  An offset that can change is modeled as a deadband point.
+  // Also see [ph::PhEntity.deadband].
+  *deadbandHighOffset: Number
+
+  // Fixed distance below a target setpoint to the low edge of its
+  // deadband.  An offset that can change is modeled as a deadband point.
+  // Also see [ph::PhEntity.deadband].
+  *deadbandLowOffset: Number
+
+  // Fixed total width of the deadband for a target setpoint, the sum
+  // of the low and high offsets.  A deadband that can change is modeled
+  // as a deadband point.  Also see [ph::PhEntity.deadband].
+  *deadbandVal: Number
 
   // Differential of fluid between entering and leaving sensors.
   *delta: Marker
@@ -395,6 +427,9 @@ PhEntity: Entity <abstract> {
   // Opening in a building, enclosure, or vehicle body fitted with a
   // panel that opens to admit passage and closes to block it.
   *door: Marker
+
+  // Serves both heating and cooling. Also see [ph::HvacPurpose].
+  *dual: Marker
 
   // Two ducts: combination of hotDeck, coldDeck, or neutralDeck
   *dualDuct: Marker
@@ -1254,6 +1289,14 @@ PhEntity: Entity <abstract> {
   // Command point for reheating process
   *reheat: Marker
 
+  // Strategy for the automatic adjustment of a target setpoint based on
+  // a changing condition, such as raising a discharge air temperature
+  // setpoint as outside air temperature drops. Applied to the setpoints
+  // involved in the strategy, including the target setpoint, the minimum
+  // and maximum setpoints bounding the adjusted output, and the minimum
+  // and maximum setpoints bounding the controlling input.
+  *reset: Marker
+
   // Duct returning air back to equipment
   *return: Marker
 
@@ -1456,6 +1499,10 @@ PhEntity: Entity <abstract> {
 
   // Tank used to store a substance for temporary holding
   *tank: Marker
+
+  // Desired value that a process is controlled to, as opposed to a
+  // minimum or maximum limit on it. Also see [ph::SpRole].
+  *target: Marker
 
   // Temperature - measure of hot and cold
   *temp: Marker

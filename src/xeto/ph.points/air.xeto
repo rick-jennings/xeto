@@ -69,8 +69,16 @@ DuctAirPressureSp : AirPressureSp {
 // Sensor for drybulb air temperature
 AirTempSensor : FluidTempSensor { air }
 
-// Setpoint for drybulb air temperature
-AirTempSp : FluidTempSp { air }
+// Setpoint for drybulb air temperature.  The `hvacPurpose` says what the
+// setpoint serves, such as `heating` for a zone heating setpoint or
+// `ventilation` for a dedicated outdoor air system (DOAS) discharge air
+// temperature that tempers outdoor air.
+AirTempSp : FluidTempSp {
+  air
+  hvacPurpose: HvacPurpose
+  hvacOccMode: HvacOccMode?
+  reset: Marker?
+}
 
 // Sensor for drybulb air temperature in a duct
 DuctAirTempSensor : AirTempSensor {
@@ -92,6 +100,60 @@ ZoneAirTempSp : AirTempSp { zone }
 
 // Sensor for air temperature inside an enclosure
 EnclosureAirTempSensor : AirTempSensor { enclosure }
+
+//////////////////////////////////////////////////////////////////////////
+// Temp deadband
+//////////////////////////////////////////////////////////////////////////
+
+// Setpoint for an air temperature deadband.  The `hvacPurpose` says which
+// side of the target setpoint it applies to:
+//   - `heating` is the offset from the target to the heating edge
+//   - `cooling` is the offset from the target to the cooling edge
+//   - `dual` is the total deadband width, assumed symmetric: half on each
+//     side of the target.  Use separate `heating` and `cooling` points
+//     when the two offsets differ.
+//
+// Ventilation does not apply because a temperature deadband has only a
+// heating side and a cooling side.  Its low edge is where heating starts
+// and its high edge is where cooling starts, even when the target is a
+// ventilation setpoint.
+AirTempDeadbandSp : TempDeadbandSp {
+  air
+  hvacPurpose: HvacHeatingCooling
+  hvacOccMode: HvacOccMode?
+  reset: Marker?
+}
+
+// Setpoint for an air temperature deadband in a duct.  The `hvacPurpose`
+// says which side of the target setpoint it applies to:
+//   - `heating` is the offset from the target to the heating edge
+//   - `cooling` is the offset from the target to the cooling edge
+//   - `dual` is the total deadband width, assumed symmetric: half on each
+//     side of the target.  Use separate `heating` and `cooling` points
+//     when the two offsets differ.
+//
+// Ventilation does not apply because a temperature deadband has only a
+// heating side and a cooling side.  Its low edge is where heating starts
+// and its high edge is where cooling starts, even when the target is a
+// ventilation setpoint.
+DuctAirTempDeadbandSp : AirTempDeadbandSp {
+  ductSection: DuctSection
+  ductDeck: DuctDeck?
+}
+
+// Setpoint for an air temperature deadband in a zone.  The `hvacPurpose`
+// says which side of the target setpoint it applies to:
+//   - `heating` is the offset from the target to the heating edge
+//   - `cooling` is the offset from the target to the cooling edge
+//   - `dual` is the total deadband width, assumed symmetric: half on each
+//     side of the target.  Use separate `heating` and `cooling` points
+//     when the two offsets differ.
+//
+// Ventilation does not apply because a temperature deadband has only a
+// heating side and a cooling side.  Its low edge is where heating starts
+// and its high edge is where cooling starts, even when the target is a
+// ventilation setpoint.
+ZoneAirTempDeadbandSp : AirTempDeadbandSp { zone }
 
 //////////////////////////////////////////////////////////////////////////
 // Humidity

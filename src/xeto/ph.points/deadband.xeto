@@ -1,0 +1,19 @@
+//
+// Copyright (c) 2026, Project-Haystack
+// Licensed under the Academic Free License version 3.0
+//
+// History:
+//   28 Oct 2026  Rick Jennings  Creation
+//
+
+// Point associated with a temperature deadband, the range around a
+// target setpoint in which no output change is made
+TempDeadbandPoint : NumberPoint <abstract> {
+  temp
+  deadband
+  pointQuantity: Temp
+  unit: Unit <quantity:"temperatureDifferential"> "Δ°F"
+}
+
+// Setpoint for a temperature deadband
+TempDeadbandSp : TempDeadbandPoint & SpPoint

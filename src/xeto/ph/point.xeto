@@ -85,6 +85,8 @@ SensorPoint: Point <abstract> {
 // Point is a setpoint, soft point, internal control variable, schedule.
 SpPoint: Point <abstract> {
   sp
+  spRole: SpRole?
+  spApplicability: SpApplicability?
   pointFunction: SpPointFunction
 }
 

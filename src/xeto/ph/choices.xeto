@@ -397,23 +397,102 @@ PressureDependentVavModulation: VavModulation { pressureDependent }
 PressureIndependentVavModulation: VavModulation { pressureIndependent }
 
 //////////////////////////////////////////////////////////////////////////
-// ZoneOccMode
+// SpRole
 //////////////////////////////////////////////////////////////////////////
 
-// Zone occupancy mode to which a point applies, such as a
-// temperature setpoint used only when the zone is unoccupied.
+// Whether a setpoint is the desired value or a limit on it. The role is
+// relative to the value being controlled, so it applies to any setpoint,
+// such as temperature, flow, or a deadband.
+SpRole: Choice
+
+// Desired value for the controlled value, such as a discharge air
+// temperature setpoint
+SpTarget: SpRole { target }
+
+// Minimum limit on the controlled value, such as a minimum discharge air
+// temperature setpoint
+SpMin: SpRole { min }
+
+// Maximum limit on the controlled value, such as a maximum discharge air
+// temperature setpoint
+SpMax: SpRole { max }
+
+//////////////////////////////////////////////////////////////////////////
+// SpApplicability
+//////////////////////////////////////////////////////////////////////////
+
+// When a setpoint applies: in every case, only when a condition is met,
+// or as the value currently being controlled to.  Applies to any
+// setpoint, such as temperature, flow, or a deadband.
+SpApplicability: Choice
+
+// Setpoint that applies regardless of occupancy mode, schedule, or
+// override, such as a minimum discharge air temperature reset limit
+// that is used in every mode
+SpBase: SpApplicability { base }
+
+// Setpoint that only applies when a condition is met, such as an
+// occupancy mode, a schedule, or a demand response event.  When the
+// condition is occupancy, also see [ph::HvacOccMode].
+SpConditional: SpApplicability { conditional }
+
+// Setpoint currently being controlled to.  Starts from the base setpoint,
+// or the conditional setpoint in effect, and may be replaced by an
+// override in effect
+SpEffective: SpApplicability { effective }
+
+//////////////////////////////////////////////////////////////////////////
+// HvacOccMode
+//////////////////////////////////////////////////////////////////////////
+
+// Occupancy mode of a building or space to which a point applies, such
+// as a temperature setpoint used only when unoccupied.
 // See [ph.doc::Zones#occupancy] chapter.
-ZoneOccMode: Choice
+HvacOccMode: Choice
 
-// Applies when the zone is occupied; the normal comfort mode used
-// during scheduled occupancy or a temporary occupancy override
-ZoneOcc: ZoneOccMode { occ }
+// Applies when the building or space is occupied; the normal comfort
+// mode used during scheduled occupancy or a temporary occupancy override
+HvacOcc: HvacOccMode { occ }
 
-// Applies when the zone is unoccupied; the energy saving setback
-// mode used outside of scheduled occupancy
-ZoneUnocc: ZoneOccMode { unocc }
+// Applies when the building or space is unoccupied; the energy saving
+// setback mode used outside of scheduled occupancy
+HvacUnocc: HvacOccMode { unocc }
 
-// Applies when the zone is in standby; a reduced comfort mode used
-// during scheduled occupancy when the space is vacant so it can quickly
+// Applies when the building or space is in standby; a reduced comfort mode
+// used during scheduled occupancy when it is vacant so it can quickly
 // return to occupied comfort conditions
-ZoneStandby: ZoneOccMode { standby }
+HvacStandby: HvacOccMode { standby }
+
+//////////////////////////////////////////////////////////////////////////
+// HvacPurpose
+//////////////////////////////////////////////////////////////////////////
+
+// What an HVAC setpoint is for: the conditioning or ventilation function
+// that it serves. This is independent of what drives the setpoint, so a
+// cooling setpoint stays a cooling setpoint when a humidity loop is
+// behind it. Not to be confused with [ph::HvacMode], which is what the
+// equipment is doing right now.
+HvacPurpose: Choice
+
+// Serves heating, cooling, or both, but not ventilation. Used to restrict
+// a setpoint to heating and cooling purposes, such as a temperature
+// deadband.
+HvacHeatingCooling: HvacPurpose
+
+// Serves heating, such as a zone heating temperature setpoint or a
+// maximum heating airflow
+HvacHeating: HvacHeatingCooling { heating }
+
+// Serves cooling, such as a zone cooling temperature setpoint or a
+// maximum cooling airflow
+HvacCooling: HvacHeatingCooling { cooling }
+
+// Serves both heating and cooling as a single setpoint, such as a
+// thermostat setpoint that the controller applies as heating or cooling
+// as needed
+HvacDual: HvacHeatingCooling { dual }
+
+// Serves ventilation, such as a minimum airflow set to deliver outdoor
+// air to the zone or a discharge air temperature setpoint that tempers
+// outdoor air
+HvacVentilation: HvacPurpose { ventilation }
